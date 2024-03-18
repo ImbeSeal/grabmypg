@@ -124,28 +124,38 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8">
-          <Card
-            image={cardimg1}
-            head={`Flexible living`}
-            body={`Stay as Long or as little as you need with month-to-month contracts`}
-          />
-          <Card
-            image={cardimg2}
-            head={`Move-in ready`}
-            body={`Ready to move in with everything you need`}
-          />
-          <Card
-            image={cardimg3}
-            head={`High-speed Wi-Fi`}
-            body={`Best in class internet speeds suitable for working 
+        <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
+          <div className="bg-white rounded-3xl shadow-lg">
+            <Card
+              image={cardimg1}
+              head={`Flexible living`}
+              body={`Stay as Long or as little as you need with month-to-month contracts`}
+            />
+          </div>
+          <div className="bg-white rounded-3xl shadow-lg">
+            <Card
+              image={cardimg2}
+              head={`Move-in ready`}
+              body={`Ready to move in with everything you need`}
+            />
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-lg">
+            <Card
+              image={cardimg3}
+              head={`High-speed Wi-Fi`}
+              body={`Best in class internet speeds suitable for working 
             from home`}
-          />
-          <Card
-            image={cardimg4}
-            head={`24/7 support`}
-            body={`On hand team for any issues you have`}
-          />
+            />
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-lg">
+            <Card
+              image={cardimg4}
+              head={`24/7 support`}
+              body={`On hand team for any issues you have`}
+            />
+          </div>
         </div>
       </div>
 
