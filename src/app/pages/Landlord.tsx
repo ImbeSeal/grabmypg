@@ -35,7 +35,7 @@ export function Landlord() {
         </div>
         <div className="flex justify-end">
           <div className="absolute w-[50%] mr-8 top-1">
-            <div className="w-full place-content-center m-auto p-5 my-10 rounded-3xl bg-white opacity-80">
+            <div className="w-full place-content-center m-auto p-5 my-10 rounded-3xl bg-white bg-opacity-55 opacity-80">
               <div className=" mx-10 my-10 space-y-6">
                 <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
                   Earn more from your property, do less
@@ -122,7 +122,7 @@ export function Landlord() {
         </div>
 
         <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
-          <div className="bg-white rounded-3xl shadow-lg">
+          <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
             <Card
               image={cardimg1}
               head={`Guaranteed rent`}
@@ -130,7 +130,7 @@ export function Landlord() {
             />
           </div>
 
-          <div className="bg-white rounded-3xl shadow-lg">
+          <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
             <Card
               image={cardimg2}
               head={`No fees`}
@@ -138,7 +138,7 @@ export function Landlord() {
             />
           </div>
 
-          <div className="bg-white rounded-3xl shadow-lg">
+          <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
             <Card
               image={cardimg3}
               head={`No voids`}
@@ -146,7 +146,7 @@ export function Landlord() {
             />
           </div>
 
-          <div className="bg-white rounded-3xl shadow-lg">
+          <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
             <Card
               image={cardimg4}
               head={`24/7 maintenance`}
@@ -159,7 +159,7 @@ export function Landlord() {
       {/* Slide 3 */}
 
       <div className="mt-36 m-24">
-        <div className="bg-white rounded-[36px] ">
+        <div className="bg-white bg-opacity-55 rounded-[36px] ">
           <div className="place-content-center text-center text-5xl font-bold p-12">
             How it works
           </div>
