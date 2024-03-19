@@ -42,7 +42,7 @@ export default function Landlord() {
           </div>
           <div className="flex justify-end">
             <div className="absolute w-[50%] mr-8 top-1">
-              <div className="w-full place-content-center m-auto p-5 my-10 rounded-3xl bg-white bg-opacity-55 opacity-80">
+              <div className="w-full place-content-center m-auto p-5 my-10 rounded-3xl bg-white bg-opacity-100 opacity-80">
                 <div className=" mx-10 my-10 space-y-6">
                   <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
                     Earn more from your property, do less

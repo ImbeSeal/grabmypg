@@ -2,20 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import hostelpg from "../assets/hostel-bg.jpg";
-import hostelpg4 from "../assets/bg-s4.png";
-import hostelpg5 from "../assets/bg-s5.jpg";
-import img1 from "../assets/s2-1.jpg";
-import img2 from "../assets/s2-2.jpg";
-import img3 from "../assets/s2-3.png";
-import img4 from "../assets/s2-4.jpg";
-import cardimg1 from "../assets/icons/card-1.png";
-import cardimg2 from "../assets/icons/card-2.png";
-import cardimg3 from "../assets/icons/card-3.png";
-import cardimg4 from "../assets/icons/card-4.png";
-import search from "../assets/icons/searchbar.png";
+import hostelpg from "../app/assets/hostel-bg.jpg";
+import hostelpg4 from "../app/assets/bg-s4.png";
+import hostelpg5 from "../app/assets/bg-s5.jpg";
+import img1 from "../app/assets/s2-1.jpg";
+import img2 from "../app/assets/s2-2.jpg";
+import img3 from "../app/assets/s2-3.png";
+import img4 from "../app/assets/s2-4.jpg";
+import cardimg1 from "../app/assets/icons/card-1.png";
+import cardimg2 from "../app/assets/icons/card-2.png";
+import cardimg3 from "../app/assets/icons/card-3.png";
+import cardimg4 from "../app/assets/icons/card-4.png";
+import search from "../app/assets/icons/searchbar.png";
 
-import Card from "../../components/Card";
+import Card from "./Card";
 
 export default function Hero() {
   return (
