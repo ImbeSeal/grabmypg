@@ -1,6 +1,9 @@
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-
+import { doc, getDocs, collection, query } from "firebase/firestore";
+import { db, storage } from "@/firebase";
 import { Navbar } from "@/components/Navbar";
 import { PropCard } from "../../components/CardProperty";
 import search from "../assets/icons/searchbar.png";
@@ -10,6 +13,23 @@ export default function Booking() {
 
   let amount = 0;
 
+  const [pgs, setPgs] = useState([]);
+
+  useEffect(() => {
+
+    const getData = async () => {
+
+      const querySnapshot = await getDocs(collection(db, "PG"));
+      const pgData = [];
+      querySnapshot.forEach((doc) => {
+        pgData.push(doc.data());
+      });
+
+      setPgs(pgData);
+    }
+
+    getData();
+  }, [])
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
@@ -280,31 +300,22 @@ export default function Booking() {
           {/* Property display */}
           <div className="col-span-9">
             <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
-              <Link href={"#"}>
-                <PropCard
-                  uid="1"
-                  propName={"Room in a boutique building"}
-                  address={"1995 Broadway, New York"}
-                  price={3000}
-                />
-              </Link>
+              {pgs.map((pg) => {
+                return (
+                  <Link href='#'>
+                    <PropCard
+                      key={pg.id}
+                      propName={pg.title}
+                      address={pg.addrShort}
+                      price={pg.price}
+                      propImage={pg.displayImage}
+                      categories={pg.categories}
+                      foodOptions={pg.food}
+                      roommateCount={pg.roommateCount}
+                      genders={pg.genders}
+                    /></Link>)
+              })}
 
-              <Link href={"#"}>
-                <PropCard
-                  uid="2"
-                  propName={"Lovely room in Manhattan"}
-                  address={"246 Mott St, New York"}
-                  price={3000}
-                />
-              </Link>
-              <Link href={"#"}>
-                <PropCard
-                  uid="3"
-                  propName={"Ok"}
-                  address={"This place"}
-                  price={3000}
-                />
-              </Link>
             </div>
           </div>
         </div>
