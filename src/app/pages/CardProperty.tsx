@@ -8,34 +8,34 @@ import food from "../media/icons/propcardVeg.png";
 import gender from "../media/icons/propcardBoysGirls.png";
 import occupation from "../media/icons/propcardStudents.png";
 
-export function PropCard({ uid, propName, address, price, rating }) {
+export function PropCard({ uid, propName, address, price }) {
   // function to assing the stars
-  function Star({ value }: { value: number }) {
-    if (value < 1)
-      return (
-        <svg
-          className="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 22 20"
-        >
-          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-        </svg>
-      );
-    else
-      return (
-        <svg
-          className="w-4 h-4 text-[#2B67F6] ms-1"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 22 20"
-        >
-          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
-        </svg>
-      );
-  }
+  // function Star({ value }: { value: number }) {
+  //   if (value < 1)
+  //     return (
+  //       <svg
+  //         className="w-4 h-4 ms-1 text-gray-300 dark:text-gray-500"
+  //         aria-hidden="true"
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         fill="currentColor"
+  //         viewBox="0 0 22 20"
+  //       >
+  //         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+  //       </svg>
+  //     );
+  //   else
+  //     return (
+  //       <svg
+  //         className="w-4 h-4 text-[#2B67F6] ms-1"
+  //         aria-hidden="true"
+  //         xmlns="http://www.w3.org/2000/svg"
+  //         fill="currentColor"
+  //         viewBox="0 0 22 20"
+  //       >
+  //         <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+  //       </svg>
+  //     );
+  // }
 
   return (
     <div className="grid grid-cols-4 p-12 bg-white bg-opacity-55 rounded-[24px] shadow-lg">
@@ -112,7 +112,7 @@ export function PropCard({ uid, propName, address, price, rating }) {
 
         {/* Contact  */}
 
-        <div className="grid grid-cols-2 mx-4 gap-4 mt-2">
+        <div className="grid grid-cols-2 mx-4 gap-4 mt-4">
           <button className="p-1 rounded-[10px] bg-[#2B67F6] font-semibold">
             Contact Owner
           </button>
@@ -122,10 +122,10 @@ export function PropCard({ uid, propName, address, price, rating }) {
         </div>
 
         {/* Rating */}
-        <div className="flex gap-4 mt-3">
+        {/* <div className="flex gap-4 mt-3">
           <div className="">{rating}</div>
 
-          {/* Stars can be changed on the basis of value */}
+         
 
           <div className="flex items-center">
             <Star value={rating / 1} />
@@ -136,12 +136,12 @@ export function PropCard({ uid, propName, address, price, rating }) {
           </div>
 
           <div className="text-[0.7rem] my-auto">(42 Reviews)</div>
-        </div>
+        </div> */}
       </div>
 
       {/* Pricing */}
       <div className="col-span-1">
-        <div className="font-bold mb-auto text-end h-1/2">
+        {/* <div className="font-bold mb-auto text-end h-1/2">
           <input
             type="checkbox"
             id={`favorite${uid}`}
@@ -156,8 +156,8 @@ export function PropCard({ uid, propName, address, price, rating }) {
               <Image src={favorite} alt="..." className="w-8" />
             </div>
           </label>
-        </div>
-        <div className="flex flex-col-reverse h-1/2">
+        </div> */}
+        <div className="flex flex-col-reverse h-full">
           <div className="font-bold mt-auto text-end ">
             {/* Input for cost */}
             Rs {price} <span className="text-xs font-normal">/month</span>
