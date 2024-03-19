@@ -2,10 +2,13 @@ import Image from "next/image";
 
 import prop1 from "../media/property/prop1.png";
 import favorite from "../media/icons/heart-favo.svg";
+import food from "../media/icons/propcardVeg.png";
+import gender from "../media/icons/propcardBoysGirls.png";
+import occupation from "../media/icons/propcardStudents.png";
 
 export function PropCard({ uid }) {
   return (
-    <div className="grid grid-cols-4 p-12">
+    <div className="grid grid-cols-4 p-12 bg-white rounded-[24px] shadow-lg">
       <div className="col-span-1">
         <Image src={prop1} alt=".." className="aspect-square rounded-[12px]" />
       </div>
@@ -23,7 +26,7 @@ export function PropCard({ uid }) {
         <div className="grid grid-rows-3 grid-flow-col gap-y-2 mt-2">
           <div className="flex gap-2 mx-3 ">
             <Image
-              src={prop1}
+              src={food}
               alt=""
               className="rounded-[24px] w-[24px] h-[24px]"
             />
@@ -31,7 +34,7 @@ export function PropCard({ uid }) {
           </div>
           <div className="flex gap-2 mx-3">
             <Image
-              src={prop1}
+              src={gender}
               alt=""
               className="rounded-[24px] w-[24px] h-[24px]"
             />
@@ -39,7 +42,7 @@ export function PropCard({ uid }) {
           </div>
           <div className="flex gap-2 mx-3">
             <Image
-              src={prop1}
+              src={occupation}
               alt=""
               className="rounded-[24px] w-[24px] h-[24px]"
             />
@@ -47,7 +50,7 @@ export function PropCard({ uid }) {
               Students/ Working professionals
             </div>
           </div>
-          <div className="flex gap-2 mx-3">
+          <div className="flex gap-2 mx-3 hidden">
             <Image
               src={prop1}
               alt=""
@@ -57,7 +60,7 @@ export function PropCard({ uid }) {
               Students/ Working professionals
             </div>
           </div>
-          <div className="flex gap-2 mx-3">
+          <div className="flex gap-2 mx-3 hidden">
             <Image
               src={prop1}
               alt=""
@@ -147,7 +150,7 @@ export function PropCard({ uid }) {
           />
           <label
             htmlFor={`favorite${uid}`}
-            className="inline-flex items-center justify-between p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-lg cursor-pointer peer-checked:border-black hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50 "
+            className="inline-flex items-center justify-between p-2 text-gray-500 bg-white border-2 border-gray-200 rounded-[200px] cursor-pointer peer-checked:border-black hover:text-gray-600 peer-checked:text-gray-600 hover:bg-gray-50 "
           >
             <div className="block">
               <Image src={favorite} alt="..." className="w-8" />
