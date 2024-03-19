@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import Image from "next/image";
 
-import prop1 from "../media/property/prop1.png";
-import favorite from "../media/icons/heart-favo.svg";
-import food from "../media/icons/propcardVeg.png";
-import gender from "../media/icons/propcardBoysGirls.png";
-import occupation from "../media/icons/propcardStudents.png";
+import prop1 from "../app/assets/property/prop1.png";
+import favorite from "../app/assets/icons/heart-favo.svg";
+import food from "../app/assets/icons/propcardVeg.png";
+import gender from "../app/assets/icons/propcardBoysGirls.png";
+import occupation from "../app/assets/icons/propcardStudents.png";
 
 export function PropCard({ uid, propName, address, price }) {
   // function to assing the stars

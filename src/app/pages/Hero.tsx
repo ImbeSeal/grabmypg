@@ -2,20 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import hostelpg from "../media/hostel-bg.jpg";
-import hostelpg4 from "../media/bg-s4.png";
-import hostelpg5 from "../media/bg-s5.jpg";
-import img1 from "../media/s2-1.jpg";
-import img2 from "../media/s2-2.jpg";
-import img3 from "../media/s2-3.png";
-import img4 from "../media/s2-4.jpg";
-import cardimg1 from "../media/icons/card-1.png";
-import cardimg2 from "../media/icons/card-2.png";
-import cardimg3 from "../media/icons/card-3.png";
-import cardimg4 from "../media/icons/card-4.png";
-import search from "../media/icons/searchbar.png";
+import hostelpg from "../assets/hostel-bg.jpg";
+import hostelpg4 from "../assets/bg-s4.png";
+import hostelpg5 from "../assets/bg-s5.jpg";
+import img1 from "../assets/s2-1.jpg";
+import img2 from "../assets/s2-2.jpg";
+import img3 from "../assets/s2-3.png";
+import img4 from "../assets/s2-4.jpg";
+import cardimg1 from "../assets/icons/card-1.png";
+import cardimg2 from "../assets/icons/card-2.png";
+import cardimg3 from "../assets/icons/card-3.png";
+import cardimg4 from "../assets/icons/card-4.png";
+import search from "../assets/icons/searchbar.png";
 
-import Card from "./Card";
+import Card from "../../components/Card";
 
 export default function Hero() {
   return (
@@ -199,7 +199,7 @@ export default function Hero() {
               </div>
 
               <button className="rounded-full px-10 py-2 mx-10 bg-black">
-                <Link href={"#search-bar"}>Start Booking</Link>
+                <Link href={"/Booking"}>Start Booking</Link>
               </button>
             </div>
           </div>
@@ -222,7 +222,7 @@ export default function Hero() {
               </div>
 
               <button className="w-full rounded-full px-10 py-2 bg-[#568B6C]">
-                <Link href={"#search-bar"}>Start Booking</Link>
+                <Link href={"/Booking"}>Start Booking</Link>
               </button>
             </div>
           </div>
