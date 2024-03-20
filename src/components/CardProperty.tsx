@@ -8,7 +8,16 @@ import food from "../app/assets/icons/propcardVeg.png";
 import gender from "../app/assets/icons/propcardBoysGirls.png";
 import occupation from "../app/assets/icons/propcardStudents.png";
 
-export function PropCard({ genders, categories, foodOptions, propImage, propName, address, price,roommateCount }) {
+export function PropCard({
+  genders,
+  categories,
+  foodOptions,
+  propImage,
+  propName,
+  address,
+  price,
+  roommateCount,
+}) {
   // function to assing the stars
   // function Star({ value }: { value: number }) {
   //   if (value < 1)
@@ -49,7 +58,9 @@ export function PropCard({ genders, categories, foodOptions, propImage, propName
             height={700}
           />
           <div className="absolute ml-2 bottom-4">
-            <div className="font-semibold text-white text-sm">{roommateCount} Roommates</div>
+            <div className="font-semibold text-white text-sm">
+              {roommateCount} Roommates
+            </div>
             <div className="text-white text-xs opacity-65">Names of People</div>
           </div>
         </div>
@@ -86,9 +97,7 @@ export function PropCard({ genders, categories, foodOptions, propImage, propName
               alt=""
               className="rounded-[24px] w-[24px] h-[24px]"
             />
-            <div className="text-[0.55rem]/[0.7rem] my-auto">
-              {categories}
-            </div>
+            <div className="text-[0.55rem]/[0.7rem] my-auto">{categories}</div>
           </div>
           {/* <div className="flex gap-2 mx-3 hidden">
             <Image
