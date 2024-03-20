@@ -5,16 +5,16 @@ import menu from "../app/assets/icons/menu-nav.svg";
 
 export function Navbar() {
   return (
-    <nav>
+    <nav className="w-full bg-[#F0F0F0]">
       <div className="grid grid-cols-2 font-semibold">
         <div className="flex p-4">
-          <Link href={"../app"} className="px-3">
+          <Link href={"../"} className="px-3">
             Home
           </Link>
-          <Link href={"../app/Contact"} className="px-3">
+          <Link href={"../Contact"} className="px-3">
             Contact
           </Link>
-          <Link href={"../app/Landlord"} className="px-3">
+          <Link href={"../Landlord"} className="px-3">
             Post Property
           </Link>
         </div>

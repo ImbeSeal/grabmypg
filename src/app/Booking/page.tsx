@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -16,9 +17,7 @@ export default function Booking() {
   const [pgs, setPgs] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
-
     const getData = async () => {
-
       const querySnapshot = await getDocs(collection(db, "PG"));
       const pgData = [];
       querySnapshot.forEach((doc) => {
@@ -26,9 +25,10 @@ export default function Booking() {
       });
 
       setPgs(pgData);
-    }
+    };
 
     getData();
+
   }, [])
 
 
@@ -314,7 +314,22 @@ export default function Booking() {
             <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
               {filteredPgs.length ===0 ? (<p>No PG found!</p>) : (filteredPgs.map((pg) => {
                 return (
-                  <Link href='#'>
+                  <Link
+                    href={{
+                      pathname: "/PropDetails",
+                      query: {
+                        key: pg.id,
+                        propName: pg.title,
+                        address: pg.addrShort,
+                        price: pg.price,
+                        propImage: pg.displayImage,
+                        categories: pg.categories,
+                        foodOptions: pg.food,
+                        roommateCount: pg.roommateCount,
+                        genders: pg.genders,
+                      },
+                    }}
+                  >
                     <PropCard
                       key={pg.id}
                       propName={pg.title}
@@ -327,7 +342,6 @@ export default function Booking() {
                       genders={pg.genders}
                     /></Link>)
               }))}
-
             </div>
           </div>
         </div>

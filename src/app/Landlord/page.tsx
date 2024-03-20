@@ -28,89 +28,98 @@ export default function Landlord() {
         <div className="bg-white">
           <Navbar />
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full aspect-[1440/820]">
           <div className="content-center">
-            <div className="-z-30">
-              <div className="overflow-hidden">
-                <Image
-                  src={landlordjp}
-                  alt="Hostel Room"
-                  className="aspect-[1440/820] "
-                />
-              </div>
+            <div className="-z-30 overflow-hidden">
+              <Image
+                src={landlordjp}
+                alt="Hostel Room"
+                className="aspect-[1440/820] "
+              />
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="absolute w-[50%] mr-8 top-1">
-              <div className="w-full place-content-center m-auto p-5 my-10 rounded-3xl bg-white bg-opacity-100 opacity-80">
-                <div className=" mx-10 my-10 space-y-6">
-                  <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
+            <div className="absolute xl:w-1/2 w-full xl:mr-8 px-8 top-2.5">
+              <div className="w-full place-content-center m-auto p-5 rounded-3xl bg-white bg-opacity-100 opacity-80">
+                <div className="mx-10 mt-10 space-y-6">
+                  <div className="xl:text-4xl lg:text-3xl text-xl font-bold">
                     Earn more from your property, do less
                   </div>
                   <div className="xl:text-base lg:text-sm text-xs">
                     Find out if your property meets our criteria
                   </div>
                 </div>
-                <div className="w-full">
-                  <form action="">
-                    <div className="mx-6 space-y-4">
-                      <input
-                        type="text"
-                        name="name"
-                        className="block md:w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                        placeholder="Name*"
-                      />
-                      <input
-                        type="email"
-                        name="email"
-                        className="block md:w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                        placeholder="Email*"
-                      />
-                      <input
-                        type="text"
-                        name="phone"
-                        className="block md:w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                        placeholder="Phone number*"
-                      />
+
+                <div className="grid xl:grid-cols-1 grid-cols-2">
+                  <div className="xl:border-0 border-r-2">
+                    <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
+                      Your details
                     </div>
-                  </form>
+                    <div className="w-full">
+                      <form action="" className="">
+                        <div className="w-1/2 space-y-4 mx-auto">
+                          <input
+                            type="text"
+                            name="name"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Name*"
+                          />
+                          <input
+                            type="email"
+                            name="email"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Email*"
+                          />
+                          <input
+                            type="text"
+                            name="phone"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Phone number*"
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <div className="xl:border-0 border-l-2">
+                    <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
+                      Property details
+                    </div>
+                    <div className="w-full">
+                      <form action="">
+                        <div className="mx-auto space-y-4 w-1/2">
+                          <div className="grid xl:grid-cols-2 gap-4">
+                            <input
+                              type="text"
+                              name="name"
+                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="City*"
+                            />
+                            <input
+                              type="email"
+                              name="email"
+                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Area*"
+                            />
+                          </div>
+                          <input
+                            type="text"
+                            name="phone"
+                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="*"
+                          />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-
-                <div className="mx-10 text-2xl my-6">Property details</div>
-
-                <div className="w-full">
-                  <form action="">
-                    <div className="mx-6 space-y-4 ">
-                      <div className="flex flex-wrap gap-16">
-                        <input
-                          type="text"
-                          name="name"
-                          className="rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                          placeholder="City*"
-                        />
-                        <input
-                          type="email"
-                          name="email"
-                          className="rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                          placeholder="Area*"
-                        />
-                      </div>
-                      <input
-                        type="text"
-                        name="phone"
-                        className="block md:w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                        placeholder="*"
-                      />
-                    </div>
-                    <div className="flex place-content-center text-xl my-10 ">
-                      <button
-                        type="submit"
-                        className="px-8 py-2 rounded-[24px] bg-[#064749] text-white"
-                      >
-                        Submit
-                      </button>
-                    </div>
-                  </form>
+                <div className="flex place-content-center text-xl my-10 ">
+                  <button
+                    type="submit"
+                    className="px-8 py-2 rounded-[24px] bg-[#064749] text-white"
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,7 +129,7 @@ export default function Landlord() {
         {/* Slide 2 */}
 
         <div className="text-center justify-center mt-32 w-full">
-          <div className="px-72">
+          <div className="xl:px-72 px-64">
             <div className="text-5xl font-bold p-8">Features we offer</div>
             <div className="text-center">
               We work to meet accommodation needs in Sikkim . Offer a dedicated
@@ -128,7 +137,7 @@ export default function Landlord() {
             </div>
           </div>
 
-          <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
+          <div className="mt-12 px-24 py-12 grid xl:grid-cols-4 grid-cols-2 gap-8 text-left">
             <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
               <Card
                 image={cardimg1}
