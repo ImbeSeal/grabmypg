@@ -14,7 +14,7 @@ export default function Booking() {
   let amount = 0;
 
   const [pgs, setPgs] = useState([]);
-
+  const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
 
     const getData = async () => {
@@ -30,6 +30,15 @@ export default function Booking() {
 
     getData();
   }, [])
+
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  }
+
+  const filteredPgs = pgs.filter((pg) => pg.title.toLowerCase().includes(searchQuery.toLowerCase()) || pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
@@ -57,8 +66,11 @@ export default function Booking() {
               <input
                 type="search"
                 id="search"
+                onChange={handleSearchChange}
+                name="searchbar"
+                value={searchQuery}
                 className="block w-full p-4 ps-16 placeholder:text-gray-800 border-black border-4 rounded-[300px] "
-                placeholder="Select a city"
+                placeholder="Search for PGs"
                 required
               />
               <button
@@ -300,7 +312,7 @@ export default function Booking() {
           {/* Property display */}
           <div className="col-span-9">
             <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
-              {pgs.map((pg) => {
+              {filteredPgs.length ===0 ? (<p>No PG found!</p>) : (filteredPgs.map((pg) => {
                 return (
                   <Link href='#'>
                     <PropCard
@@ -314,7 +326,7 @@ export default function Booking() {
                       roommateCount={pg.roommateCount}
                       genders={pg.genders}
                     /></Link>)
-              })}
+              }))}
 
             </div>
           </div>
