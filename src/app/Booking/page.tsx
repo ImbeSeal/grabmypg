@@ -25,7 +25,7 @@ export default function Booking() {
         const querySnapshot = await getDocs(collection(db, "PG"));
         const pgData = querySnapshot.docs.map((doc) => doc.data());
         setPgs(pgData);
-        // so that loader is displayed for atleast 1.2 secs
+        // so that loader is displayed for atleast 1 secs
         const endTime = new Date(); // Record end time
         const elapsedTime = endTime - startTime; // Calculate elapsed time
 
@@ -335,17 +335,10 @@ export default function Booking() {
                       href={{
                         pathname: "/PropDetails",
                         query: {
-                          key: pg.id,
-                          propName: pg.title,
-                          address: pg.addrShort,
-                          price: pg.price,
-                          propImage: pg.displayImage,
-                          categories: pg.categories,
-                          foodOptions: pg.food,
-                          roommateCount: pg.roommateCount,
-                          genders: pg.genders,
+                          id: pg.id
                         },
                       }}
+                      key={pg.id}
                     >
                       <PropCard
                         key={pg.id}

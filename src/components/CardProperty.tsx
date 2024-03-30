@@ -124,7 +124,7 @@ export function PropCard({
         {/* Contact  */}
 
         <div className="grid grid-cols-2 mx-4 gap-4 mt-4">
-          <button className="p-1 rounded-[10px] bg-[#2B67F6] font-semibold">
+          <button className="p-1 rounded-[10px] bg-[#a8c1fc] font-semibold">
             Contact Owner
           </button>
           <button className="p-1 rounded-[10px] bg-[#96E98B] font-semibold">
