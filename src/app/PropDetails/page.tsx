@@ -1,51 +1,60 @@
-"use client" 
+"use client";
 
 import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import { CardProp } from "./Card";
-import {useRouter, useSearchParams} from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { doc, getDocs, collection, query, getDoc } from "firebase/firestore";
-import {db} from "@/firebase";
+import { db } from "@/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
 
+function getDate() {
+  const today = new Date();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
+  const date = today.getDate();
+  return `${month}.${date}.${year}`;
+}
 export default function Details() {
+  const [currentDate, setCurrentDate] = useState(getDate());
+
   const router = useRouter();
   const searchParams = useSearchParams();
-  const id = searchParams.get("id")
+  const id = searchParams.get("id");
   const [details, setDetailsData] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
-      if(!id) return ;
-      try{
+      if (!id) return;
+      try {
         const docRef = doc(db, "PG", id);
         const docSnap = await getDoc(docRef);
-        if(docSnap.exists()){
+        if (docSnap.exists()) {
           setDetailsData(docSnap.data());
-        }else{
+        } else {
           console.log("Doc not found");
           router.push("/");
         }
         setLoading(false);
-      } catch(error){
+      } catch (error) {
         console.error("error fetching doc:", error);
         router.push("/");
       }
     };
 
-    if(id){
+    if (id) {
       fetchData();
     }
-  },[id,router]);
+  }, [id, router]);
 
-  if(loading){
-    return <div>Loading...</div>
+  if (loading) {
+    return <div>Loading...</div>;
   }
 
-  if(!details){
-    return <p>Details not found.</p>
+  if (!details) {
+    return <p>Details not found.</p>;
   }
 
   return (
@@ -88,7 +97,37 @@ export default function Details() {
             <CardProp title="Property Rules" data={details.food} />
           </div>
 
-          <div className="">Hello</div>
+          <div className="p-16">
+            <div className="rounded-2xl bg-white shadow-2xl py-8">
+              <div className="text-4xl text-center font-bold">
+                Rs. {details.price}/month
+              </div>
+              <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
+                <div className="font-semibold">Date</div>
+                <div className="bg-black text-white rounded-full py-2 px-12">
+                  {currentDate}
+                </div>
+                <div className="">All utilities are included</div>
+              </div>
+              <div className="grid grid-cols-2">
+                <div className="text-center px-16 text-xs">
+                  <div className="bg-black text-white rounded-full py-2 px-8">
+                    Schedule meeting
+                  </div>
+                </div>
+                <div className="text-center px-16 text-xs">
+                  <div className="bg-black text-white rounded-full py-2 px-8">
+                    Contact owner
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-16 text-xs text-center my-4">
+                When you schedule this apartment, your reservation will be
+                cofirmed instantly by owner
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="w-full">

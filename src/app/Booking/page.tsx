@@ -53,7 +53,7 @@ export default function Booking() {
       pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
+  console.log(pgs);
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
