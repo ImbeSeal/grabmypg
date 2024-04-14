@@ -1,22 +1,53 @@
+"use client" 
+
 import { Navbar } from "@/components/Navbar";
 import Link from "next/link";
 import Image from "next/image";
 import { CardProp } from "./Card";
+import {useRouter, useSearchParams} from "next/navigation";
+import { doc, getDocs, collection, query, getDoc } from "firebase/firestore";
+import {db} from "@/firebase";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export default function Details({
-  searchParams,
-}: {
-  searchParams: {
-    propName: any;
-    address: any;
-    price: any;
-    propImage: any;
-    categories: any;
-    foodOptions: any;
-    roommateCount: any;
-    genders: any;
-  };
-}) {
+export default function Details() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id")
+  const [details, setDetailsData] = useState({});
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      if(!id) return ;
+      try{
+        const docRef = doc(db, "PG", id);
+        const docSnap = await getDoc(docRef);
+        if(docSnap.exists()){
+          setDetailsData(docSnap.data());
+        }else{
+          console.log("Doc not found");
+          router.push("/");
+        }
+        setLoading(false);
+      } catch(error){
+        console.error("error fetching doc:", error);
+        router.push("/");
+      }
+    };
+
+    if(id){
+      fetchData();
+    }
+  },[id,router]);
+
+  if(loading){
+    return <div>Loading...</div>
+  }
+
+  if(!details){
+    return <p>Details not found.</p>
+  }
+
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
@@ -26,7 +57,7 @@ export default function Details({
 
         <div className="w-full overflow-hidden grid grid-cols-1">
           <Image
-            src={searchParams.propImage}
+            src={details.displayImage}
             alt="..."
             width={9000}
             height={9000}
@@ -36,8 +67,8 @@ export default function Details({
 
         <div className="grid grid-cols-2">
           <div className="p-12 space-y-4">
-            <div className="text-4xl font-bold">{searchParams.propName}</div>
-            <div className="">{searchParams.address}</div>
+            <div className="text-4xl font-bold">{details.title}</div>
+            <div className="">{details.addrShort}</div>
             <div className="py-4">
               <div className="text-3xl font-bold">Description</div>
               <div className="text-sm">
@@ -53,8 +84,8 @@ export default function Details({
             </div>
 
             <CardProp title="Property Amenities" data="" />
-            <CardProp title="Food Menu" data={searchParams.foodOptions} />
-            <CardProp title="Property Rules" data={searchParams.foodOptions} />
+            <CardProp title="Food Menu" data={details.food} />
+            <CardProp title="Property Rules" data={details.food} />
           </div>
 
           <div className="">Hello</div>
