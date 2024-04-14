@@ -343,27 +343,17 @@ export default function Booking() {
                 ) : (
                   filteredPgs.map((pg) => {
                     return (
-                      <Link
-                        href={{
-                          pathname: "/PropDetails",
-                          query: {
-                            id: pg.id,
-                          },
-                        }}
+                      <PropCard
                         key={pg.id}
-                      >
-                        <PropCard
-                          key={pg.id}
-                          propName={pg.title}
-                          address={pg.addrShort}
-                          price={pg.price}
-                          propImage={pg.displayImage}
-                          categories={pg.categories}
-                          foodOptions={pg.food}
-                          roommateCount={pg.roommateCount}
-                          genders={pg.genders}
-                        />
-                      </Link>
+                        propName={pg.title}
+                        address={pg.addrShort}
+                        price={pg.price}
+                        propImage={pg.displayImage}
+                        categories={pg.categories}
+                        foodOptions={pg.food}
+                        roommateCount={pg.roommateCount}
+                        genders={pg.genders}
+                      />
                     );
                   })
                 )}
