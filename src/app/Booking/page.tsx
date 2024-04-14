@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Loader } from "../../components/Loader"
+import { Loader } from "../../components/Loader";
 import { doc, getDocs, collection, query } from "firebase/firestore";
 import { db, storage } from "@/firebase";
 import { Navbar } from "@/components/Navbar";
@@ -29,7 +29,6 @@ export default function Booking() {
         const endTime = new Date(); // Record end time
         const elapsedTime = endTime - startTime; // Calculate elapsed time
 
-
         if (elapsedTime < 1000) {
           setTimeout(() => {
             setLoading(false);
@@ -38,7 +37,7 @@ export default function Booking() {
           setLoading(false);
         }
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -62,10 +61,7 @@ export default function Booking() {
         <div className="bg-white">
           <Navbar />
         </div>
-<<<<<<< HEAD
-=======
         <hr className="w-screen border-0" />
->>>>>>> 7393d97579a90af26f7bf57be29a4399d9611c41
         {/* Search bar */}
         <div className="min-w-full">
           <form className="w-4/5 mx-auto py-12">
@@ -103,16 +99,22 @@ export default function Booking() {
           </form>
         </div>
 
-        {loading ? (<div className="flex justify-center items-center"><Loader /></div>) : (
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <Loader />
+          </div>
+        ) : (
           <div className="grid grid-cols-12">
-
             {/* Filters section */}
             <div className="col-span-3">
               <div className="mx-4 p-4 bg-white bg-opacity-55">
                 <form action="">
                   <div className="text-3xl">Filters</div>
 
-                  <div className="text-bold mt-4"> Select room sharing type</div>
+                  <div className="text-bold mt-4">
+                    {" "}
+                    Select room sharing type
+                  </div>
                   <div className="mt-4 grid grid-cols-1 gap-4">
                     <div className="flex flex-row-reverse mr-auto gap-2">
                       <label htmlFor="room-sharing-single">Single</label>
@@ -237,7 +239,9 @@ export default function Booking() {
 
                   <hr className="my-8" />
 
-                  <div className="text-bold mt-4">Select your maximum budget</div>
+                  <div className="text-bold mt-4">
+                    Select your maximum budget
+                  </div>
                   <div className="flex mb-4">
                     <label
                       htmlFor="currency-input"
@@ -331,65 +335,39 @@ export default function Booking() {
               </div>
             </div>
 
-<<<<<<< HEAD
-          {/* Property display */}
-          <div className="col-span-9">
-            <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
-              {filteredPgs.length === 0 ? (
-                <p>No PG found!</p>
-              ) : (
-                filteredPgs.map((pg) => {
-=======
             {/* Property display */}
             <div className="col-span-9">
               <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
-                {filteredPgs.length === 0 ? (<p>No PG found!</p>) : (filteredPgs.map((pg) => {
->>>>>>> 7393d97579a90af26f7bf57be29a4399d9611c41
-                  return (
-                    <Link
-                      href={{
-                        pathname: "/PropDetails",
-                        query: {
-<<<<<<< HEAD
-                          key: pg.id,
-                          propName: pg.title,
-                          address: pg.addrShort,
-                          price: pg.price,
-                          propImage: pg.displayImage,
-                          categories: pg.categories,
-                          foodOptions: pg.food,
-                          roommateCount: pg.roommateCount,
-                          genders: pg.genders,
-                        },
-                      }}
-=======
-                          id: pg.id
-                        },
-                      }}
-                      key={pg.id}
->>>>>>> 7393d97579a90af26f7bf57be29a4399d9611c41
-                    >
-                      <PropCard
+                {filteredPgs.length === 0 ? (
+                  <p>No PG found!</p>
+                ) : (
+                  filteredPgs.map((pg) => {
+                    return (
+                      <Link
+                        href={{
+                          pathname: "/PropDetails",
+                          query: {
+                            id: pg.id,
+                          },
+                        }}
                         key={pg.id}
-                        propName={pg.title}
-                        address={pg.addrShort}
-                        price={pg.price}
-                        propImage={pg.displayImage}
-                        categories={pg.categories}
-                        foodOptions={pg.food}
-                        roommateCount={pg.roommateCount}
-                        genders={pg.genders}
-<<<<<<< HEAD
-                      />
-                    </Link>
-                  );
-                })
-              )}
-=======
-                      /></Link>)
-                }))}
+                      >
+                        <PropCard
+                          key={pg.id}
+                          propName={pg.title}
+                          address={pg.addrShort}
+                          price={pg.price}
+                          propImage={pg.displayImage}
+                          categories={pg.categories}
+                          foodOptions={pg.food}
+                          roommateCount={pg.roommateCount}
+                          genders={pg.genders}
+                        />
+                      </Link>
+                    );
+                  })
+                )}
               </div>
->>>>>>> 7393d97579a90af26f7bf57be29a4399d9611c41
             </div>
           </div>
         )}
