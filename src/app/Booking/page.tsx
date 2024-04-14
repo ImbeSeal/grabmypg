@@ -28,26 +28,27 @@ export default function Booking() {
     };
 
     getData();
-
-  }, [])
-
+  }, []);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
-  }
+  };
 
-  const filteredPgs = pgs.filter((pg) => pg.title.toLowerCase().includes(searchQuery.toLowerCase()) || pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPgs = pgs.filter(
+    (pg) =>
+      pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
+        <hr className="w-screen border-0" />
         <div className="bg-white">
           <Navbar />
         </div>
-
         {/* Search bar */}
-        <div className="w-full">
+        <div className="min-w-full">
           <form className="w-4/5 mx-auto py-12">
             <label
               htmlFor="search"
@@ -312,36 +313,42 @@ export default function Booking() {
           {/* Property display */}
           <div className="col-span-9">
             <div className="ml-auto mr-12 grid grid-cols-1 gap-4">
-              {filteredPgs.length ===0 ? (<p>No PG found!</p>) : (filteredPgs.map((pg) => {
-                return (
-                  <Link
-                    href={{
-                      pathname: "/PropDetails",
-                      query: {
-                        key: pg.id,
-                        propName: pg.title,
-                        address: pg.addrShort,
-                        price: pg.price,
-                        propImage: pg.displayImage,
-                        categories: pg.categories,
-                        foodOptions: pg.food,
-                        roommateCount: pg.roommateCount,
-                        genders: pg.genders,
-                      },
-                    }}
-                  >
-                    <PropCard
-                      key={pg.id}
-                      propName={pg.title}
-                      address={pg.addrShort}
-                      price={pg.price}
-                      propImage={pg.displayImage}
-                      categories={pg.categories}
-                      foodOptions={pg.food}
-                      roommateCount={pg.roommateCount}
-                      genders={pg.genders}
-                    /></Link>)
-              }))}
+              {filteredPgs.length === 0 ? (
+                <p>No PG found!</p>
+              ) : (
+                filteredPgs.map((pg) => {
+                  return (
+                    <Link
+                      href={{
+                        pathname: "/PropDetails",
+                        query: {
+                          key: pg.id,
+                          propName: pg.title,
+                          address: pg.addrShort,
+                          price: pg.price,
+                          propImage: pg.displayImage,
+                          categories: pg.categories,
+                          foodOptions: pg.food,
+                          roommateCount: pg.roommateCount,
+                          genders: pg.genders,
+                        },
+                      }}
+                    >
+                      <PropCard
+                        key={pg.id}
+                        propName={pg.title}
+                        address={pg.addrShort}
+                        price={pg.price}
+                        propImage={pg.displayImage}
+                        categories={pg.categories}
+                        foodOptions={pg.food}
+                        roommateCount={pg.roommateCount}
+                        genders={pg.genders}
+                      />
+                    </Link>
+                  );
+                })
+              )}
             </div>
           </div>
         </div>
