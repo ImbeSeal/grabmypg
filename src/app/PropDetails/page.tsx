@@ -9,20 +9,17 @@ import { doc, getDocs, collection, query, getDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import Carousel from "@/components/Carousel";
 
 import hostel2 from "../assets/hostel-bg.jpg";
-// Temporary
-function getDate() {
-  const today = new Date();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-  const date = today.getDate();
-  return `${month}.${date}.${year}`;
-}
+
+
 export default function Details() {
-  const [currentDate, setCurrentDate] = useState(getDate());
+  const [date, setDate] = useState(new Date());
+  const today = new Date();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -111,8 +108,8 @@ export default function Details() {
               </div>
               <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
                 <div className="font-semibold">Date</div>
-                <div className="bg-black text-white rounded-full py-2 px-12">
-                  {currentDate}
+                <div className="bg-black text-white rounded-full py-2 px-3 flex">
+                <DatePicker selected={date} onChange={date => setDate(date)} minDate={today} className=" border-none outline-none bg-black text-xl block text-center" dateFormat="dd/MM/yyyy"/>
                 </div>
                 <div className="">All utilities are included</div>
               </div>
