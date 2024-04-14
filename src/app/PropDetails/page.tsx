@@ -10,6 +10,10 @@ import { db } from "@/firebase";
 import { useState } from "react";
 import { useEffect } from "react";
 
+import Carousel from "@/components/Carousel";
+
+import hostel2 from "../assets/hostel-bg.jpg";
+// Temporary
 function getDate() {
   const today = new Date();
   const month = today.getMonth() + 1;
@@ -56,6 +60,8 @@ export default function Details() {
   if (!details) {
     return <p>Details not found.</p>;
   }
+  // Temporary images
+  const images = [details.displayImage, hostel2, details.displayImage];
 
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
@@ -64,14 +70,15 @@ export default function Details() {
           <Navbar />
         </div>
 
-        <div className="w-full overflow-hidden grid grid-cols-1">
-          <Image
+        <div className="w-full overflow-hidden grid grid-cols-1 p-12">
+          <Carousel images={images} />
+          {/* <Image
             src={details.displayImage}
             alt="..."
             width={9000}
             height={9000}
             className="w-full rounded-lg"
-          />
+          /> */}
         </div>
 
         <div className="grid grid-cols-2">
