@@ -341,10 +341,12 @@ export default function Booking() {
                 {filteredPgs.length === 0 ? (
                   <p>No PG found!</p>
                 ) : (
-                  filteredPgs.map((pg) => {
+                  filteredPgs.map((pg, index) => {
+                    index = index + 1;
                     return (
                       <PropCard
-                        key={pg.id}
+                        key={index}
+                        id={pg.id}
                         propName={pg.title}
                         address={pg.addrShort}
                         price={pg.price}

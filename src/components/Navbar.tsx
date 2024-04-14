@@ -19,7 +19,7 @@ export function Navbar() {
           </Link>
         </div>
         <div className="flex flex-row-reverse p-4">
-          <Link href={"#"} className="px-3">
+          <Link href={"#"} className="px-3 hidden">
             <Image src={menu} alt="Menu Button" className="w-8 h-8" />
           </Link>
           <Link href={"../app/Details"} className="px-3">

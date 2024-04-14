@@ -12,7 +12,7 @@ import gender from "../app/assets/icons/propcardBoysGirls.png";
 import occupation from "../app/assets/icons/propcardStudents.png";
 
 export function PropCard({
-  key,
+  id,
   genders,
   categories,
   foodOptions,
@@ -22,6 +22,7 @@ export function PropCard({
   price,
   roommateCount,
 }) {
+  console.log(id);
   const [showModal, setShowModal] = useState(false);
   // function to assing the stars
   // function Star({ value }: { value: number }) {
@@ -110,7 +111,7 @@ export function PropCard({
           </div>
         </div>
         <div className="my-auto">
-          <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="grid grid-cols-2 gap-4 mt-4 mb-2">
             <button
               className="p-1 rounded-[10px] bg-[#a8c1fc] font-semibold"
               type="button"
@@ -155,12 +156,12 @@ export function PropCard({
                 href={{
                   pathname: "/PropDetails",
                   query: {
-                    id: key,
+                    id: id,
                   },
                 }}
-                key={key}
+                id={id}
               >
-                Number
+                More Details
               </Link>
             </button>
           </div>
