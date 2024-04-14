@@ -355,6 +355,7 @@ export default function Booking() {
                         foodOptions={pg.food}
                         roommateCount={pg.roommateCount}
                         genders={pg.genders}
+                        contact={pg.contact}
                       />
                     );
                   })

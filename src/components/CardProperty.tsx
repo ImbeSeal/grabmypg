@@ -21,6 +21,7 @@ export function PropCard({
   address,
   price,
   roommateCount,
+  contact,
 }) {
   console.log(id);
   const [showModal, setShowModal] = useState(false);
@@ -125,7 +126,7 @@ export function PropCard({
                   <div className="relative w-auto my-6 mx-auto max-w-3xl">
                     <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                       <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t ">
-                        <h3 className="text-3xl font=semibold">Name{}</h3>
+                        <h3 className="text-3xl font=semibold">{propName}</h3>
                         <button
                           className="bg-transparent border-0 text-black float-right"
                           onClick={() => setShowModal(false)}
@@ -142,8 +143,9 @@ export function PropCard({
                         </button>
                       </div>
                       <div className="relative p-6 flex-auto">
-                        <div className="">Whatsapp: {}999999999</div>
-                        <div className="">Email: {}example@email.com</div>
+                        <div className="">Name of Owner: {contact.name}</div>
+                        <div className="">Whatsapp: {contact.number}</div>
+                        <div className="">Email: {contact.email}</div>
                       </div>
                     </div>
                   </div>
