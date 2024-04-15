@@ -1,6 +1,7 @@
 "use client";
 
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 import { CardProp } from "./Card";
@@ -15,7 +16,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Carousel from "@/components/Carousel";
 
 import hostel2 from "../assets/hostel-bg.jpg";
-
 
 export default function Details() {
   const [date, setDate] = useState(new Date());
@@ -109,7 +109,13 @@ export default function Details() {
               <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
                 <div className="font-semibold">Date</div>
                 <div className="bg-black text-white rounded-full py-2 px-3 flex">
-                <DatePicker selected={date} onChange={date => setDate(date)} minDate={today} className=" border-none outline-none bg-black text-xl block text-center" dateFormat="dd/MM/yyyy"/>
+                  <DatePicker
+                    selected={date}
+                    onChange={(date) => setDate(date)}
+                    minDate={today}
+                    className=" border-none outline-none bg-black text-xl block text-center"
+                    dateFormat="dd/MM/yyyy"
+                  />
                 </div>
                 <div className="">All utilities are included</div>
               </div>
@@ -136,6 +142,10 @@ export default function Details() {
 
         <div className="w-full">
           <div className="p-4 text-4xl font-bold text-center">Location</div>
+        </div>
+
+        <div className="w-full">
+          <Footer />
         </div>
       </div>
     </main>

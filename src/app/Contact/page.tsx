@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
 export default function Contact() {
@@ -63,7 +64,7 @@ export default function Contact() {
         <div className="bg-white">
           <Navbar />
         </div>
-        <div className="mt-12 bg-[#F0F0F0]">
+        <div className="pt-12 bg-[#F0F0F0]">
           <div className="px-32 pt-12 text-5xl font-bold">Contact us</div>
           <div className="grid lg:grid-cols-2 p-12">
             <div className="px-16 lg:border-r-4 border-white">
@@ -180,6 +181,9 @@ export default function Contact() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full">
+          <Footer />
         </div>
       </div>
     </main>

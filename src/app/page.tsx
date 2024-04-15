@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Hero from "../components/Hero";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <div className="max-w-[1440px] ">
         <Navbar />
         <Hero />
+        <Footer />
       </div>
     </main>
   );

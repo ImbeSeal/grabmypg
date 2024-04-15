@@ -7,6 +7,7 @@ import { Loader } from "../../components/Loader";
 import { doc, getDocs, collection, query } from "firebase/firestore";
 import { db, storage } from "@/firebase";
 import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 import { PropCard } from "../../components/CardProperty";
 import search from "../assets/icons/searchbar.png";
 
@@ -364,6 +365,9 @@ export default function Booking() {
             </div>
           </div>
         )}
+        <div className="w-full">
+          <Footer />
+        </div>
       </div>
     </main>
   );
