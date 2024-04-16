@@ -57,8 +57,7 @@ export default function Details() {
   if (!details) {
     return <p>Details not found.</p>;
   }
-  // Temporary images
-  const images = [details.displayImage, hostel2, details.displayImage];
+
 
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
@@ -68,7 +67,7 @@ export default function Details() {
         </div>
 
         <div className="w-full overflow-hidden grid grid-cols-1 p-12">
-          <Carousel images={images} />
+          <Carousel images={details.images} />
           {/* <Image
             src={details.displayImage}
             alt="..."

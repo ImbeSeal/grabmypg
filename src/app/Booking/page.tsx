@@ -351,7 +351,7 @@ export default function Booking() {
                         propName={pg.title}
                         address={pg.addrShort}
                         price={pg.price}
-                        propImage={pg.displayImage}
+                        propImages={pg.images}
                         categories={pg.categories}
                         foodOptions={pg.food}
                         roommateCount={pg.roommateCount}
