@@ -16,7 +16,7 @@ export function PropCard({
   genders,
   categories,
   foodOptions,
-  propImage,
+  propImages,
   propName,
   address,
   price,
@@ -57,7 +57,7 @@ export function PropCard({
     <div className="bg-white bg-opacity-55 rounded-[24px] shadow-lg">
       <div className="relative aspect-[4/1] overflow-hidden">
         <Image
-          src={propImage}
+          src={propImages[0]}
           alt=".."
           className="rounded-[24px]"
           width={10000}
@@ -65,7 +65,7 @@ export function PropCard({
         />
         <div className="absolute ml-2 top-12 left-12">
           {/* Name  */}
-          <div className="text-4xl font-semibold text-white">{propName}</div>
+          <div className="text-4xl font-bold text-white">{propName}</div>
         </div>
         <div className="absolute ml-2 bottom-4 left-12">
           <div className="font-semibold text-white text-sm">
