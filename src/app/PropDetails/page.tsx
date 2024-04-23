@@ -80,7 +80,7 @@ export default function Details() {
         <div className="grid grid-cols-2">
           <div className="p-12 space-y-4">
             <div className="text-4xl font-bold">{details.title}</div>
-            <div className="">{details.addrShort}</div>
+            <div className="">{details.addrFull}</div>
             <div className="py-4">
               <div className="text-3xl font-bold">Description</div>
               <div className="text-sm">
@@ -132,8 +132,7 @@ export default function Details() {
               </div>
 
               <div className="px-16 text-xs text-center my-4">
-                When you schedule this apartment, your reservation will be
-                cofirmed instantly by owner
+                When you schedule this meeting, the PG owner will reach out to you.
               </div>
             </div>
           </div>

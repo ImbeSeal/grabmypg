@@ -3,13 +3,13 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "@firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDWO4_irTkzC6Okbbg-tkWNqZIB1bGvGUA",
-  authDomain: "grabmypg-test.firebaseapp.com",
-  projectId: "grabmypg-test",
-  storageBucket: "grabmypg-test.appspot.com",
-  messagingSenderId: "887430203676",
-  appId: "1:887430203676:web:64492526841d2a1dde52d9",
-  measurementId: "G-QMKCDQC2M6",
+  apiKey: process.env.FIREBASE_KEY,
+  authDomain: "grabmypg-web.firebaseapp.com",
+  projectId: "grabmypg-web",
+  storageBucket: "grabmypg-web.appspot.com",
+  messagingSenderId: "481151176766",
+  appId: "1:481151176766:web:e823ab3de1a94e2494416f",
+  measurementId: "G-2K55V82LPK"
 };
 
 const app = initializeApp(firebaseConfig);

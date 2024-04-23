@@ -69,9 +69,8 @@ export function PropCard({
         </div>
         <div className="absolute ml-2 bottom-4 left-12">
           <div className="font-semibold text-white text-sm">
-            {roommateCount} Roommates
+            {roommateCount} Roommate(s)
           </div>
-          <div className="text-white text-xs opacity-65">Names of People</div>
         </div>
       </div>
 
@@ -80,7 +79,7 @@ export function PropCard({
       <div className="grid grid-cols-2 px-12 py-6">
         <div className="">
           {/* Location  */}
-          <div className="text-2xl font-bold mt-2">{address}</div>
+          <div className="text-xl font-semibold mt-2">{address}</div>
           {/* Features  */}
           <div className="grid grid-rows-3 grid-flow-col gap-y-1 mt-2">
             <div className="flex gap-2">
