@@ -160,9 +160,15 @@ export default function Details() {
                           </div>
                           <div className="relative p-6 flex-auto">
                             {/* Requires addition of contact Name Number and Email */}
-                            <div className="">Name of Owner: contact.name</div>
-                            <div className="">Whatsapp: contact.number</div>
-                            <div className="">Email: contact.email</div>
+                            <div className="">
+                              Name of Owner: {details.contact.name}
+                            </div>
+                            <div className="">
+                              Whatsapp: {details.contact.number}
+                            </div>
+                            <div className="">
+                              Email: {details.contact.email}
+                            </div>
                           </div>
                         </div>
                       </div>
