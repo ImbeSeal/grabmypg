@@ -10,7 +10,11 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
  * @param images - Array of images with src and alt attributes
  * @returns React component
  */
-export default function Carousel({ images }) {
+
+interface CarouselProps{
+  images: string[];
+}
+export default function Carousel({ images }:CarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleNextSlide = () => {
@@ -39,7 +43,7 @@ export default function Carousel({ images }) {
             if (index === currentSlide) {
               return (
                 <Image
-                  key={image.id}
+                  key={index}
                   alt="..."
                   src={image}
                   width={9000}

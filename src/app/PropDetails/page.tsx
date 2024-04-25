@@ -17,6 +17,21 @@ import Carousel from "@/components/Carousel";
 
 import hostel2 from "../assets/hostel-bg.jpg";
 
+interface UserDetails {
+  images: string[]; // Assuming images is an array of strings
+  title: string; // Assuming title is a string
+  addrFull: string; // Assuming addrFull is a string
+  food: string; // Assuming food is an optional array of strings
+  price: number; // Assuming price is a number
+  contact: {
+    name: string; // Assuming name is a string
+    number: string; // Assuming number is a string
+    email: string; // Assuming email is a string
+  };
+  // Add other fields as needed
+}
+
+
 export default function Details() {
   const [showModal, setShowModal] = useState(false);
 
@@ -26,7 +41,7 @@ export default function Details() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams.get("id");
-  const [details, setDetailsData] = useState({});
+  const [details, setDetailsData] = useState<UserDetails | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +50,7 @@ export default function Details() {
         const docRef = doc(db, "PG", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setDetailsData(docSnap.data());
+          setDetailsData(docSnap.data() as UserDetails)
         } else {
           console.log("Doc not found");
           router.push("/");
@@ -111,7 +126,7 @@ export default function Details() {
                 <div className="bg-black text-white rounded-full py-2 px-3 flex">
                   <DatePicker
                     selected={date}
-                    onChange={(date) => setDate(date)}
+                    onChange={(date:Date) => setDate(date)}
                     minDate={today}
                     className=" border-none outline-none bg-black text-xl block text-center"
                     dateFormat="dd/MM/yyyy"

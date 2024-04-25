@@ -2,9 +2,16 @@ import { useState } from "react";
 import Image from "next/image";
 import Arrow from "../app/assets/icons/menu-nav.svg";
 
-const Accordion = ({ title, content, index }) => {
-  const [active, setActive] = useState(null);
-  const handleToggle = (index) => {
+interface AccordionProps{
+  title: string;
+  content:string;
+  index:number;
+}
+
+
+const Accordion = ({ title, content, index }:AccordionProps) => {
+  const [active, setActive] = useState< number | null>(null);
+  const handleToggle = (index:number) => {
     active === index ? setActive(null) : setActive(index);
   };
 
