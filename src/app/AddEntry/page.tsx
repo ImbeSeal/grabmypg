@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { db, storage } from "../../firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
-
+import { FormEvent } from "react";
 export default function AddEntry() {
-  const onSubmitHandler = async (e) => {
+  const onSubmitHandler = async (e: FormEvent) => {
     e.preventDefault();
     const { title, addrShort, addrFull } = newPG;
     const pg = {
@@ -30,7 +30,7 @@ export default function AddEntry() {
     addrShort: "",
     addrFull: "",
   });
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: FormEvent) => {
     const { name, value } = e.target;
     setNewPG({ ...newPG, [name]: value });
   };

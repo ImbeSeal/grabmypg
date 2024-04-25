@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
-
+import { ChangeEvent ,FormEvent} from "react";
 export default function Contact() {
   const initialFormData = {
     name: "",
@@ -19,13 +19,13 @@ export default function Contact() {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   console.log(JSON.stringify({ type, formData }));
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:FormEvent<HTMLFormElement>) => {
     setLoading(true);
     e.preventDefault();
 

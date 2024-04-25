@@ -11,6 +11,23 @@ import food from "../app/assets/icons/propcardVeg.png";
 import gender from "../app/assets/icons/propcardBoysGirls.png";
 import occupation from "../app/assets/icons/propcardStudents.png";
 
+interface PropCardProps{
+  id: string;
+  genders: string;
+  categories: string;
+  foodOptions: string;
+  propImages: string[];
+  propName: string;
+  address: string;
+  price: number;
+  roommateCount: number;
+  contact:{
+    name: string;
+    number: string;
+    email: string;
+  }
+}
+
 export function PropCard({
   id,
   genders,
@@ -22,7 +39,7 @@ export function PropCard({
   price,
   roommateCount,
   contact,
-}) {
+}: PropCardProps) {
   console.log(id);
   const [showModal, setShowModal] = useState(false);
   // function to assing the stars

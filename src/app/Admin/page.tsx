@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect,FormEvent, ChangeEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Loader } from "../../components/Loader";
@@ -9,6 +9,7 @@ import { db, storage } from "@/firebase";
 import { AdminNav } from "@/components/AdminNav";
 import { Footer } from "@/components/Footer";
 import { PropCardAdmin } from "../../components/AdminCardProp";
+import { DocumentData } from 'firebase/firestore';
 import search from "../assets/icons/searchbar.png";
 
 export default function Admin() {
@@ -16,7 +17,7 @@ export default function Admin() {
 
   let amount = 0;
   const [loading, setLoading] = useState(true);
-  const [pgs, setPgs] = useState([]);
+  const [pgs, setPgs] = useState<DocumentData[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   useEffect(() => {
     const getData = async () => {
@@ -28,7 +29,7 @@ export default function Admin() {
         setPgs(pgData);
         // so that loader is displayed for atleast 1 secs
         const endTime = new Date(); // Record end time
-        const elapsedTime = endTime - startTime; // Calculate elapsed time
+        const elapsedTime = endTime.getTime() - startTime.getTime(); // Calculate elapsed time
 
         if (elapsedTime < 1000) {
           setTimeout(() => {
@@ -45,7 +46,7 @@ export default function Admin() {
     getData();
   }, []);
 
-  const handleSearchChange = (e) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
