@@ -22,7 +22,7 @@ export function Navbar() {
           <Link href={"#"} className="px-3 hidden">
             <Image src={menu} alt="Menu Button" className="w-8 h-8" />
           </Link>
-          <Link href={"../app/Details"} className="px-3">
+          <Link href={"../app/Details"} className="px-3 hidden">
             Login/Sign up
           </Link>
         </div>

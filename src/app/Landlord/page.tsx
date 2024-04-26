@@ -2,6 +2,11 @@
 "use client";
 import Image from "next/image";
 
+import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
+import { ChangeEvent, FormEvent } from "react";
+
 import Card from "../../components/Card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -24,8 +29,60 @@ import timeline from "../assets/timeline.png";
 import { time } from "console";
 
 export default function Landlord() {
+  const initialFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+    addr: "",
+    propname: "",
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  console.log(JSON.stringify({ formData }));
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    setLoading(true);
+    e.preventDefault();
+
+    if (
+      formData.name == "" ||
+      formData.email == "" ||
+      formData.phone == "" ||
+      formData.city == "" ||
+      formData.addr == "" ||
+      formData.propname == ""
+    ) {
+      setLoading(false);
+      alert("Please enter all fields");
+      return false;
+    }
+
+    const response = await fetch("/api/sendland", {
+      method: "POST",
+      body: JSON.stringify({ formData }),
+    });
+    if (response.status === 200) {
+      setFormData(initialFormData);
+      toast.success(
+        `Hey ${formData.name}, your details was sent successfully! The admin will contact you soon`
+      );
+      setLoading(false);
+    }
+
+    return true;
+  };
+
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
+      <Toaster position="bottom-right" toast-options={{ duration: 3000 }} />
       <div className="bg-[#F0F0F0] max-w-[1440px]">
         {/* Slide 1 */}
         <div className="bg-white">
@@ -48,82 +105,103 @@ export default function Landlord() {
                   <div className="xl:text-4xl lg:text-3xl text-xl font-bold">
                     Earn more from your property, do less
                   </div>
-                  <div className="xl:text-base lg:text-sm text-xs">
-                    Find out if your property meets our criteria
-                  </div>
                 </div>
-
-                <div className="grid xl:grid-cols-1 grid-cols-2">
-                  <div className="xl:border-0 border-r-2">
-                    <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
-                      Your details
-                    </div>
-                    <div className="w-full">
-                      <form action="" className="">
-                        <div className="w-1/2 space-y-4 mx-auto">
-                          <input
-                            type="text"
-                            name="name"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Name*"
-                          />
-                          <input
-                            type="email"
-                            name="email"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Email*"
-                          />
-                          <input
-                            type="text"
-                            name="phone"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Phone number*"
-                          />
+                <form onSubmit={handleSubmit}>
+                  <legend className="xl:text-base text-sm  mx-10 mt-4">
+                    Find out if your property meets our criteria
+                  </legend>
+                  <fieldset>
+                    <div className="grid xl:grid-cols-1 grid-cols-2">
+                      <div className="xl:border-0 border-r-2">
+                        <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
+                          Your details
                         </div>
-                      </form>
-                    </div>
-                  </div>
-
-                  <div className="xl:border-0 border-l-2">
-                    <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
-                      Property details
-                    </div>
-                    <div className="w-full">
-                      <form action="">
-                        <div className="mx-auto space-y-4 w-1/2">
-                          <div className="grid xl:grid-cols-2 gap-4">
+                        <div className="w-full">
+                          <div className="w-1/2 space-y-4 mx-auto">
                             <input
                               type="text"
                               name="name"
-                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="City*"
+                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Name*"
+                              value={formData.name}
+                              onChange={handleChange}
                             />
                             <input
                               type="email"
                               name="email"
-                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Area*"
+                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Email*"
+                              value={formData.email}
+                              onChange={handleChange}
+                            />
+                            <input
+                              type="text"
+                              name="phone"
+                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Phone number*"
+                              value={formData.phone}
+                              onChange={handleChange}
                             />
                           </div>
-                          <input
-                            type="text"
-                            name="phone"
-                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="*"
-                          />
                         </div>
-                      </form>
+                      </div>
+
+                      <div className="xl:border-0 border-l-2">
+                        <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
+                          Property details
+                        </div>
+                        <div className="w-full">
+                          <div className="mx-auto space-y-4 w-1/2">
+                            <div className="grid xl:grid-cols-2 gap-4">
+                              <input
+                                type="text"
+                                name="propname"
+                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                                placeholder="Property Name*"
+                                value={formData.propname}
+                                onChange={handleChange}
+                              />
+                              <input
+                                type="text"
+                                name="city"
+                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                                placeholder="City*"
+                                value={formData.city}
+                                onChange={handleChange}
+                              />
+                              <input
+                                type="text"
+                                name="addr"
+                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                                placeholder="Address*"
+                                value={formData.addr}
+                                onChange={handleChange}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </fieldset>
+                  <div className="grid justify-center mt-4">
+                    <button
+                      type="submit"
+                      className="px-8 py-2 rounded-[24px] bg-[#064749] text-white my-auto"
+                    >
+                      {loading ? (
+                        <div
+                          style={{
+                            borderTopColor: "transparent",
+                          }}
+                          className="w-6 h-6 border-4 border-white border-solid rounded-full animate-spin"
+                        ></div>
+                      ) : (
+                        "Submit"
+                      )}
+                    </button>
                   </div>
-                </div>
-                <div className="flex place-content-center text-xl my-10 ">
-                  <button
-                    type="submit"
-                    className="px-8 py-2 rounded-[24px] bg-[#064749] text-white"
-                  >
-                    Submit
-                  </button>
-                </div>
+                </form>
+                <div className="flex place-content-center text-xl my-10 "></div>
               </div>
             </div>
           </div>
@@ -183,9 +261,9 @@ export default function Landlord() {
               How it works
             </div>
 
-            <div className="px-36 pb-24">
+            <div className="xl:px-36 pb-24">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 place-content-center border-[1px] border-black mt-12 h-[800px]"></div>
+              <div className="absolute left-1/2 place-content-center border-[1px] border-black mt-12 lg:h-[800px] md:h-[880px]"></div>
 
               <div className="relative">
                 <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
@@ -199,7 +277,9 @@ export default function Landlord() {
                         className="w-[80px] aspect-square"
                       />
                     </div>
-                    <div className="text-3xl font-bold">Get in touch</div>
+                    <div className="lg:text-3xl text-2xl font-bold">
+                      Get in touch
+                    </div>
                     <div className="text-normal">
                       Need ideas or suggestions? Check out our blog for
                       inspiration on room decor, organization tips, and more
@@ -220,7 +300,9 @@ export default function Landlord() {
                         className="w-[80px] aspect-square"
                       />
                     </div>
-                    <div className="text-3xl font-bold">Let’s chat</div>
+                    <div className="lg:text-3xl text-2xl font-bold">
+                      Let’s chat
+                    </div>
                     <div className="text-normal">
                       Need ideas or suggestions? Check out our blog for
                       inspiration on room decor, organization tips, and more.
@@ -241,7 +323,9 @@ export default function Landlord() {
                         className="w-[80px] aspect-square"
                       />
                     </div>
-                    <div className="text-3xl font-bold">Property viewing</div>
+                    <div className="lg:text-3xl text-2xl font-bold">
+                      Property viewing
+                    </div>
                     <div className="text-normal">
                       Need ideas or suggestions? Check out our blog for
                       inspiration on room decor, organization tips, and more
@@ -262,7 +346,9 @@ export default function Landlord() {
                         className="w-[80px] aspect-square"
                       />
                     </div>
-                    <div className="text-3xl font-bold">Property listing </div>
+                    <div className="lg:text-3xl text-2xl font-bold">
+                      Property listing{" "}
+                    </div>
                     <div className="text-normal">
                       Need ideas or suggestions? Check out our blog for
                       inspiration on room decor, organization tips, and more
@@ -283,7 +369,9 @@ export default function Landlord() {
                         className="w-[80px] aspect-square"
                       />
                     </div>
-                    <div className="text-3xl font-bold">Listing Finished </div>
+                    <div className="lg:text-3xl text-2xl font-bold">
+                      Listing Finished{" "}
+                    </div>
                     <div className="text-normal">
                       Need ideas or suggestions? Check out our blog for
                       inspiration on room decor, organization tips, and more

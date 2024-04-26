@@ -1,22 +1,24 @@
 import * as React from "react";
 
 export const EmailTemplate = ({
-  type,
   name,
   email,
   phone,
-  message,
+  city,
+  addr,
+  propname,
 }: {
-  type: any;
   name: any;
   email: any;
   phone: any;
-  message: any;
+  city: any;
+  addr: any;
+  propname: any;
 }) => (
   <div>
     <p>Hello Baka,</p>
     <p>
-      {type}: {name} has submitted the contact form on your website.
+      {name} has submitted the Landlord form on your website.
       <br />
       Email:{email}
       <br />
@@ -24,7 +26,13 @@ export const EmailTemplate = ({
       <br />
     </p>
     <p>
-      {message}
+      Property Details:
+      <br />
+      Name of property :{propname}
+      <br />
+      City :{city}
+      <br />
+      Address :{addr}
       <br />
       Regards,
       <br />

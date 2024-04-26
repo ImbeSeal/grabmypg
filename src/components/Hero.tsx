@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="relative w-full">
           <div className="content-center">
             {/* Search bar */}
-            <div className="absolute top-12 w-full">
+            <div className="absolute top-12 w-full hidden">
               <form className="w-3/5 mx-auto">
                 <label
                   htmlFor="search"
@@ -71,8 +71,8 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className="absolute w-[40%] xl:left-[-180px] lg:left-[-120px] left-[-60px] xl:top-52 lg:top-28 top-16">
-              <div className="w-full  flex justify-end m-auto p-5 my-10 rounded-3xl bg-white ">
+            <div className="absolute lg:w-[40%] sm:w-[70%] xl:left-[-180px] left-[-120px] xl:top-52 lg:bottom-28 md:bottom-16 bottom-0">
+              <div className="w-full  flex justify-end m-auto px-5 my-10 rounded-3xl bg-white ">
                 <div className="w-3/5 mx-10 my-10 space-y-6">
                   <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
                     Get the Right PG For You
@@ -90,36 +90,20 @@ export default function Hero() {
       </div>
 
       {/* Slide 2 */}
-      <div className="mt-48 mx-24">
+      <div className="mt-48 lg:mx-24 mx-12">
         <div className="rounded-[48px] w-full overflow-hidden flex flex-auto">
           <div className="grid grid-cols-2 w-1/2">
-            <Image
-              src={img1}
-              alt="...."
-              className="xl:w-[320px] aspect-[320/190]"
-            />
-            <Image
-              src={img2}
-              alt="...."
-              className="xl:w-[320px] aspect-[320/190]"
-            />
-            <Image
-              src={img3}
-              alt="...."
-              className="xl:w-[320px] aspect-[320/190]"
-            />
-            <Image
-              src={img4}
-              alt="...."
-              className="xl:w-[320px] aspect-[320/190]"
-            />
+            <Image src={img1} alt="...." className="h-full" />
+            <Image src={img2} alt="...." className=" h-full" />
+            <Image src={img3} alt="...." className=" h-full" />
+            <Image src={img4} alt="...." className=" h-full" />
           </div>
 
           <div className="bg-black text-center place-content-center w-1/2 px-20 py-24">
-            <div className="text-4xl text-white font-bold">
+            <div className="lg:text-4xl text-2xl text-white font-bold">
               The <span className="text-red-700 ">future</span> is flexible
             </div>
-            <div className="text-normal text-white mt-4">
+            <div className="lg:text-normal text-sm text-white mt-4">
               We believe in a world where finding a home is just a click away.
               Whether you’re selling your home, travelling for work or moving to
               a new city. Just bring your bags, and we’ll handle the rest.
@@ -131,7 +115,7 @@ export default function Hero() {
       {/* Slide 3 */}
 
       <div className="text-center justify-center mt-32 w-full">
-        <div className="px-72">
+        <div className="lg:px-72 px-36">
           <div className="text-5xl font-bold p-8">
             Your Gateway to Hassle-Free PG Rentals!
           </div>
@@ -143,7 +127,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
+        <div className="mt-12 px-24 py-12 grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 text-left">
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
               image={cardimg1}
@@ -186,7 +170,7 @@ export default function Hero() {
             <Image src={hostelpg4} alt="..." className="brightness-50 " />
           </div>
 
-          <div className="absolute w-2/5 top-20 flex">
+          <div className="absolute lg:w-2/5 w-1/2 bottom-0 flex">
             <div className="my-10 mx-14 text-white">
               <div className="p-10 space-y-2">
                 <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
@@ -215,7 +199,7 @@ export default function Hero() {
             <Image src={hostelpg5} alt="..." className=" " />
           </div>
 
-          <div className="absolute w-full top-24 flex place-content-center ">
+          <div className="absolute w-full bottom-0 flex place-content-center ">
             <div className="my-10 p-16 bg-white rounded-bl-lg rounded-[36px] w-1/3">
               <div className="p-4 space-y-2 xl:text-5xl lg:text-4xl text-3xl font-bold">
                 Join GrabmyPG!
