@@ -1,6 +1,12 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
-export default function Card({ image, head, body }) {
+interface CardProps{
+  image:StaticImageData;
+  head: string;
+  body: string;
+}
+
+export default function Card({ image, head, body }:CardProps) {
   return (
     <div className="p-8 space-y-4">
       <div className="w-full">

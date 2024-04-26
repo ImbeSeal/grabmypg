@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { db, storage } from "../../firebase";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
-import { FormEvent } from "react";
+
 export default function AddEntry() {
-  const onSubmitHandler = async (e: FormEvent) => {
+  const onSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, addrShort, addrFull } = newPG;
     const pg = {
@@ -30,7 +30,7 @@ export default function AddEntry() {
     addrShort: "",
     addrFull: "",
   });
-  const onChangeHandler = (e: FormEvent) => {
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setNewPG({ ...newPG, [name]: value });
   };
