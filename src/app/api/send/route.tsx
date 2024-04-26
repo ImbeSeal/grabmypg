@@ -5,7 +5,7 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export async function POST(req) {
+export async function POST(req: any) {
   try {
     const body = await req.json();
     console.log("body: ", body);
@@ -23,11 +23,9 @@ export async function POST(req) {
         message: body.message,
       }),
     });
-    if (data.status === "success") {
-      return NextResponse.json({ message: "Email sent successfully!" });
-    }
     return NextResponse.json(data);
   } catch (error) {
     console.log("error: ", error);
+    return NextResponse.json({ error });
   }
 }

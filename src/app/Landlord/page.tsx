@@ -152,32 +152,30 @@ export default function Landlord() {
                         </div>
                         <div className="w-full">
                           <div className="mx-auto space-y-4 w-1/2">
-                            <div className="grid xl:grid-cols-2 gap-4">
-                              <input
-                                type="text"
-                                name="propname"
-                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                                placeholder="Property Name*"
-                                value={formData.propname}
-                                onChange={handleChange}
-                              />
-                              <input
-                                type="text"
-                                name="city"
-                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                                placeholder="City*"
-                                value={formData.city}
-                                onChange={handleChange}
-                              />
-                              <input
-                                type="text"
-                                name="addr"
-                                className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                                placeholder="Address*"
-                                value={formData.addr}
-                                onChange={handleChange}
-                              />
-                            </div>
+                            <input
+                              type="text"
+                              name="propname"
+                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Property Name*"
+                              value={formData.propname}
+                              onChange={handleChange}
+                            />
+                            <input
+                              type="text"
+                              name="city"
+                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="City*"
+                              value={formData.city}
+                              onChange={handleChange}
+                            />
+                            <input
+                              type="text"
+                              name="addr"
+                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                              placeholder="Address*"
+                              value={formData.addr}
+                              onChange={handleChange}
+                            />
                           </div>
                         </div>
                       </div>
