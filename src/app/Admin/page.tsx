@@ -1,16 +1,23 @@
 /* eslint-disable react/jsx-key */
 "use client";
-import { useState, useEffect,FormEvent, ChangeEvent } from "react";
+import { useState, useEffect, FormEvent, ChangeEvent } from "react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import Image from "next/image";
-import { Loader } from "../../components/Loader";
 import { doc, getDocs, collection, query } from "firebase/firestore";
 import { db, storage } from "@/firebase";
 import { AdminNav } from "@/components/AdminNav";
 import { Footer } from "@/components/Footer";
 import { PropCardAdmin } from "../../components/AdminCardProp";
-import { DocumentData } from 'firebase/firestore';
+import { DocumentData } from "firebase/firestore";
 import search from "../assets/icons/searchbar.png";
+
+const Loader = dynamic(
+  async () => (await import("../../components/Loader")).Loader,
+  {
+    ssr: false,
+  }
+);
 
 export default function Admin() {
   //This page will only be used to fill data and using filters
@@ -55,7 +62,7 @@ export default function Admin() {
       pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  console.log(pgs);
+
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">

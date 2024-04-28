@@ -25,9 +25,6 @@ import timeimg3 from "../assets/icons/timeline-3.png";
 import timeimg4 from "../assets/icons/timeline-4.png";
 import timeimg5 from "../assets/icons/timeline-5.png";
 
-import timeline from "../assets/timeline.png";
-import { time } from "console";
-
 export default function Landlord() {
   const initialFormData = {
     name: "",
@@ -45,8 +42,6 @@ export default function Landlord() {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  console.log(JSON.stringify({ formData }));
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     setLoading(true);

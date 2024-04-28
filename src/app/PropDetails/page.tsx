@@ -2,8 +2,9 @@
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import Link from "next/link";
-import Image from "next/image";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
+
 import { CardProp } from "./Card";
 import { useRouter, useSearchParams } from "next/navigation";
 import { doc, getDocs, collection, query, getDoc } from "firebase/firestore";
@@ -14,6 +15,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import Carousel from "@/components/Carousel";
+
+//Loader
+const Loader = dynamic(
+  async () => (await import("../../components/Loader")).Loader,
+  {
+    ssr: false,
+  }
+);
 
 import hostel2 from "../assets/hostel-bg.jpg";
 
@@ -31,8 +40,7 @@ interface UserDetails {
   // Add other fields as needed
 }
 
-
-export default function Details() {
+function Display() {
   const [showModal, setShowModal] = useState(false);
 
   const [date, setDate] = useState(new Date());
@@ -40,7 +48,7 @@ export default function Details() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+  const id = searchParams!.get("id");
   const [details, setDetailsData] = useState<UserDetails | null>(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -50,7 +58,7 @@ export default function Details() {
         const docRef = doc(db, "PG", id);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          setDetailsData(docSnap.data() as UserDetails)
+          setDetailsData(docSnap.data() as UserDetails);
         } else {
           console.log("Doc not found");
           router.push("/");
@@ -68,7 +76,12 @@ export default function Details() {
   }, [id, router]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="mt-[360px]">
+        <Loader />
+        <h1 className="text-center text-2xl">Loading...</h1>
+      </div>
+    );
   }
 
   if (!details) {
@@ -126,7 +139,7 @@ export default function Details() {
                 <div className="bg-black text-white rounded-full py-2 px-3 flex">
                   <DatePicker
                     selected={date}
-                    onChange={(date:Date) => setDate(date)}
+                    onChange={(date: Date) => setDate(date)}
                     minDate={today}
                     className=" border-none outline-none bg-black text-xl block text-center"
                     dateFormat="dd/MM/yyyy"
@@ -209,5 +222,13 @@ export default function Details() {
         </div>
       </div>
     </main>
+  );
+}
+
+export default function Details() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <Display />
+    </Suspense>
   );
 }

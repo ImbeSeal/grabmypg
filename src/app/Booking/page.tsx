@@ -1,16 +1,24 @@
 /* eslint-disable react/jsx-key */
 "use client";
 import { useState, useEffect, ChangeEvent } from "react";
+import dynamic from "next/dynamic";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Loader } from "../../components/Loader";
 import { doc, getDocs, collection, query } from "firebase/firestore";
 import { db, storage } from "@/firebase";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PropCard } from "../../components/CardProperty";
-import { DocumentData } from 'firebase/firestore';
+import { DocumentData } from "firebase/firestore";
 import search from "../assets/icons/searchbar.png";
+
+const Loader = dynamic(
+  async () => (await import("../../components/Loader")).Loader,
+  {
+    ssr: false,
+  }
+);
 
 export default function Booking() {
   //This page will only be used to fill data and using filters
@@ -46,7 +54,7 @@ export default function Booking() {
     getData();
   }, []);
 
-  const handleSearchChange = (e:ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
@@ -55,7 +63,6 @@ export default function Booking() {
       pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
   );
-  console.log(pgs);
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
