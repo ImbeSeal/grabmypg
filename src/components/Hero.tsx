@@ -30,8 +30,21 @@ export default function Hero() {
         <div className="relative w-full">
           <div className="content-center">
             {/* Search bar */}
-            <div className="absolute top-12 w-full hidden">
-              <form className="w-3/5 mx-auto">
+            <div className="absolute top-12 w-full">
+              <div className="w-1/2 mx-auto p-1 border-4 border-black rounded-full bg-white flex flex-row">
+                <div className="my-auto text-lg w-1/2 ml-8 text-slate-800">
+                  Want to select a pg fit for you?
+                </div>
+                <span className="w-1/2 flex flex-row-reverse">
+                  <Link
+                    href="./Booking"
+                    className="text-white rounded-full bg-[#064749] hover:bg-[#274b4d] font-medium text-sm py-4 px-12 "
+                  >
+                    Start Booking
+                  </Link>
+                </span>
+              </div>
+              {/* <form className="w-3/5 mx-auto">
                 <label
                   htmlFor="search"
                   className="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -60,7 +73,7 @@ export default function Hero() {
                     Search
                   </button>
                 </div>
-              </form>
+              </form> */}
             </div>
             <div className="-z-30">
               <div className="overflow-hidden w-full">
