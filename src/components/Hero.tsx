@@ -31,8 +31,8 @@ export default function Hero() {
           <div className="content-center">
             {/* Search bar */}
             <div className="absolute top-12 w-full">
-              <div className="w-1/2 mx-auto p-1 border-4 border-black rounded-full bg-white flex flex-row">
-                <div className="my-auto text-lg w-1/2 ml-8 text-slate-800">
+              <div className="w-1/2 mx-auto p-1 border-[0.25rem] border-black rounded-full bg-white flex flex-row">
+                <div className="my-auto text-lg w-1/2 ml-[2rem] text-slate-800">
                   Want to select a pg fit for you?
                 </div>
                 <span className="w-1/2 flex flex-row-reverse">
@@ -44,36 +44,6 @@ export default function Hero() {
                   </Link>
                 </span>
               </div>
-              {/* <form className="w-3/5 mx-auto">
-                <label
-                  htmlFor="search"
-                  className="mb-2 text-sm font-medium text-gray-900 sr-only"
-                >
-                  Search
-                </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 start-0 flex items-center ps-8 pointer-events-none">
-                    <Image
-                      src={search}
-                      alt="..."
-                      className="mx-auto my-auto w-4 h-4"
-                    />
-                  </div>
-                  <input
-                    type="search"
-                    id="search"
-                    className="block w-full p-4 ps-16 placeholder:text-gray-800 border-black border-4 rounded-[300px] "
-                    placeholder="Select a city"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="text-white absolute rounded-[200px] end-2 bottom-1.5 bg-[#064749] hover:bg-[#274b4d] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm py-4 px-12 "
-                  >
-                    Search
-                  </button>
-                </div>
-              </form> */}
             </div>
             <div className="-z-30">
               <div className="overflow-hidden w-full">
@@ -84,13 +54,13 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className="absolute lg:w-[40%] sm:w-[70%] xl:left-[-180px] left-[-120px] xl:top-52 lg:bottom-28 md:bottom-16 bottom-0">
+            <div className="absolute w-[40%] left-[-10.25rem] top-[13rem] bottom-[7rem]">
               <div className="w-full  flex justify-end m-auto px-5 my-10 rounded-3xl bg-white ">
                 <div className="w-3/5 mx-10 my-10 space-y-6">
-                  <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
+                  <div className="text-4xl font-bold">
                     Get the Right PG For You
                   </div>
-                  <div className="xl:text-base lg:text-sm text-xs">
+                  <div className="text-base">
                     Looking for the perfect Paying Guest accommodation? Your
                     search ends here! GrabmyPG is your go-to platform for
                     seamless room bookings in prime locations.
@@ -103,8 +73,8 @@ export default function Hero() {
       </div>
 
       {/* Slide 2 */}
-      <div className="mt-48 lg:mx-24 mx-12">
-        <div className="rounded-[48px] w-full overflow-hidden flex flex-auto">
+      <div className="mt-[12rem] mx-[6rem]">
+        <div className="rounded-[3rem] w-full overflow-hidden flex flex-auto">
           <div className="grid grid-cols-2 w-1/2">
             <Image src={img1} alt="...." className="h-full" />
             <Image src={img2} alt="...." className=" h-full" />
@@ -128,7 +98,7 @@ export default function Hero() {
       {/* Slide 3 */}
 
       <div className="text-center justify-center mt-32 w-full">
-        <div className="lg:px-72 px-36">
+        <div className="px-[18rem]">
           <div className="text-5xl font-bold p-8">
             Your Gateway to Hassle-Free PG Rentals!
           </div>
@@ -140,7 +110,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 px-24 py-12 grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8 text-left">
+        <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
               image={cardimg1}
@@ -183,13 +153,11 @@ export default function Hero() {
             <Image src={hostelpg4} alt="..." className="brightness-50 " />
           </div>
 
-          <div className="absolute lg:w-2/5 w-1/2 bottom-0 flex">
+          <div className="absolute w-2/5  bottom-0 flex">
             <div className="my-10 mx-14 text-white">
               <div className="p-10 space-y-2">
-                <div className="xl:text-4xl lg:text-3xl text-2xl font-bold">
-                  Great PGs under a roof
-                </div>
-                <div className="xl:text-base lg:text-sm text-xs">
+                <div className="text-4xl font-bold">Great PGs under a roof</div>
+                <div className="text-base">
                   Expertly designed to create extraordinary spaces with the
                   flexible renter in mind
                 </div>
@@ -213,8 +181,8 @@ export default function Hero() {
           </div>
 
           <div className="absolute w-full bottom-0 flex place-content-center ">
-            <div className="my-10 p-16 bg-white rounded-bl-lg rounded-[36px] w-1/3">
-              <div className="p-4 space-y-2 xl:text-5xl lg:text-4xl text-3xl font-bold">
+            <div className="my-10 p-16 bg-white rounded-bl-[0.5rem] rounded-[2.25rem] w-1/3">
+              <div className="p-4 space-y-2 text-5xl font-bold">
                 Join GrabmyPG!
               </div>
 

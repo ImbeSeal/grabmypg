@@ -94,84 +94,80 @@ export default function Landlord() {
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="absolute xl:w-1/2 w-full xl:mr-8 px-8 top-8">
+            <div className="absolute w-1/2 mr-[2rem] px-8 top-8">
               <div className="w-full place-content-center m-auto p-5 rounded-3xl bg-white bg-opacity-100 opacity-80">
                 <div className="mx-10 mt-10 space-y-6">
-                  <div className="xl:text-4xl lg:text-3xl text-xl font-bold">
+                  <div className="text-4xl font-bold">
                     Earn more from your property, do less
                   </div>
                 </div>
                 <form onSubmit={handleSubmit}>
-                  <legend className="xl:text-base text-sm  mx-10 mt-4">
+                  <legend className="text-base mx-10 mt-4">
                     Find out if your property meets our criteria
                   </legend>
                   <fieldset>
-                    <div className="grid xl:grid-cols-1 grid-cols-2">
-                      <div className="xl:border-0 border-r-2">
-                        <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
-                          Your details
-                        </div>
-                        <div className="w-full">
-                          <div className="w-1/2 space-y-4 mx-auto">
-                            <input
-                              type="text"
-                              name="name"
-                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Name*"
-                              value={formData.name}
-                              onChange={handleChange}
-                            />
-                            <input
-                              type="email"
-                              name="email"
-                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Email*"
-                              value={formData.email}
-                              onChange={handleChange}
-                            />
-                            <input
-                              type="text"
-                              name="phone"
-                              className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Phone number*"
-                              value={formData.phone}
-                              onChange={handleChange}
-                            />
-                          </div>
+                    <div className="grid grid-cols-1">
+                      <div className="mx-10 text-xl py-[1.5rem] text-center">
+                        Your details
+                      </div>
+                      <div className="w-full">
+                        <div className="w-1/2 space-y-4 mx-auto">
+                          <input
+                            type="text"
+                            name="name"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Name*"
+                            value={formData.name}
+                            onChange={handleChange}
+                          />
+                          <input
+                            type="email"
+                            name="email"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Email*"
+                            value={formData.email}
+                            onChange={handleChange}
+                          />
+                          <input
+                            type="text"
+                            name="phone"
+                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Phone number*"
+                            value={formData.phone}
+                            onChange={handleChange}
+                          />
                         </div>
                       </div>
 
-                      <div className="xl:border-0 border-l-2">
-                        <div className="mx-10 xl:text-xl text-xl xl:py-6 py-4 text-center">
-                          Property details
-                        </div>
-                        <div className="w-full">
-                          <div className="mx-auto space-y-4 w-1/2">
-                            <input
-                              type="text"
-                              name="propname"
-                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Property Name*"
-                              value={formData.propname}
-                              onChange={handleChange}
-                            />
-                            <input
-                              type="text"
-                              name="city"
-                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="City*"
-                              value={formData.city}
-                              onChange={handleChange}
-                            />
-                            <input
-                              type="text"
-                              name="addr"
-                              className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                              placeholder="Address*"
-                              value={formData.addr}
-                              onChange={handleChange}
-                            />
-                          </div>
+                      <div className="mx-10 text-xl py-[1.5rem] text-center">
+                        Property details
+                      </div>
+                      <div className="w-full">
+                        <div className="mx-auto space-y-4 w-1/2">
+                          <input
+                            type="text"
+                            name="propname"
+                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Property Name*"
+                            value={formData.propname}
+                            onChange={handleChange}
+                          />
+                          <input
+                            type="text"
+                            name="city"
+                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="City*"
+                            value={formData.city}
+                            onChange={handleChange}
+                          />
+                          <input
+                            type="text"
+                            name="addr"
+                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                            placeholder="Address*"
+                            value={formData.addr}
+                            onChange={handleChange}
+                          />
                         </div>
                       </div>
                     </div>
@@ -179,7 +175,7 @@ export default function Landlord() {
                   <div className="grid justify-center mt-4">
                     <button
                       type="submit"
-                      className="px-8 py-2 rounded-[24px] bg-[#064749] text-white my-auto"
+                      className="px-8 py-2 rounded-full bg-[#064749] text-white my-auto"
                     >
                       {loading ? (
                         <div
@@ -203,7 +199,7 @@ export default function Landlord() {
         {/* Slide 2 */}
 
         <div className="text-center justify-center mt-32 w-full">
-          <div className="xl:px-72 px-64">
+          <div className="px-[18rem]">
             <div className="text-5xl font-bold p-8">Features we offer</div>
             <div className="text-center">
               We work to meet accommodation needs in Sikkim . Offer a dedicated
@@ -211,7 +207,7 @@ export default function Landlord() {
             </div>
           </div>
 
-          <div className="mt-12 px-24 py-12 grid xl:grid-cols-4 grid-cols-2 gap-8 text-left">
+          <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
             <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
               <Card
                 image={cardimg1}
@@ -249,131 +245,143 @@ export default function Landlord() {
         {/* Slide 3 */}
 
         <div className="mt-36 m-24">
-          <div className="bg-white bg-opacity-55 rounded-[36px] ">
+          <div className="bg-white bg-opacity-55 rounded-[2rem] ">
             <div className="place-content-center text-center text-5xl font-bold p-12">
               How it works
             </div>
 
-            <div className="xl:px-36 pb-24">
+            <div className="px-[3.5rem] pb-24">
               {/* Timeline Line */}
-              <div className="absolute left-1/2 place-content-center border-[1px] border-black mt-12 lg:h-[800px] md:h-[880px]"></div>
 
-              <div className="relative">
-                <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
+              <div className="">
+                <div className="space-y-8 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent">
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-2 h-2 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-black text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      {" "}
+                    </div>
 
-                <div className="w-1/2 grid place-items-end text-right">
-                  <div className="px-8 space-y-4 ">
-                    <div className="w-full grid justify-items-end">
-                      <Image
-                        src={timeimg1}
-                        alt="..."
-                        className="w-[80px] aspect-square"
-                      />
+                    <div className="w-[calc(100%-1rem)] md:w-[calc(50%-0.5rem)] p-4 rounded">
+                      <div className="px-8 space-y-4 ">
+                        <div className="w-full grid">
+                          <Image
+                            src={timeimg1}
+                            alt="..."
+                            className="w-[5rem] aspect-square"
+                          />
+                        </div>
+                        <div className="lg:text-3xl text-2xl font-bold">
+                          Get in touch
+                        </div>
+                        <div className="text-normal">
+                          Need ideas or suggestions? Check out our blog for
+                          inspiration on room decor, organization tips, and more
+                        </div>
+                      </div>
                     </div>
-                    <div className="lg:text-3xl text-2xl font-bold">
-                      Get in touch
+                  </div>
+
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-2 h-2 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-black text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      {" "}
                     </div>
-                    <div className="text-normal">
-                      Need ideas or suggestions? Check out our blog for
-                      inspiration on room decor, organization tips, and more
+
+                    <div className="w-[calc(100%-1rem)] md:w-[calc(50%-0.5rem)] p-4 rounded  ">
+                      <div className="px-8 space-y-4 ">
+                        <div className="w-full md:grid justify-items-end">
+                          <Image
+                            src={timeimg2}
+                            alt="..."
+                            className="w-[5rem] aspect-square "
+                          />
+                        </div>
+                        <div className="lg:text-3xl text-2xl font-bold md:text-right">
+                          Let’s chat
+                        </div>
+                        <div className="text-normal md:text-right">
+                          Need ideas or suggestions? Check out our blog for
+                          inspiration on room decor, organization tips, and
+                          more.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-2 h-2 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-black text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      {" "}
+                    </div>
+
+                    <div className="w-[calc(100%-1rem)] md:w-[calc(50%-0.5rem)] p-4 rounded  ">
+                      <div className="px-8 space-y-4 ">
+                        <div className="w-full grid ">
+                          <Image
+                            src={timeimg3}
+                            alt="..."
+                            className="w-[5rem] aspect-square"
+                          />
+                        </div>
+                        <div className="lg:text-3xl text-2xl font-bold">
+                          Property viewing
+                        </div>
+                        <div className="text-normal">
+                          Need ideas or suggestions? Check out our blog for
+                          inspiration on room decor, organization tips, and more
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                    <div className="flex items-center justify-center w-2 h-2 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-black text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      {" "}
+                    </div>
+
+                    <div className="w-[calc(100%-1rem)] md:w-[calc(50%-0.5rem)] p-4 rounded  ">
+                      <div className="px-8 space-y-4 ">
+                        <div className="w-full md:grid justify-items-end">
+                          <Image
+                            src={timeimg4}
+                            alt="..."
+                            className="w-[5rem] aspect-square "
+                          />
+                        </div>
+                        <div className="lg:text-3xl text-2xl font-bold md:text-right">
+                          Property listing{" "}
+                        </div>
+                        <div className="text-normal md:text-right">
+                          Need ideas or suggestions? Check out our blog for
+                          inspiration on room decor, organization tips, and more
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                    <div className="flex items-center justify-center w-2 h-2 rounded-full border border-white bg-black group-[.is-active]:bg-black text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                      {" "}
+                    </div>
+
+                    <div className="w-[calc(100%-1rem)] md:w-[calc(50%-0.5rem)] p-4 rounded  ">
+                      <div className="px-8 space-y-4 ">
+                        <div className="w-full">
+                          <Image
+                            src={timeimg5}
+                            alt="..."
+                            className="w-[5rem] aspect-square"
+                          />
+                        </div>
+                        <div className="lg:text-3xl text-2xl font-bold">
+                          Listing Finished{" "}
+                        </div>
+                        <div className="text-normal">
+                          Need ideas or suggestions? Check out our blog for
+                          inspiration on room decor, organization tips, and more
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div className="relative flex flex-row-reverse">
-                <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
-
-                <div className="w-1/2 grid place-items-end text-left">
-                  <div className="px-8 space-y-4 ">
-                    <div className="w-full ">
-                      <Image
-                        src={timeimg2}
-                        alt="..."
-                        className="w-[80px] aspect-square"
-                      />
-                    </div>
-                    <div className="lg:text-3xl text-2xl font-bold">
-                      Let’s chat
-                    </div>
-                    <div className="text-normal">
-                      Need ideas or suggestions? Check out our blog for
-                      inspiration on room decor, organization tips, and more.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
-
-                <div className="w-1/2 grid place-items-end text-right">
-                  <div className="px-8 space-y-4 ">
-                    <div className="w-full grid justify-items-end">
-                      <Image
-                        src={timeimg3}
-                        alt="..."
-                        className="w-[80px] aspect-square"
-                      />
-                    </div>
-                    <div className="lg:text-3xl text-2xl font-bold">
-                      Property viewing
-                    </div>
-                    <div className="text-normal">
-                      Need ideas or suggestions? Check out our blog for
-                      inspiration on room decor, organization tips, and more
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative flex flex-row-reverse">
-                <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
-
-                <div className="w-1/2 grid place-items-end text-left">
-                  <div className="px-8 space-y-4 ">
-                    <div className="w-full ">
-                      <Image
-                        src={timeimg4}
-                        alt="..."
-                        className="w-[80px] aspect-square"
-                      />
-                    </div>
-                    <div className="lg:text-3xl text-2xl font-bold">
-                      Property listing{" "}
-                    </div>
-                    <div className="text-normal">
-                      Need ideas or suggestions? Check out our blog for
-                      inspiration on room decor, organization tips, and more
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 w-4 h-4 mx-auto mt-12 rounded-[12px] aspect-square bg-black"></div>
-
-                <div className="w-1/2 grid place-items-end text-right">
-                  <div className="px-8 space-y-4 ">
-                    <div className="w-full grid justify-items-end">
-                      <Image
-                        src={timeimg5}
-                        alt="..."
-                        className="w-[80px] aspect-square"
-                      />
-                    </div>
-                    <div className="lg:text-3xl text-2xl font-bold">
-                      Listing Finished{" "}
-                    </div>
-                    <div className="text-normal">
-                      Need ideas or suggestions? Check out our blog for
-                      inspiration on room decor, organization tips, and more
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* End of timeline */}
             </div>
           </div>
         </div>

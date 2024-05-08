@@ -11,10 +11,11 @@ import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
  * @returns React component
  */
 
-interface CarouselProps{
+interface CarouselProps {
   images: string[];
+  type: boolean;
 }
-export default function Carousel({ images }:CarouselProps) {
+export default function Carousel({ images, type }: CarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const handleNextSlide = () => {
@@ -28,29 +29,35 @@ export default function Carousel({ images }:CarouselProps) {
   };
 
   return (
-    <div className="relative">
+    <div
+      className={type ? " relative w-full h-full overflow-hidden" : "relative"}
+    >
       <AiOutlineLeft
         onClick={handlePrevSlide}
-        className="absolute left-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
+        className="absolute left-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-black z-20 w-[1.5rem] h-[1.5rem]"
       />
-      <div className="w-full aspect-video flex overflow-hidden relative m-auto">
+      <div className="w-full aspect-auto flex overflow-hidden relative m-auto">
         <Swipe
           onSwipeLeft={handleNextSlide}
           onSwipeRight={handlePrevSlide}
-          className="relative z-10 w-full h-full"
+          className={
+            type
+              ? "relative z-10 w-full h-screen"
+              : "relative z-10 w-full h-[36rem]"
+          }
         >
           {images.map((image, index) => {
             if (index === currentSlide) {
               return (
-                <Image
-                  key={index}
-                  alt="..."
-                  src={image}
-                  width={9000}
-                  height={9000}
-                  className="h-full"
-                  objectFit="contain"
-                />
+                <div className="" key={index}>
+                  <Image
+                    alt="..."
+                    src={image}
+                    className="h-full bg-[#F8F8F8]"
+                    layout={"fill"}
+                    objectFit="contain"
+                  />
+                </div>
               );
             }
           })}
@@ -58,7 +65,7 @@ export default function Carousel({ images }:CarouselProps) {
       </div>
       <AiOutlineRight
         onClick={handleNextSlide}
-        className="absolute right-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-gray-400 z-20"
+        className="absolute right-0 m-auto text-5xl inset-y-1/2 cursor-pointer text-black z-20 w-[1.5rem] h-[1.5rem]"
       />
 
       <div className="relative flex justify-center p-2">

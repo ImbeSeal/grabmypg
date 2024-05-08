@@ -94,13 +94,13 @@ export default function Booking() {
                 onChange={handleSearchChange}
                 name="searchbar"
                 value={searchQuery}
-                className="block w-full p-4 ps-16 placeholder:text-gray-800 border-black border-4 rounded-[300px] "
+                className="block w-full p-4 ps-16 placeholder:text-gray-800 border-black border-[0.25rem] rounded-full"
                 placeholder="Search for PGs"
                 required
               />
               <button
                 type="submit"
-                className="text-white absolute rounded-[200px] end-2 bottom-1.5 bg-[#064749] hover:bg-[#274b4d] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm py-4 px-12 "
+                className="text-white absolute rounded-full end-2 bottom-1.5 bg-[#064749] hover:bg-[#274b4d] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm py-4 px-12 "
               >
                 Search
               </button>

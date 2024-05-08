@@ -81,12 +81,12 @@ export function PropCard({
   // }
 
   return (
-    <div className="bg-white bg-opacity-55 rounded-[24px] shadow-lg">
+    <div className="bg-white bg-opacity-55 rounded-[2rem] shadow-lg">
       <div className="relative aspect-[4/1] overflow-hidden">
         <Image
           src={propImages[0]}
           alt=".."
-          className="rounded-[24px]"
+          className="rounded-[2rem]"
           width={10000}
           height={10000}
         />
@@ -113,7 +113,7 @@ export function PropCard({
               <Image
                 src={food}
                 alt=""
-                className="rounded-[24px] w-[24px] h-[24px]"
+                className="rounded-[1.5rem] w-[1.5rem] h-[1.5rem]"
               />
               <div className="text-[0.7rem]/[0.7rem] my-auto">
                 {foodOptions}
@@ -123,7 +123,7 @@ export function PropCard({
               <Image
                 src={gender}
                 alt=""
-                className="rounded-[24px] w-[24px] h-[24px]"
+                className="rounded-[1.5rem] w-[1.5rem] h-[1.5rem]"
               />
               <div className="text-[0.7rem]/[0.7rem] my-auto">{genders}</div>
             </div>
@@ -131,7 +131,7 @@ export function PropCard({
               <Image
                 src={occupation}
                 alt=""
-                className="rounded-[24px] w-[24px] h-[24px]"
+                className="rounded-[1.5rem] w-[1.5rem] h-[1.5rem]"
               />
               <div className="text-[0.7rem]/[0.7rem] my-auto">{categories}</div>
             </div>

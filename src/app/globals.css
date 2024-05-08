@@ -8,6 +8,24 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html {
+  font-size: 0.3rem;
+  @screen sm {
+    font-size: 0.5rem;
+  }
+  @screen md {
+    font-size: 0.6rem;
+  }
+  @screen lg {
+    font-size: 0.8rem;
+  }
+  @screen xl {
+    font-size: 1rem;
+  }
+
+
+}
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -31,3 +49,4 @@
     text-wrap: balance;
   }
 }
+

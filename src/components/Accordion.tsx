@@ -2,16 +2,15 @@ import { useState } from "react";
 import Image from "next/image";
 import Arrow from "../app/assets/icons/menu-nav.svg";
 
-interface AccordionProps{
+interface AccordionProps {
   title: string;
-  content:string;
-  index:number;
+  content: string;
+  index: number;
 }
 
-
-const Accordion = ({ title, content, index }:AccordionProps) => {
-  const [active, setActive] = useState< number | null>(null);
-  const handleToggle = (index:number) => {
+const Accordion = ({ title, content, index }: AccordionProps) => {
+  const [active, setActive] = useState<number | null>(null);
+  const handleToggle = (index: number) => {
     active === index ? setActive(null) : setActive(index);
   };
 
@@ -35,8 +34,8 @@ const Accordion = ({ title, content, index }:AccordionProps) => {
             onClick={() => handleToggle(index)}
             className={
               active === index
-                ? "cursor-pointer w-[24px] rotate-180"
-                : "cursor-pointer w-[24px]"
+                ? "cursor-pointer w-[2rem] rotate-180"
+                : "cursor-pointer w-[2rem]"
             }
           >
             <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z" />

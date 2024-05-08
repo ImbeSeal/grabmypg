@@ -64,8 +64,8 @@ export default function Contact() {
         </div>
         <div className="pt-12 bg-[#F0F0F0]">
           <div className="px-32 pt-12 text-5xl font-bold">Contact us</div>
-          <div className="grid lg:grid-cols-2 p-12">
-            <div className="px-16 lg:border-r-4 border-white">
+          <div className="grid grid-cols-2 p-12">
+            <div className="px-16 border-r-[0.25rem] border-white">
               <form className="" onSubmit={handleSubmit}>
                 <legend className="text-xl font-semibold leading-6 text-gray-900 ">
                   What would you like to contact us about?
@@ -116,7 +116,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="name"
-                      className="block md:w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Name"
                       value={formData.name}
                       onChange={handleChange}
@@ -124,7 +124,7 @@ export default function Contact() {
                     <input
                       type="email"
                       name="email"
-                      className="block md:w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Email"
                       value={formData.email}
                       onChange={handleChange}
@@ -132,7 +132,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="phone"
-                      className="block md:w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Phone number"
                       value={formData.phone}
                       onChange={handleChange}
@@ -140,7 +140,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="message"
-                      className="block md:w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Message"
                       value={formData.message}
                       onChange={handleChange}
@@ -156,7 +156,7 @@ export default function Contact() {
                       style={{
                         borderTopColor: "transparent",
                       }}
-                      className="w-6 h-6 border-4 border-white border-solid rounded-full animate-spin"
+                      className="w-6 h-6 border-[0.25rem] border-white border-solid rounded-full animate-spin"
                     ></div>
                   ) : (
                     "Submit"
