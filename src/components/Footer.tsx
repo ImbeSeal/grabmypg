@@ -24,14 +24,18 @@ export function Footer() {
       <div className="grid grid-cols-3">
         <div className="grid grid-rows-4 gap-1">
           <div className="font-semibold">Company</div>
-          <div className="">Home</div>
+          <Link className="" href={"/"}>
+            Home
+          </Link>
           <div className="">About us</div>
           <div className="">Our team</div>
         </div>
         <div className="grid grid-rows-4 gap-1">
           <div className="font-semibold">Guests</div>
           <div className="">Blog</div>
-          <div className="">FAQ</div>
+          <Link className="" href={"/Landlord/#accordion"}>
+            FAQ
+          </Link>
           <div className="">Career</div>
         </div>
         <div className="grid grid-rows-4 gap-1  ">

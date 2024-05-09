@@ -179,18 +179,18 @@ function Display() {
   ];
   if (full === true)
     return (
-      <div className="relative h-screen">
-        <div className="bg-white ">
-          <div className="flex justify-between w-full border-b-1 px-12">
-            <div className="text-3xl font-semibold py-4">Property Images</div>
+      <div className="relative h-screen ">
+        <div className="bg-slate-900 ">
+          <span className="absolute top-0 text-right px-4 w-full z-20">
             <button
               type="button"
-              className="z-1 rounded-full bg-slate-700 text-white px-4 py-2 my-4 text-sm cursor-pointer"
+              className="z-1 rounded-full bg-white text-slate-900 px-4 py-2 my-4 text-sm cursor-pointer hover:bg-blue-600"
               onClick={handleFullScreen}
             >
               Go back
             </button>
-          </div>
+          </span>
+
           <Carousel images={details.images} type={full} />
         </div>
       </div>
@@ -199,29 +199,25 @@ function Display() {
     return (
       <main className="bg-white bg-opacity-55 text-black flex justify-center">
         <div className="bg-[#F0F0F0]  max-w-[1440px]">
-          <div className="bg-white border-b-2">
+          <div className="bg-white">
             <Navbar />
           </div>
 
           <div className="grid grid-cols-12">
             <span className="col-span-12">
-              <div className="relative grid grid-cols-1">
-                <div className="bg-white rounded-[1rem] shadow-xl mx-4">
-                  <div className="flex justify-between border-b-1 px-12">
-                    <div className="text-3xl font-semibold py-4">
-                      Property Images
-                    </div>
-                    <button
-                      type="button"
-                      className="z-1 rounded-full bg-slate-700 text-white px-4 py-2 my-4 text-sm cursor-pointer"
-                      onClick={handleFullScreen}
-                    >
-                      View Full Images
-                    </button>
-                  </div>
-
+              <div className="relative grid grid-cols-1 ">
+                <div className="rounded-[1rem] mx-4 ">
                   <Carousel images={details.images} type={full} />
                 </div>
+                <span className="absolute bottom-10 text-center w-full z-20">
+                  <button
+                    type="button"
+                    className="rounded-full bg-slate-900 text-white px-4 py-2 my-4 text-sm cursor-pointer hover:bg-blue-600"
+                    onClick={handleFullScreen}
+                  >
+                    View Full Images
+                  </button>
+                </span>
               </div>
             </span>
 
@@ -253,7 +249,7 @@ function Display() {
                   </div>
                   <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
                     <div className="font-semibold">Date</div>
-                    <div className="bg-black text-white rounded-full py-2 px-3 flex">
+                    <div className="bg-black text-white rounded-full py-2 px-3 flex z-20">
                       <DatePicker
                         selected={date}
                         onChange={(date: Date) => setDate(date)}
@@ -266,7 +262,7 @@ function Display() {
                   </div>
                   <div className="grid grid-cols-2">
                     <span className="text-center mx-auto text-xs">
-                      <div className="bg-black text-white rounded-full py-2 px-8 w-52">
+                      <div className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-blue-600">
                         Schedule meeting
                       </div>
                     </span>
@@ -275,7 +271,7 @@ function Display() {
                         <DropdownTrigger>
                           <Button
                             variant="bordered"
-                            className="bg-black text-white rounded-full py-2 px-8 w-52"
+                            className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-blue-600"
                           >
                             Contact Owner
                           </Button>
@@ -331,7 +327,7 @@ function Display() {
                               : "text-xs focus:font-bold focus:bg-slate-200 hidden"
                           }
                         >
-                          <div className="border-1 border-black " />
+                          <div className="border-1 border-black" />
                           <Card>
                             <CardBody className="p-4 gap-4">
                               {/* {item.content} */}

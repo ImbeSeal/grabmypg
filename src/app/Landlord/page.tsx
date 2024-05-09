@@ -94,9 +94,9 @@ export default function Landlord() {
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="absolute w-1/2 mr-[2rem] px-8 top-8">
-              <div className="w-full place-content-center m-auto p-5 rounded-3xl bg-white bg-opacity-100 opacity-80">
-                <div className="mx-10 mt-10 space-y-6">
+            <div className="absolute w-1/2 mr-[2rem] px-[2rem] top-[2rem]">
+              <div className="place-content-center p-[1rem ] rounded-3xl bg-white bg-opacity-100 opacity-80">
+                <div className="mx-10 mt-10 space-y-[1.5rem]">
                   <div className="text-4xl font-bold">
                     Earn more from your property, do less
                   </div>
@@ -175,7 +175,7 @@ export default function Landlord() {
                   <div className="grid justify-center mt-4">
                     <button
                       type="submit"
-                      className="px-8 py-2 rounded-full bg-[#064749] text-white my-auto"
+                      className="px-8 py-2 rounded-full bg-[#064749] text-white mb-[1.5rem]"
                     >
                       {loading ? (
                         <div
@@ -190,7 +190,6 @@ export default function Landlord() {
                     </button>
                   </div>
                 </form>
-                <div className="flex place-content-center text-xl my-10 "></div>
               </div>
             </div>
           </div>
@@ -388,7 +387,7 @@ export default function Landlord() {
 
         {/* Slide 4 */}
 
-        <div className="mt-36 px-24">
+        <div className="mt-36 px-24" id="accordion">
           <div className="place-content-center text-center text-5xl font-bold p-6">
             Frequently Asked Questions
           </div>
@@ -396,27 +395,27 @@ export default function Landlord() {
           {/* Accordion Work in progress*/}
           <div className="space-y-4 py-12">
             <Accordion
-              title={"1. This is a question"}
+              title={"This is a question"}
               content={"This is details"}
               index={1}
             />
             <Accordion
-              title={"2. This is a question"}
+              title={"This is a question"}
               content={"This is details"}
               index={2}
             />
             <Accordion
-              title={"3. This is a question"}
+              title={"This is a question"}
               content={"This is details"}
               index={3}
             />
             <Accordion
-              title={"4. This is a question"}
+              title={"This is a question"}
               content={"This is details"}
               index={4}
             />
             <Accordion
-              title={"5. This is a question"}
+              title={"This is a question"}
               content={"This is details"}
               index={5}
             />

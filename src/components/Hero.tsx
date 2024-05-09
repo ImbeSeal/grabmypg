@@ -32,7 +32,7 @@ export default function Hero() {
             {/* Search bar */}
             <div className="absolute top-12 w-full">
               <div className="w-1/2 mx-auto p-1 border-[0.25rem] border-black rounded-full bg-white flex flex-row">
-                <div className="my-auto text-lg w-1/2 ml-[2rem] text-slate-800">
+                <div className="my-auto text-lg w-1/2 ml-[2rem] text-slate-800 cursor-default">
                   Want to select a pg fit for you?
                 </div>
                 <span className="w-1/2 flex flex-row-reverse">
