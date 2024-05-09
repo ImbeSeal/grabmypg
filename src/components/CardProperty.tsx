@@ -182,9 +182,9 @@ export function PropCard({
             </button>
           </div>
           <div className="flex flex-col-reverse">
-            <div className="font-bold mt-auto text-end ">
+            <div className=" mt-auto text-end ">
               {/* Input for cost */}
-              Rs {price} <span className="text-xs font-normal">/month</span>
+              Starts from <span className="font-bold">Rs {price}</span> <span className="text-xs font-normal">/month</span>
             </div>
           </div>
         </div>

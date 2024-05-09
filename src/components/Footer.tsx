@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <div className="grid grid-cols-3 w-full bg-[#F0F0F0] p-8">
       <div className="p-12 space-y-2">
-        <div className="w-full">Contact number: 2223334444</div>
+        <div className="w-full">Contact number: +91 9864689403</div>
         <div className="w-full flex gap-4">
           <div className="w-6 h-6">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -48,7 +48,7 @@ export function Footer() {
       <div className="px-12">
         <div className="font-bold">Stay up to date</div>
         <div className="">Be the first to know about our newest properties</div>
-        <div className="text-slate-600 mt-4">example@gmail.com</div>
+        <div className="text-slate-600 mt-4">GrabmyPg@gmail.com</div>
       </div>
     </div>
   );

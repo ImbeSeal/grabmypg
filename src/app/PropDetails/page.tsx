@@ -40,11 +40,22 @@ interface UserDetails {
   title: string; // Assuming title is a string
   addrFull: string; // Assuming addrFull is a string
   food: string; // Assuming food is an optional array of strings
-  price: number; // Assuming price is a number
+  minprice: string; 
+  price: string[]; // Assuming price is a number
+  offered: boolean[];
   contact: {
     name: string; // Assuming name is a string
     number: string; // Assuming number is a string
     email: string; // Assuming email is a string
+  };
+  amenities:{
+    single: string[];
+    double: string[];
+    triple: string[];
+    four: string[];
+    five: string[];
+    six: string[];
+    common: string[];
   };
   // Add other fields as needed
 }
@@ -83,7 +94,6 @@ function Display() {
   //End of required variables;
 
   const [full, setFull] = useState(false);
-
   const handleFullScreen = () => {
     setFull(!full);
   };
@@ -138,40 +148,66 @@ function Display() {
   let tabs = [
     {
       id: "single",
-      offered: 1,
+      offered: details.offered[0],
+      roommates: "1",
       label: "Single Sharing",
-      price: Number(details.price),
-      amenities: amenities[1],
+      price: Number(details.price[0]),
+      amenities: details.amenities.single,
       secdeposit: secdeposit[0],
       locking: locking[0],
       notice: notice[0],
     },
     {
       id: "double",
-      offered: 1,
+      roommates: "2",
+      offered: details.offered[1],
       label: "Double Sharing",
-      price: Number(details.price) * 2,
-      amenities: amenities[2],
+      price: Number(details.price[1]),
+      amenities: details.amenities.double,
       secdeposit: secdeposit[1],
       locking: locking[1],
       notice: notice[1],
     },
     {
       id: "triple",
-      offered: 1,
+      roommates: "3",
+      offered: details.offered[2],
       label: "Triple Sharing",
-      price: Number(details.price) * 3,
-      amenities: amenities[3],
+      price: Number(details.price[2]),
+      amenities: details.amenities.triple,
       secdeposit: secdeposit[2],
       locking: locking[2],
       notice: notice[2],
     },
     {
       id: "four",
-      offered: 1,
+      roommates: "4",
+      offered: Number(details.offered[3]),
       label: "Four Sharing",
-      price: Number(details.price) * 4,
-      amenities: amenities[4],
+      price: Number(details.price[3]),
+      amenities: details.amenities.four,
+      secdeposit: secdeposit[3],
+      locking: locking[3],
+      notice: notice[3],
+    },
+    {
+      id: "five",
+      roommates: "5",
+      offered: Number(details.offered[4]),
+      label: "Five Sharing",
+      price: Number(details.price[4]),
+      amenities: details.amenities.five,
+      secdeposit: secdeposit[3],
+      locking: locking[3],
+      notice: notice[3],
+    },
+    {
+      id: "six",
+      roommates: "6",
+      offered: Number(details.offered[5]),
+      label: "Six Sharing",
+      price: Number(details.price[5]),
+      amenities: details.amenities.six,
       secdeposit: secdeposit[3],
       locking: locking[3],
       notice: notice[3],
@@ -229,7 +265,7 @@ function Display() {
                 <div className="text-sm">{description}</div>
               </div>
 
-              <CardProp title="Property Amenities" data={amenities[0]} />
+              <CardProp title="Property Amenities" data={details.amenities.common} />
               <CardProp
                 title="Food Menu"
                 data={
@@ -245,7 +281,7 @@ function Display() {
               <div className="p-16">
                 <div className="rounded-2xl bg-white shadow-2xl py-8">
                   <div className="text-4xl text-center font-bold">
-                    Rs. {details.price}/month
+                    <span className="text-xl font-normal mr-2">from</span> Rs. {details.minprice}/month
                   </div>
                   <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
                     <div className="font-semibold">Date</div>
@@ -262,16 +298,16 @@ function Display() {
                   </div>
                   <div className="grid grid-cols-2">
                     <span className="text-center mx-auto text-xs">
-                      <div className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-blue-600">
+                      <button className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-[#2e5355]  duration-400">
                         Schedule meeting
-                      </div>
+                      </button>
                     </span>
                     <span className="text-center mx-auto text-xs">
-                      <Dropdown>
+                      <Dropdown closeOnSelect={false}>
                         <DropdownTrigger>
                           <Button
                             variant="bordered"
-                            className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-blue-600"
+                            className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-[#2e5355] duration-400"
                           >
                             Contact Owner
                           </Button>
@@ -322,7 +358,7 @@ function Display() {
                           key={item.id}
                           title={item.label}
                           className={
-                            item.offered === 1
+                            item.offered == 1
                               ? "text-xs focus:font-bold focus:bg-slate-200"
                               : "text-xs focus:font-bold focus:bg-slate-200 hidden"
                           }
@@ -333,15 +369,15 @@ function Display() {
                               {/* {item.content} */}
 
                               <div className="flex flex-row ">
-                                <span className="text-xl flex-1/2">
+                                <span className="text-xl font-semibold flex-1/2">
                                   {item.label}
                                 </span>
 
                                 <span className="flex flex-1 flex-row-reverse ">
                                   <span className="text-lg text-green-500 ">
-                                    {item.price} / Bed
+                                    Rs. {item.price} / Bed
                                   </span>
-                                  <span className="p-2">starts from</span>
+                                  {/* <span className="p-2">starts from</span> */}
                                 </span>
                               </div>
 
@@ -370,7 +406,7 @@ function Display() {
                               <hr />
 
                               <span className="text-xl text-green-500">
-                                6 Tenants staying
+                                {item.roommates} Tenants staying
                               </span>
                               <hr />
 
