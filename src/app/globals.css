@@ -8,7 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-html {
+/* html {
   font-size: 0.3rem;
   @screen sm {
     font-size: 0.5rem;
@@ -24,7 +24,7 @@ html {
   }
 
 
-}
+} */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
