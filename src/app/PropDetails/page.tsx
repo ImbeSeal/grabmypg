@@ -8,6 +8,7 @@ import {
   DropdownItem,
   Button,
 } from "@nextui-org/react";
+import Image from "next/image";
 
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -23,6 +24,17 @@ import { useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import bed from "../assets/icons/propertypage/bed.svg";
+import lock from "../assets/icons/propertypage/lockingperiod.svg";
+import safe from "../assets/icons/propertypage/securitydeposit.svg";
+import rent from "../assets/icons/propertypage/renticon.svg";
+import note from "../assets/icons/propertypage/noticeperiod.svg";
+import elec from "../assets/icons/propertypage/electricunit.svg";
+import rul1 from "../assets/icons/propertypage/nosmoke.svg";
+import rul2 from "../assets/icons/propertypage/nopets.svg";
+import rul3 from "../assets/icons/propertypage/checkin.svg";
+import rul4 from "../assets/icons/propertypage/nodrink.svg";
+
 import Carousel from "@/components/Carousel";
 
 //Loader
@@ -34,13 +46,14 @@ const Loader = dynamic(
 );
 
 import hostel2 from "../assets/hostel-bg.jpg";
+import { activate } from "firebase/remote-config";
 
 interface UserDetails {
   images: string[]; // Assuming images is an array of strings
   title: string; // Assuming title is a string
   addrFull: string; // Assuming addrFull is a string
   food: string; // Assuming food is an optional array of strings
-  minprice: string; 
+  minprice: string;
   price: string[]; // Assuming price is a number
   offered: boolean[];
   contact: {
@@ -48,7 +61,7 @@ interface UserDetails {
     number: string; // Assuming number is a string
     email: string; // Assuming email is a string
   };
-  amenities:{
+  amenities: {
     single: string[];
     double: string[];
     triple: string[];
@@ -67,25 +80,111 @@ function Display() {
   //amenities is Array[Array[String]] 0 is general properties, 1, 2, 3, 4 are respective beds
   let amenities = [
     [
-      "Amenity General",
-      "Amenity General",
-      "Amenity General",
-      "Amenity General",
-      "Amenity General",
+      {
+        name: "Amenity General",
+        icon: bed,
+      },
+      {
+        name: "Amenity General",
+        icon: bed,
+      },
+      {
+        name: "Amenity General",
+        icon: bed,
+      },
+      {
+        name: "Amenity General",
+        icon: bed,
+      },
+      {
+        name: "Amenity General",
+        icon: bed,
+      },
     ],
     [
-      "Amenity single",
-      "Amenity single",
-      "Amenity single",
-      "Amenity single",
-      "Amenity single",
+      {
+        name: "Amenity single",
+        icon: bed,
+      },
+      {
+        name: "Amenity single",
+        icon: bed,
+      },
+      {
+        name: "Amenity single",
+        icon: bed,
+      },
+      {
+        name: "Amenity single",
+        icon: bed,
+      },
+      {
+        name: "Amenity single",
+        icon: bed,
+      },
     ],
-    ["Amenity Double", "Amenity Double", "Amenity Double", "Amenity Double"],
-    ["Amenity Triple", "Amenity Triple", "Amenity Triple"],
-    ["Amenity Four", "Amenity Four"],
+    [
+      {
+        name: "Amenity Double",
+        icon: bed,
+      },
+      {
+        name: "Amenity Double",
+        icon: bed,
+      },
+      {
+        name: "Amenity Double",
+        icon: bed,
+      },
+      {
+        name: "Amenity Double",
+        icon: bed,
+      },
+    ],
+    [
+      {
+        name: "Amenity Triple",
+        icon: bed,
+      },
+      {
+        name: "Amenity Triple",
+        icon: bed,
+      },
+      {
+        name: "Amenity Triple",
+        icon: bed,
+      },
+    ],
+    [
+      {
+        name: "Amenity Four",
+        icon: bed,
+      },
+      {
+        name: "Amenity Four",
+        icon: bed,
+      },
+    ],
   ];
-  let rules = ["Rule 1", "Rule 2", "Rule 3"];
 
+  let rule = [
+    {
+      name: "No smoking",
+      icon: rul1,
+    },
+    {
+      name: "No pets",
+      icon: rul2,
+    },
+    {
+      name: "Checkin Time",
+      icon: rul3,
+    },
+    {
+      name: "No drinking",
+      icon: rul4,
+    },
+  ];
   //Each of the bottom variables are of length 4: 1 for each type
   let secdeposit = [null, 2000, 4000, 6000];
   let locking = ["2 days", "2 days", "2 days", "2 days"];
@@ -213,6 +312,7 @@ function Display() {
       notice: notice[3],
     },
   ];
+
   if (full === true)
     return (
       <div className="relative h-screen ">
@@ -265,23 +365,60 @@ function Display() {
                 <div className="text-sm">{description}</div>
               </div>
 
-              <CardProp title="Property Amenities" data={details.amenities.common} />
               <CardProp
-                title="Food Menu"
-                data={
-                  details.food === "Veg/Non-Veg"
-                    ? ["Veg", "Non-Veg"]
-                    : [details.food]
-                }
+                title="Property Amenities"
+                data={details.amenities.common}
               />
-              <CardProp title="Property Rules" data={rules} />
+              <span>
+                <CardProp
+                  title="Food Menu"
+                  data={
+                    details.food === "Veg/Non-Veg"
+                      ? ["Non-Veg"]
+                      : [details.food]
+                  }
+                />
+              </span>
+
+              <span>
+                <div className="py-4">
+                  <div className="rounded-lg bg-gradient-to-b from-[#B594EC] to-[#8784FF] text-white px-4 py-1 text-xl shadow-xl">
+                    Property Rules
+                  </div>
+                  <div className="p-4 flex flex-row flex-wrap gap-4">
+                    {rule.length === 0 ? (
+                      <ul className="w-1/4">Not listed</ul>
+                    ) : (
+                      rule.map((item, index) => {
+                        index = index + 1;
+                        return (
+                          <ul
+                            key={index}
+                            className="flex flex-row my-auto mx-3"
+                          >
+                            <span className="my-auto">{item.name}</span>
+                            <span>
+                              <Image
+                                src={item.icon}
+                                alt=".."
+                                className="ml-2"
+                              />
+                            </span>
+                          </ul>
+                        );
+                      })
+                    )}
+                  </div>
+                </div>
+              </span>
             </span>
 
             <span className="col-span-6">
               <div className="p-16">
                 <div className="rounded-2xl bg-white shadow-2xl py-8">
                   <div className="text-4xl text-center font-bold">
-                    <span className="text-xl font-normal mr-2">from</span> Rs. {details.minprice}/month
+                    <span className="text-xl font-normal mr-2">from</span> Rs.{" "}
+                    {details.minprice}/month
                   </div>
                   <div className="grid grid-cols-1 justify-items-center my-12 gap-2">
                     <div className="font-semibold">Date</div>
@@ -350,17 +487,18 @@ function Display() {
                   <div className="text-2xl font-bold mb-2">
                     Rooms offered by this property
                   </div>
-                  <div className="flex w-full flex-col">
+                  <div className="flex w-full flex-col ">
                     <div className="border-1 border-black" />
                     <Tabs aria-label="Dynamic tabs" items={tabs}>
                       {(item) => (
                         <Tab
                           key={item.id}
+                          value={item.id}
                           title={item.label}
                           className={
                             item.offered == 1
                               ? "text-xs focus:font-bold focus:bg-slate-200"
-                              : "text-xs focus:font-bold focus:bg-slate-200 hidden"
+                              : "hidden"
                           }
                         >
                           <div className="border-1 border-black" />
@@ -369,6 +507,7 @@ function Display() {
                               {/* {item.content} */}
 
                               <div className="flex flex-row ">
+                                <Image src={bed} alt="..." className="mx-1" />
                                 <span className="text-xl font-semibold flex-1/2">
                                   {item.label}
                                 </span>
@@ -387,20 +526,22 @@ function Display() {
                                   Room Amenities
                                 </div>
 
-                                <div className="flex flex-row flex-wrap text-sm">
-                                  {item.amenities.length === 0 ? (
-                                    <li className="w-1/3">Not listed</li>
-                                  ) : (
-                                    item.amenities.map((amenity, index) => {
-                                      index = index + 1;
-                                      return (
-                                        <li key={index} className="w-1/3">
-                                          {amenity}
-                                        </li>
-                                      );
-                                    })
-                                  )}
-                                </div>
+                                <span>
+                                  <ul className="flex flex-row flex-wrap text-sm">
+                                    {item.amenities.length === 0 ? (
+                                      <li className="">Not listed</li>
+                                    ) : (
+                                      item.amenities.map((amenity, index) => {
+                                        index = index + 1;
+                                        return (
+                                          <li key={index} className="w-1/4">
+                                            {amenity}
+                                          </li>
+                                        );
+                                      })
+                                    )}
+                                  </ul>
+                                </span>
                               </div>
 
                               <hr />
@@ -416,6 +557,11 @@ function Display() {
                                 </div>
                                 <div className="space-y-4 p-4">
                                   <div className="flex flex-row">
+                                    <Image
+                                      src={rent}
+                                      alt=".."
+                                      className="w-[1rem] h-[1rem] mr-2"
+                                    />
                                     <div className="w-full">Rent</div>
                                     <div className="w-full text-end">
                                       Rs {item.price - 1000} to{" "}
@@ -423,6 +569,11 @@ function Display() {
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
+                                    <Image
+                                      src={safe}
+                                      alt=".."
+                                      className="w-[1rem] h-[1rem] mr-2"
+                                    />
                                     <div className="w-full">
                                       Security Deposit
                                     </div>
@@ -433,6 +584,11 @@ function Display() {
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
+                                    <Image
+                                      src={lock}
+                                      alt=".."
+                                      className="w-[1rem] h-[1rem] mr-2"
+                                    />
                                     <div className="w-full">Locking Period</div>
                                     <div className="w-full text-end">
                                       {item.locking === null
@@ -441,9 +597,27 @@ function Display() {
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
+                                    <Image
+                                      src={note}
+                                      alt=".."
+                                      className="w-[1rem] h-[1rem] mr-2"
+                                    />
                                     <div className="w-full">Notice Period</div>
                                     <div className="w-full text-end">
                                       30 days
+                                    </div>
+                                  </div>
+                                  <div className="flex flex-row">
+                                    <Image
+                                      src={elec}
+                                      alt=".."
+                                      className="w-[1rem] h-[1rem] mr-2"
+                                    />
+                                    <div className="w-full">
+                                      Electrical Unit
+                                    </div>
+                                    <div className="w-full text-end">
+                                      Available
                                     </div>
                                   </div>
                                 </div>

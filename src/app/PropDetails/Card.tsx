@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function CardProp({ title, data }: { title: string; data: string[] }) {
   return (
     <div className="py-4">
@@ -12,7 +14,7 @@ export function CardProp({ title, data }: { title: string; data: string[] }) {
             index = index + 1;
             return (
               <ul key={index} className="w-1/4">
-                {item}
+                <span>{item}</span>
               </ul>
             );
           })
