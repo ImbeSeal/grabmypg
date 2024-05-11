@@ -555,7 +555,9 @@ function Display() {
                     Food Menu
                   </div>
                   <div className="p-4">
-                    <span className="border-2 p-2">{details.food}</span>
+                    <span className="border-2 border-black rounded-sm p-2">
+                      {details.food}
+                    </span>
                   </div>
                 </div>
               </span>
