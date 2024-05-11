@@ -30,6 +30,19 @@ import safe from "../assets/icons/propertypage/securitydeposit.svg";
 import rent from "../assets/icons/propertypage/renticon.svg";
 import note from "../assets/icons/propertypage/noticeperiod.svg";
 import elec from "../assets/icons/propertypage/electricunit.svg";
+import guard from "../assets/icons/propertypage/guard.png";
+
+import wash from "../assets/icons/propertypage/washroom.svg";
+import table from "../assets/icons/propertypage/table.svg";
+import ac from "../assets/icons/propertypage/ac.svg";
+import fan from "../assets/icons/propertypage/fan.svg";
+import wardrobe from "../assets/icons/propertypage/illust58-2687.jpg";
+import laundry from "../assets/icons/propertypage/washing_machine.svg";
+import fridge from "../assets/icons/propertypage/fridge.png";
+import wifi from "../assets/icons/propertypage/wifi.svg";
+import cctv from "../assets/icons/propertypage/cctv.png";
+import tv from "../assets/icons/propertypage/tv.svg";
+
 import rul1 from "../assets/icons/propertypage/nosmoke.svg";
 import rul2 from "../assets/icons/propertypage/nopets.svg";
 import rul3 from "../assets/icons/propertypage/checkin.svg";
@@ -64,7 +77,7 @@ interface UserDetails {
   amenities: any;
   desc: string;
   // amenities: {
-    
+
   //   single: string[];
   //   double: string[];
   //   triple: string[];
@@ -78,15 +91,15 @@ interface UserDetails {
 
 function Display() {
   // extra variables to be added:
-  
+
   const [full, setFull] = useState(false);
   const handleFullScreen = () => {
     setFull(!full);
   };
-  
+
   const [date, setDate] = useState(new Date());
   const today = new Date();
-  
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const id = searchParams!.get("id");
@@ -110,12 +123,12 @@ function Display() {
         router.push("/");
       }
     };
-    
+
     if (id) {
       fetchData();
     }
   }, [id, router]);
-  
+
   if (loading) {
     return (
       <div className="mt-[360px]">
@@ -124,253 +137,252 @@ function Display() {
       </div>
     );
   }
-  
+
   if (!details) {
     return <p>Details not found.</p>;
   }
   //These are the data going in the tabs for each type of Room; The offered variable an be a number eather 0 or 1 or can be bool: 0 is offered, 1 is not;
-  
+
   //Need to update details.price to be Array[Number]: 0 1 2 3;
   //amenities is Array[Array[String]] 0 is general properties, 1, 2, 3, 4 are respective beds
   let amenities_list = [
-    [//common amenities
+    [
+      //common amenities
       {
         name: "High-speed wifi",
         offered: details.amenities[0].wifi,
-        icon: bed,
+        icon: wifi,
       },
       {
         name: "CCTV",
-        offered:details.amenities[0].cctv,
-        icon: bed,
+        offered: details.amenities[0].cctv,
+        icon: cctv,
       },
       {
         name: "24/7 Security guard",
-        offered:details.amenities[0].security,
-        icon: bed,
+        offered: details.amenities[0].security,
+        icon: guard,
       },
       {
         name: "Common washrooms",
         offered: details.amenities[0].common_washroom,
-        icon: bed,
+        icon: wash,
       },
       {
         name: "Common TV",
-        offered:details.amenities[0].tv,
-        icon: bed,
+        offered: details.amenities[0].tv,
+        icon: tv,
       },
       {
         name: "Common Laundry",
         offered: details.amenities[0].laundry,
-        icon: bed,
+        icon: laundry,
       },
       {
         name: "Common fridge",
-        offered:details.amenities[0].fridge,
-        icon: bed,
+        offered: details.amenities[0].fridge,
+        icon: fridge,
       },
       {
         name: "Common Washing machine",
         offered: details.amenities[0].washing_machine,
-        icon: bed,
+        icon: laundry,
       },
       {
         name: "Attached Washroom",
-        offered:details.amenities[0].attached_washroom,
-        icon: bed,
+        offered: details.amenities[0].attached_washroom,
+        icon: wash,
       },
     ],
     [
       //single Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[0],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[0],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[0],
-        icon: bed,
+        offered: details.amenities[1].study_table[0],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[0],
-        icon: bed,
+        offered: details.amenities[1].ac[0],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[0],
-        icon: bed,
+        offered: details.amenities[1].fan[0],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[0],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[0],
+        icon: wardrobe,
       },
-       
     ],
     [
       //double Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[1],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[1],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[1],
-        icon: bed,
+        offered: details.amenities[1].study_table[1],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[1],
-        icon: bed,
+        offered: details.amenities[1].ac[1],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[1],
-        icon: bed,
+        offered: details.amenities[1].fan[1],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[1],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[1],
+        icon: wardrobe,
       },
-       
     ],
     [
       //triple Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[2],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[2],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[2],
-        icon: bed,
+        offered: details.amenities[1].study_table[2],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[2],
-        icon: bed,
+        offered: details.amenities[1].ac[2],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[2],
-        icon: bed,
+        offered: details.amenities[1].fan[2],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[2],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[2],
+        icon: wardrobe,
       },
-       
     ],
     [
       //four Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[3],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[3],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[3],
-        icon: bed,
+        offered: details.amenities[1].study_table[3],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[3],
-        icon: bed,
+        offered: details.amenities[1].ac[3],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[3],
-        icon: bed,
+        offered: details.amenities[1].fan[3],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[3],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[3],
+        icon: wardrobe,
       },
-       
     ],
     [
       //five Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[4],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[4],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[4],
-        icon: bed,
+        offered: details.amenities[1].study_table[4],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[4],
-        icon: bed,
+        offered: details.amenities[1].ac[4],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[4],
-        icon: bed,
+        offered: details.amenities[1].fan[4],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[4],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[4],
+        icon: wardrobe,
       },
-       
     ],
     [
       //six Room amenities
       {
         name: "Attached Washroom",
-        offered : details.amenities[1].attached_washroom[5],
-        icon: bed,
+        offered: details.amenities[1].attached_washroom[5],
+        icon: wash,
       },
       {
         name: "Study Table",
-        offered : details.amenities[1].study_table[5],
-        icon: bed,
+        offered: details.amenities[1].study_table[5],
+        icon: table,
       },
       {
         name: "Air Conditioner",
-        offered : details.amenities[1].ac[5],
-        icon: bed,
+        offered: details.amenities[1].ac[5],
+        icon: ac,
       },
       {
         name: "Fan",
-        offered : details.amenities[1].fan[5],
-        icon: bed,
+        offered: details.amenities[1].fan[5],
+        icon: fan,
       },
       {
         name: "Wardrobe",
-        offered : details.amenities[1].wardrobe[5],
-        icon: bed,
+        offered: details.amenities[1].wardrobe[5],
+        icon: wardrobe,
       },
-       
     ],
   ];
 
   let rule = [
     {
       name: "No smoking",
+      offered: true,
       icon: rul1,
     },
     {
       name: "No pets",
+      offered: true,
       icon: rul2,
     },
     {
       name: "Checkin Time",
+      offered: true,
       icon: rul3,
     },
     {
       name: "No drinking",
+      offered: true,
       icon: rul4,
     },
   ];
@@ -501,19 +513,51 @@ function Display() {
                 <div className="text-sm">{details.desc}</div>
               </div>
 
-              {/* <CardProp
-                title="Property Amenities"
-                data={amenities_list[0]}
-              /> */}
               <span>
-                <CardProp
-                  title="Food Menu"
-                  data={
-                    details.food === "Veg/Non-Veg"
-                      ? ["Non-Veg"]
-                      : [details.food]
-                  }
-                />
+                <div className="py-4">
+                  <div className="rounded-lg bg-gradient-to-b from-[#B594EC] to-[#8784FF] text-white px-4 py-1 text-xl shadow-xl">
+                    Property Amenities
+                  </div>
+                  <ul className="p-4 flex flex-row flex-wrap gap-4">
+                    {amenities_list[0].length === 0 ? (
+                      <li className="w-1/4">Not listed</li>
+                    ) : (
+                      amenities_list[0].map((item, index) => {
+                        index = index + 1;
+                        return (
+                          <li
+                            key={index}
+                            className={
+                              item.offered
+                                ? "flex flex-row justify-between w-[45%]"
+                                : "hidden"
+                            }
+                          >
+                            <span className="my-auto">{item.name}</span>
+                            <span className="">
+                              <Image
+                                src={item.icon}
+                                alt=".."
+                                className="w-6 h-6"
+                              />
+                            </span>
+                          </li>
+                        );
+                      })
+                    )}
+                  </ul>
+                </div>
+              </span>
+
+              <span>
+                <div className="py-4">
+                  <div className="rounded-lg bg-gradient-to-b from-[#B594EC] to-[#8784FF] text-white px-4 py-1 text-xl shadow-xl">
+                    Food Menu
+                  </div>
+                  <div className="p-4">
+                    <span className="border-2 p-2">{details.food}</span>
+                  </div>
+                </div>
               </span>
 
               <span>
@@ -521,16 +565,20 @@ function Display() {
                   <div className="rounded-lg bg-gradient-to-b from-[#B594EC] to-[#8784FF] text-white px-4 py-1 text-xl shadow-xl">
                     Property Rules
                   </div>
-                  <div className="p-4 flex flex-row flex-wrap gap-4">
+                  <ul className="p-4 flex flex-row flex-wrap gap-4">
                     {rule.length === 0 ? (
-                      <ul className="w-1/4">Not listed</ul>
+                      <li className="w-1/4">Not listed</li>
                     ) : (
                       rule.map((item, index) => {
                         index = index + 1;
                         return (
-                          <ul
+                          <li
                             key={index}
-                            className="flex flex-row my-auto mx-3"
+                            className={
+                              item.offered
+                                ? "flex flex-row my-auto mx-3"
+                                : "hidden"
+                            }
                           >
                             <span className="my-auto">{item.name}</span>
                             <span>
@@ -540,11 +588,11 @@ function Display() {
                                 className="ml-2"
                               />
                             </span>
-                          </ul>
+                          </li>
                         );
                       })
                     )}
-                  </div>
+                  </ul>
                 </div>
               </span>
             </span>
@@ -643,7 +691,7 @@ function Display() {
                               {/* {item.content} */}
 
                               <div className="flex flex-row ">
-                                <Image src={bed} alt="..." className="mx-1" />
+                                <Image src={bed} alt="..." className="mr-3" />
                                 <span className="text-xl font-semibold flex-1/2">
                                   {item.label}
                                 </span>
@@ -663,15 +711,29 @@ function Display() {
                                 </div>
 
                                 <span>
-                                  <ul className="flex flex-row flex-wrap text-sm">
+                                  <ul className="flex flex-row flex-wrap text-xs mt-2 gap-3">
                                     {item.amenities.length === 0 ? (
                                       <li className="">Not listed</li>
                                     ) : (
                                       item.amenities.map((amenity, index) => {
                                         index = index + 1;
                                         return (
-                                          <li key={index} className="w-1/4">
-                                            {amenity.name}
+                                          <li
+                                            key={index}
+                                            className={
+                                              amenity.offered
+                                                ? "flex flex-row w-[30%] "
+                                                : "hidden"
+                                            }
+                                          >
+                                            <span>
+                                              <Image
+                                                src={amenity.icon}
+                                                alt="..."
+                                                className="w-5 h-5 mr-2"
+                                              />
+                                            </span>
+                                            <span>{amenity.name}</span>
                                           </li>
                                         );
                                       })
