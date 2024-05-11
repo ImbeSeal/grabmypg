@@ -61,109 +61,298 @@ interface UserDetails {
     number: string; // Assuming number is a string
     email: string; // Assuming email is a string
   };
-  amenities: {
-    single: string[];
-    double: string[];
-    triple: string[];
-    four: string[];
-    five: string[];
-    six: string[];
-    common: string[];
-  };
+  amenities: any;
+  desc: string;
+  // amenities: {
+    
+  //   single: string[];
+  //   double: string[];
+  //   triple: string[];
+  //   four: string[];
+  //   five: string[];
+  //   six: string[];
+  //   common: string[];
+  // };
   // Add other fields as needed
 }
 
 function Display() {
   // extra variables to be added:
-  let description =
-    "A truly global city, Delhi has long been considered a cutting-edge metropolis and hub for culture, style and finance. With each borough, Tube zone and neighborhood of Delhi sporting its own vibe and lifestyle advantages, it can be downright difficult to settle on where to look for a furnished apartment in Delhi . Whether you’re a digital nomad looking for a studio apartment in Delhi or just seeking a month to month rental inDelhi, Blueground has you covered.";
+  
+  const [full, setFull] = useState(false);
+  const handleFullScreen = () => {
+    setFull(!full);
+  };
+  
+  const [date, setDate] = useState(new Date());
+  const today = new Date();
+  
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const id = searchParams!.get("id");
+  const [details, setDetailsData] = useState<UserDetails | null>(null);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!id) return;
+      try {
+        const docRef = doc(db, "PG", id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setDetailsData(docSnap.data() as UserDetails);
+        } else {
+          console.log("Doc not found");
+          router.push("/");
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("error fetching doc:", error);
+        router.push("/");
+      }
+    };
+    
+    if (id) {
+      fetchData();
+    }
+  }, [id, router]);
+  
+  if (loading) {
+    return (
+      <div className="mt-[360px]">
+        <Loader />
+        <h1 className="text-center text-2xl">Loading...</h1>
+      </div>
+    );
+  }
+  
+  if (!details) {
+    return <p>Details not found.</p>;
+  }
+  //These are the data going in the tabs for each type of Room; The offered variable an be a number eather 0 or 1 or can be bool: 0 is offered, 1 is not;
+  
+  //Need to update details.price to be Array[Number]: 0 1 2 3;
   //amenities is Array[Array[String]] 0 is general properties, 1, 2, 3, 4 are respective beds
-  let amenities = [
-    [
+  let amenities_list = [
+    [//common amenities
       {
-        name: "Amenity General",
+        name: "High-speed wifi",
+        offered: details.amenities[0].wifi,
         icon: bed,
       },
       {
-        name: "Amenity General",
+        name: "CCTV",
+        offered:details.amenities[0].cctv,
         icon: bed,
       },
       {
-        name: "Amenity General",
+        name: "24/7 Security guard",
+        offered:details.amenities[0].security,
         icon: bed,
       },
       {
-        name: "Amenity General",
+        name: "Common washrooms",
+        offered: details.amenities[0].common_washroom,
         icon: bed,
       },
       {
-        name: "Amenity General",
-        icon: bed,
-      },
-    ],
-    [
-      {
-        name: "Amenity single",
+        name: "Common TV",
+        offered:details.amenities[0].tv,
         icon: bed,
       },
       {
-        name: "Amenity single",
+        name: "Common Laundry",
+        offered: details.amenities[0].laundry,
         icon: bed,
       },
       {
-        name: "Amenity single",
+        name: "Common fridge",
+        offered:details.amenities[0].fridge,
         icon: bed,
       },
       {
-        name: "Amenity single",
+        name: "Common Washing machine",
+        offered: details.amenities[0].washing_machine,
         icon: bed,
       },
       {
-        name: "Amenity single",
-        icon: bed,
-      },
-    ],
-    [
-      {
-        name: "Amenity Double",
-        icon: bed,
-      },
-      {
-        name: "Amenity Double",
-        icon: bed,
-      },
-      {
-        name: "Amenity Double",
-        icon: bed,
-      },
-      {
-        name: "Amenity Double",
+        name: "Attached Washroom",
+        offered:details.amenities[0].attached_washroom,
         icon: bed,
       },
     ],
     [
+      //single Room amenities
       {
-        name: "Amenity Triple",
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[0],
         icon: bed,
       },
       {
-        name: "Amenity Triple",
+        name: "Study Table",
+        offered : details.amenities[1].study_table[0],
         icon: bed,
       },
       {
-        name: "Amenity Triple",
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[0],
         icon: bed,
       },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[0],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[0],
+        icon: bed,
+      },
+       
     ],
     [
+      //double Room amenities
       {
-        name: "Amenity Four",
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[1],
         icon: bed,
       },
       {
-        name: "Amenity Four",
+        name: "Study Table",
+        offered : details.amenities[1].study_table[1],
         icon: bed,
       },
+      {
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[1],
+        icon: bed,
+      },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[1],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[1],
+        icon: bed,
+      },
+       
+    ],
+    [
+      //triple Room amenities
+      {
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[2],
+        icon: bed,
+      },
+      {
+        name: "Study Table",
+        offered : details.amenities[1].study_table[2],
+        icon: bed,
+      },
+      {
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[2],
+        icon: bed,
+      },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[2],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[2],
+        icon: bed,
+      },
+       
+    ],
+    [
+      //four Room amenities
+      {
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[3],
+        icon: bed,
+      },
+      {
+        name: "Study Table",
+        offered : details.amenities[1].study_table[3],
+        icon: bed,
+      },
+      {
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[3],
+        icon: bed,
+      },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[3],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[3],
+        icon: bed,
+      },
+       
+    ],
+    [
+      //five Room amenities
+      {
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[4],
+        icon: bed,
+      },
+      {
+        name: "Study Table",
+        offered : details.amenities[1].study_table[4],
+        icon: bed,
+      },
+      {
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[4],
+        icon: bed,
+      },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[4],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[4],
+        icon: bed,
+      },
+       
+    ],
+    [
+      //six Room amenities
+      {
+        name: "Attached Washroom",
+        offered : details.amenities[1].attached_washroom[5],
+        icon: bed,
+      },
+      {
+        name: "Study Table",
+        offered : details.amenities[1].study_table[5],
+        icon: bed,
+      },
+      {
+        name: "Air Conditioner",
+        offered : details.amenities[1].ac[5],
+        icon: bed,
+      },
+      {
+        name: "Fan",
+        offered : details.amenities[1].fan[5],
+        icon: bed,
+      },
+      {
+        name: "Wardrobe",
+        offered : details.amenities[1].wardrobe[5],
+        icon: bed,
+      },
+       
     ],
   ];
 
@@ -191,59 +380,6 @@ function Display() {
   let notice = ["2 days", "2 days", "2 days", "2 days"];
 
   //End of required variables;
-
-  const [full, setFull] = useState(false);
-  const handleFullScreen = () => {
-    setFull(!full);
-  };
-
-  const [date, setDate] = useState(new Date());
-  const today = new Date();
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const id = searchParams!.get("id");
-  const [details, setDetailsData] = useState<UserDetails | null>(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      if (!id) return;
-      try {
-        const docRef = doc(db, "PG", id);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setDetailsData(docSnap.data() as UserDetails);
-        } else {
-          console.log("Doc not found");
-          router.push("/");
-        }
-        setLoading(false);
-      } catch (error) {
-        console.error("error fetching doc:", error);
-        router.push("/");
-      }
-    };
-
-    if (id) {
-      fetchData();
-    }
-  }, [id, router]);
-
-  if (loading) {
-    return (
-      <div className="mt-[360px]">
-        <Loader />
-        <h1 className="text-center text-2xl">Loading...</h1>
-      </div>
-    );
-  }
-
-  if (!details) {
-    return <p>Details not found.</p>;
-  }
-  //These are the data going in the tabs for each type of Room; The offered variable an be a number eather 0 or 1 or can be bool: 0 is offered, 1 is not;
-
-  //Need to update details.price to be Array[Number]: 0 1 2 3;
   let tabs = [
     {
       id: "single",
@@ -251,7 +387,7 @@ function Display() {
       roommates: "1",
       label: "Single Sharing",
       price: Number(details.price[0]),
-      amenities: details.amenities.single,
+      amenities: amenities_list[1],
       secdeposit: secdeposit[0],
       locking: locking[0],
       notice: notice[0],
@@ -262,7 +398,7 @@ function Display() {
       offered: details.offered[1],
       label: "Double Sharing",
       price: Number(details.price[1]),
-      amenities: details.amenities.double,
+      amenities: amenities_list[2],
       secdeposit: secdeposit[1],
       locking: locking[1],
       notice: notice[1],
@@ -273,7 +409,7 @@ function Display() {
       offered: details.offered[2],
       label: "Triple Sharing",
       price: Number(details.price[2]),
-      amenities: details.amenities.triple,
+      amenities: amenities_list[3],
       secdeposit: secdeposit[2],
       locking: locking[2],
       notice: notice[2],
@@ -284,7 +420,7 @@ function Display() {
       offered: Number(details.offered[3]),
       label: "Four Sharing",
       price: Number(details.price[3]),
-      amenities: details.amenities.four,
+      amenities: amenities_list[4],
       secdeposit: secdeposit[3],
       locking: locking[3],
       notice: notice[3],
@@ -295,7 +431,7 @@ function Display() {
       offered: Number(details.offered[4]),
       label: "Five Sharing",
       price: Number(details.price[4]),
-      amenities: details.amenities.five,
+      amenities: amenities_list[5],
       secdeposit: secdeposit[3],
       locking: locking[3],
       notice: notice[3],
@@ -306,7 +442,7 @@ function Display() {
       offered: Number(details.offered[5]),
       label: "Six Sharing",
       price: Number(details.price[5]),
-      amenities: details.amenities.six,
+      amenities: amenities_list[6],
       secdeposit: secdeposit[3],
       locking: locking[3],
       notice: notice[3],
@@ -362,13 +498,13 @@ function Display() {
               <div className="">{details.addrFull}</div>
               <div className="py-4">
                 <div className="text-3xl font-bold">Description</div>
-                <div className="text-sm">{description}</div>
+                <div className="text-sm">{details.desc}</div>
               </div>
 
-              <CardProp
+              {/* <CardProp
                 title="Property Amenities"
-                data={details.amenities.common}
-              />
+                data={amenities_list[0]}
+              /> */}
               <span>
                 <CardProp
                   title="Food Menu"
@@ -535,7 +671,7 @@ function Display() {
                                         index = index + 1;
                                         return (
                                           <li key={index} className="w-1/4">
-                                            {amenity}
+                                            {amenity.name}
                                           </li>
                                         );
                                       })
