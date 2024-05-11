@@ -225,7 +225,7 @@ export default function Booking() {
                       />
                     </div>
 
-                    <div className="flex flex-row-reverse mr-auto gap-2">
+                    {/* <div className="flex flex-row-reverse mr-auto gap-2">
                       <label htmlFor="food-both">Both</label>
                       <input
                         type="checkbox"
@@ -243,12 +243,12 @@ export default function Booking() {
                         id="food-jain"
                         className="w-6 h-6"
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   <hr className="my-8" />
 
-                  <div className="text-bold mt-4">
+                  {/* <div className="text-bold mt-4">
                     Select your maximum budget
                   </div>
                   <div className="flex mb-4">
@@ -294,7 +294,7 @@ export default function Booking() {
                     </span>
                   </div>
 
-                  <hr className="my-8" />
+                  <hr className="my-8" /> */}
 
                   <div className="text-bold mt-4">Security deposit</div>
                   <div className="mt-4 grid grid-cols-1 gap-4">

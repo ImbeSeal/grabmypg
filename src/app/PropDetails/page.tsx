@@ -387,9 +387,17 @@ function Display() {
     },
   ];
   //Each of the bottom variables are of length 4: 1 for each type
-  let secdeposit = [null, 2000, 4000, 6000];
-  let locking = ["2 days", "2 days", "2 days", "2 days"];
-  let notice = ["2 days", "2 days", "2 days", "2 days"];
+  let secdeposit = [null, 2000, 4000, 6000, 8000, null];
+  let locking = ["2 days", "2 days", "2 days", "2 days", "2 days", "2 days"];
+  let notice = ["2 days", "2 days", "2 days", "2 days", "2 days", "2 days"];
+  let electric = [
+    "Offered",
+    "Offered",
+    "Not Offered",
+    "Not Offered",
+    "Not Offered",
+    "Not Offered",
+  ];
 
   //End of required variables;
   let tabs = [
@@ -403,6 +411,7 @@ function Display() {
       secdeposit: secdeposit[0],
       locking: locking[0],
       notice: notice[0],
+      electric: electric[0],
     },
     {
       id: "double",
@@ -414,6 +423,7 @@ function Display() {
       secdeposit: secdeposit[1],
       locking: locking[1],
       notice: notice[1],
+      electric: electric[1],
     },
     {
       id: "triple",
@@ -425,6 +435,7 @@ function Display() {
       secdeposit: secdeposit[2],
       locking: locking[2],
       notice: notice[2],
+      electric: electric[2],
     },
     {
       id: "four",
@@ -436,6 +447,7 @@ function Display() {
       secdeposit: secdeposit[3],
       locking: locking[3],
       notice: notice[3],
+      electric: electric[3],
     },
     {
       id: "five",
@@ -444,9 +456,10 @@ function Display() {
       label: "Five Sharing",
       price: Number(details.price[4]),
       amenities: amenities_list[5],
-      secdeposit: secdeposit[3],
-      locking: locking[3],
-      notice: notice[3],
+      secdeposit: secdeposit[4],
+      locking: locking[4],
+      notice: notice[4],
+      electric: electric[4],
     },
     {
       id: "six",
@@ -455,9 +468,10 @@ function Display() {
       label: "Six Sharing",
       price: Number(details.price[5]),
       amenities: amenities_list[6],
-      secdeposit: secdeposit[3],
-      locking: locking[3],
-      notice: notice[3],
+      secdeposit: secdeposit[5],
+      locking: locking[5],
+      notice: notice[5],
+      electric: electric[5],
     },
   ];
 
@@ -555,7 +569,7 @@ function Display() {
                     Food Menu
                   </div>
                   <div className="p-4">
-                    <span className="border-2 border-black rounded-sm p-2">
+                    <span className="border-2 border-black rounded-lg p-2">
                       {details.food}
                     </span>
                   </div>
@@ -804,7 +818,9 @@ function Display() {
                                     />
                                     <div className="w-full">Notice Period</div>
                                     <div className="w-full text-end">
-                                      30 days
+                                      {item.notice === null
+                                        ? "30 days"
+                                        : item.notice}
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
@@ -817,7 +833,9 @@ function Display() {
                                       Electrical Unit
                                     </div>
                                     <div className="w-full text-end">
-                                      Available
+                                      {item.electric === null
+                                        ? "Available"
+                                        : item.electric}
                                     </div>
                                   </div>
                                 </div>
