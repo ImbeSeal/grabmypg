@@ -27,6 +27,7 @@ export default function Booking() {
   const [loading, setLoading] = useState(true);
   const [pgs, setPgs] = useState<DocumentData[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [roomSharingFilters, setRoomSharingFilters] = useState<string[]>([]);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -57,12 +58,46 @@ export default function Booking() {
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
+  const handleRoomSharingFilterChange = (filter: string) => {
+    const updatedFilters = roomSharingFilters.includes(filter) ? roomSharingFilters.filter((f) => f !== filter) : [...roomSharingFilters, filter];
+    setRoomSharingFilters(updatedFilters);
+  }
 
   const filteredPgs = pgs.filter(
-    (pg) =>
-      pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (pg) =>{
+      const matchesSearchQuery= pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+      
+      const matchesRoomSharing = roomSharingFilters.length===0 || roomSharingFilters.every(filter=>{
+          let filterIndex;
+
+          switch(filter){
+            case 'single':
+              filterIndex =0;
+              break;
+            case 'double':
+              filterIndex = 1;
+              break;
+            case 'triple': 
+              filterIndex = 2;
+              break;
+            case 'tripleplus':
+              filterIndex = [3,4,5];
+              break;
+            default:
+              filterIndex = -1;
+          }
+
+          if(Array.isArray(filterIndex)){
+            return filterIndex.some(index=>pg.offered[index]);
+          }
+          else{
+            return pg.offered[filterIndex];
+          }
+        })
+        return matchesSearchQuery && matchesRoomSharing;
+      })
+    
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
@@ -132,6 +167,8 @@ export default function Booking() {
                         name="room-sharing-single"
                         id="room-sharing-single"
                         className="w-6 h-6"
+                        onChange={() => handleRoomSharingFilterChange("single")}
+                        checked={roomSharingFilters.includes("single")}
                       />
                     </div>
 
@@ -142,6 +179,8 @@ export default function Booking() {
                         name="room-sharing-double"
                         id="room-sharing-double"
                         className="w-6 h-6"
+                        onChange={()=>handleRoomSharingFilterChange("double")}
+                        checked={roomSharingFilters.includes("double")}
                       />
                     </div>
 
@@ -152,6 +191,8 @@ export default function Booking() {
                         name="room-sharing-triple"
                         id="room-sharing-triple"
                         className="w-6 h-6"
+                        onChange={()=>handleRoomSharingFilterChange("triple")}
+                        checked={roomSharingFilters.includes("triple")}
                       />
                     </div>
 
@@ -162,6 +203,8 @@ export default function Booking() {
                         name="room-sharing-more"
                         id="room-sharing-more"
                         className="w-6 h-6"
+                        onChange={()=>handleRoomSharingFilterChange("tripleplus")}
+                        checked={roomSharingFilters.includes("tripleplus")}
                       />
                     </div>
                   </div>
@@ -190,15 +233,7 @@ export default function Booking() {
                       />
                     </div>
 
-                    <div className="flex flex-row-reverse mr-auto gap-2">
-                      <label htmlFor="gender-non">Not Say</label>
-                      <input
-                        type="checkbox"
-                        name="gender-non"
-                        id="gender-non"
-                        className="w-6 h-6"
-                      />
-                    </div>
+                    
                   </div>
 
                   <hr className="my-8" />
@@ -296,7 +331,7 @@ export default function Booking() {
 
                   <hr className="my-8" /> */}
 
-                  <div className="text-bold mt-4">Security deposit</div>
+                  {/* <div className="text-bold mt-4">Security deposit</div>
                   <div className="mt-4 grid grid-cols-1 gap-4">
                     <div className="flex flex-row-reverse mr-auto gap-2">
                       <label htmlFor="deposit-0.5">15 Days</label>
@@ -337,9 +372,9 @@ export default function Booking() {
                         className="w-6 h-6"
                       />
                     </div>
-                  </div>
+                  </div> */}
 
-                  <hr className="my-8" />
+                  {/* <hr className="my-8" /> */}
                 </form>
               </div>
             </div>
