@@ -72,6 +72,25 @@ interface UserDetails {
   };
   amenities: any;
   desc: string;
+<<<<<<< HEAD
+=======
+  rules: any;
+  secdeposit: string[];
+  notice: string[];
+  locking: string[];
+  electric: any;
+  // amenities: {
+
+  //   single: string[];
+  //   double: string[];
+  //   triple: string[];
+  //   four: string[];
+  //   five: string[];
+  //   six: string[];
+  //   common: string[];
+  // };
+  // Add other fields as needed
+>>>>>>> b3ea1b25c6c1f1de8c2b9130fc383ec60f6945c1
 }
 
 function Display() {
@@ -146,8 +165,8 @@ function Display() {
         icon: guard,
       },
       {
-        name: "Common washrooms",
-        offered: details.amenities[0].common_washroom,
+        name: "Common Washrooms",
+        offered: details.amenities[0].washroom,
         icon: wash,
       },
       {
@@ -171,8 +190,38 @@ function Display() {
         icon: laundry,
       },
       {
-        name: "Attached Washroom",
-        offered: details.amenities[0].attached_washroom,
+        name: "Gyser",
+        offered: details.amenities[0].gyser,
+        icon: wash,
+      },
+      {
+        name: "Water Purifier",
+        offered: details.amenities[0].purifier,
+        icon: wash,
+      },
+      {
+        name: "Inverter",
+        offered: details.amenities[0].inverter,
+        icon: wash,
+      },
+      {
+        name: "Iron",
+        offered: details.amenities[0].iron,
+        icon: wash,
+      },
+      {
+        name: "Common Gym",
+        offered: details.amenities[0].gym,
+        icon: wash,
+      },
+      {
+        name: "Library",
+        offered: details.amenities[0].library,
+        icon: wash,
+      },
+      {
+        name: "Parking",
+        offered: details.amenities[0].parking,
         icon: wash,
       },
     ],
@@ -194,7 +243,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[0],
         icon: fan,
       },
@@ -222,7 +271,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[1],
         icon: fan,
       },
@@ -250,7 +299,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[2],
         icon: fan,
       },
@@ -278,7 +327,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[3],
         icon: fan,
       },
@@ -306,7 +355,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[4],
         icon: fan,
       },
@@ -334,7 +383,7 @@ function Display() {
         icon: ac,
       },
       {
-        name: "Fan",
+        name: "Cooler",
         offered: details.amenities[1].fan[5],
         icon: fan,
       },
@@ -349,22 +398,22 @@ function Display() {
   let rule = [
     {
       name: "No smoking",
-      offered: true,
+      offered: details.rules[0],
       icon: rul1,
     },
     {
       name: "No pets",
-      offered: true,
+      offered: details.rules[1],
       icon: rul2,
     },
     {
       name: "Checkin Time",
-      offered: true,
+      offered: details.rules[2],
       icon: rul3,
     },
     {
       name: "No drinking",
-      offered: true,
+      offered: details.rules[3],
       icon: rul4,
     },
   ];
@@ -390,10 +439,10 @@ function Display() {
       label: "Single Sharing",
       price: Number(details.price[0]),
       amenities: amenities_list[1],
-      secdeposit: secdeposit[0],
-      locking: locking[0],
-      notice: notice[0],
-      electric: electric[0],
+      secdeposit: details.secdeposit[0],
+      locking: details.locking[0],
+      notice: details.notice[0],
+      electric: details.electric[0],
     },
     {
       id: "double",
@@ -402,10 +451,10 @@ function Display() {
       label: "Double Sharing",
       price: Number(details.price[1]),
       amenities: amenities_list[2],
-      secdeposit: secdeposit[1],
-      locking: locking[1],
-      notice: notice[1],
-      electric: electric[1],
+      secdeposit: details.secdeposit[1],
+      locking: details.locking[1],
+      notice: details.notice[1],
+      electric: details.electric[1],
     },
     {
       id: "triple",
@@ -414,10 +463,10 @@ function Display() {
       label: "Triple Sharing",
       price: Number(details.price[2]),
       amenities: amenities_list[3],
-      secdeposit: secdeposit[2],
-      locking: locking[2],
-      notice: notice[2],
-      electric: electric[2],
+      secdeposit: details.secdeposit[2],
+      locking: details.locking[2],
+      notice: details.notice[2],
+      electric: details.electric[2],
     },
     {
       id: "four",
@@ -426,10 +475,10 @@ function Display() {
       label: "Four Sharing",
       price: Number(details.price[3]),
       amenities: amenities_list[4],
-      secdeposit: secdeposit[3],
-      locking: locking[3],
-      notice: notice[3],
-      electric: electric[3],
+      secdeposit: details.secdeposit[3],
+      locking: details.locking[3],
+      notice: details.notice[3],
+      electric: details.electric[3],
     },
     {
       id: "five",
@@ -438,10 +487,10 @@ function Display() {
       label: "Five Sharing",
       price: Number(details.price[4]),
       amenities: amenities_list[5],
-      secdeposit: secdeposit[4],
-      locking: locking[4],
-      notice: notice[4],
-      electric: electric[4],
+      secdeposit: details.secdeposit[4],
+      locking: details.locking[4],
+      notice: details.notice[4],
+      electric: details.electric[4],
     },
     {
       id: "six",
@@ -450,10 +499,10 @@ function Display() {
       label: "Six Sharing",
       price: Number(details.price[5]),
       amenities: amenities_list[6],
-      secdeposit: secdeposit[5],
-      locking: locking[5],
-      notice: notice[5],
-      electric: electric[5],
+      secdeposit: details.secdeposit[5],
+      locking: details.locking[5],
+      notice: details.notice[5],
+      electric: details.electric[5],
     },
   ];
 
@@ -795,7 +844,7 @@ function Display() {
                                     <div className="w-full text-end">
                                       {item.locking === null
                                         ? "Not Found"
-                                        : item.locking}
+                                        : item.locking+ " days(s)"}
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
@@ -808,7 +857,7 @@ function Display() {
                                     <div className="w-full text-end">
                                       {item.notice === null
                                         ? "30 days"
-                                        : item.notice}
+                                        : item.notice + " day(s)"}
                                     </div>
                                   </div>
                                   <div className="flex flex-row">
@@ -821,9 +870,9 @@ function Display() {
                                       Electrical Unit
                                     </div>
                                     <div className="w-full text-end">
-                                      {item.electric === null
-                                        ? "Available"
-                                        : item.electric}
+                                      {item.electric == 1
+                                        ? "Offered"
+                                        : "Not offered"}
                                     </div>
                                   </div>
                                 </div>
