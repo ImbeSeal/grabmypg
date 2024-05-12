@@ -672,9 +672,9 @@ function Display() {
                   </div>
                   <div className="grid grid-cols-2">
                     <span className="text-center mx-auto text-xs">
-                      <button className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-[#2e5355]  duration-400">
+                      <Button className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-[#2e5355]  duration-400">
                         Schedule meeting
-                      </button>
+                      </Button>
                     </span>
                     <span className="text-center mx-auto text-xs">
                       <Dropdown closeOnSelect={false}>

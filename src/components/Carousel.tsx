@@ -129,8 +129,8 @@ export default function Carousel({ images, type }: CarouselProps) {
                     ? "h-1 w-6 bg-gray-700 rounded-full mx-2 mb-2 cursor-pointer"
                     : "h-1 w-6 bg-gray-400 rounded-full mx-2 mb-2 cursor-pointer hover:bg-[#2e5355]"
                   : index === currentSlide
-                  ? "h-1 w-6 bg-gray-400 rounded-full mx-2 mb-2 cursor-pointer hover:bg-[#2e5355]"
-                  : "h-1 w-6 bg-gray-700 rounded-full mx-2 mb-2 cursor-pointer"
+                  ? "h-1 w-6 bg-gray-400 rounded-full mx-2 mb-2 cursor-pointer "
+                  : "h-1 w-6 bg-gray-700 rounded-full mx-2 mb-2 cursor-pointer hover:bg-slate-400"
               }
               key={index}
               onClick={() => {
