@@ -28,6 +28,8 @@ export default function Booking() {
   const [pgs, setPgs] = useState<DocumentData[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [roomSharingFilters, setRoomSharingFilters] = useState<string[]>([]);
+  const [selectedFoodType, setSelectedFoodType] = useState<string>("");
+  const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
   useEffect(() => {
     const getData = async () => {
       try {
@@ -62,42 +64,73 @@ export default function Booking() {
     const updatedFilters = roomSharingFilters.includes(filter) ? roomSharingFilters.filter((f) => f !== filter) : [...roomSharingFilters, filter];
     setRoomSharingFilters(updatedFilters);
   }
+  const handleFoodTypeFilterChange = (foodType: string) => {
+    setSelectedFoodType(prev => prev === foodType ? "" : foodType);
+  };
+
+  const handleGenderFilterChange = (gender: string) => {
+    let updatedGenders;
+    if (selectedGenders.includes(gender)) {
+      updatedGenders = selectedGenders.filter((g) => g !== gender);
+    }
+    else {
+      updatedGenders = [...selectedGenders, gender];
+    }
+    setSelectedGenders(updatedGenders);
+  }
+
 
   const filteredPgs = pgs.filter(
-    (pg) =>{
-      const matchesSearchQuery= pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
-      
-      const matchesRoomSharing = roomSharingFilters.length===0 || roomSharingFilters.every(filter=>{
-          let filterIndex;
+    (pg) => {
+      const matchesSearchQuery = pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
 
-          switch(filter){
-            case 'single':
-              filterIndex =0;
-              break;
-            case 'double':
-              filterIndex = 1;
-              break;
-            case 'triple': 
-              filterIndex = 2;
-              break;
-            case 'tripleplus':
-              filterIndex = [3,4,5];
-              break;
-            default:
-              filterIndex = -1;
-          }
+      const matchesRoomSharing = roomSharingFilters.length === 0 || roomSharingFilters.every(filter => {
+        let filterIndex;
 
-          if(Array.isArray(filterIndex)){
-            return filterIndex.some(index=>pg.offered[index]);
-          }
-          else{
-            return pg.offered[filterIndex];
-          }
-        })
-        return matchesSearchQuery && matchesRoomSharing;
+        switch (filter) {
+          case 'single':
+            filterIndex = 0;
+            break;
+          case 'double':
+            filterIndex = 1;
+            break;
+          case 'triple':
+            filterIndex = 2;
+            break;
+          case 'tripleplus':
+            filterIndex = [3, 4, 5];
+            break;
+          default:
+            filterIndex = -1;
+        }
+
+        if (Array.isArray(filterIndex)) {
+          return filterIndex.some(index => pg.offered[index]);
+        }
+        else {
+          return pg.offered[filterIndex];
+        }
       })
-    
+      const matchesFoodType =
+        selectedFoodType === "" || pg.food === selectedFoodType;
+
+      const matchesGender = () => {
+        if (selectedGenders.length === 0) return true;
+        
+        if (selectedGenders.includes("Male")) {
+          if (pg.genders === "Male" || pg.genders === "Male/Female") return true;
+        }
+
+        if (selectedGenders.includes("Female")) {
+          if (pg.genders === "Female" || pg.genders === "Male/Female") return true;
+        }
+        return false;
+      }
+
+      return matchesSearchQuery && matchesRoomSharing && matchesFoodType && matchesGender;
+    })
+
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
       <div className="bg-[#F0F0F0]  max-w-[1440px]">
@@ -179,7 +212,7 @@ export default function Booking() {
                         name="room-sharing-double"
                         id="room-sharing-double"
                         className="w-6 h-6"
-                        onChange={()=>handleRoomSharingFilterChange("double")}
+                        onChange={() => handleRoomSharingFilterChange("double")}
                         checked={roomSharingFilters.includes("double")}
                       />
                     </div>
@@ -191,7 +224,7 @@ export default function Booking() {
                         name="room-sharing-triple"
                         id="room-sharing-triple"
                         className="w-6 h-6"
-                        onChange={()=>handleRoomSharingFilterChange("triple")}
+                        onChange={() => handleRoomSharingFilterChange("triple")}
                         checked={roomSharingFilters.includes("triple")}
                       />
                     </div>
@@ -203,7 +236,7 @@ export default function Booking() {
                         name="room-sharing-more"
                         id="room-sharing-more"
                         className="w-6 h-6"
-                        onChange={()=>handleRoomSharingFilterChange("tripleplus")}
+                        onChange={() => handleRoomSharingFilterChange("tripleplus")}
                         checked={roomSharingFilters.includes("tripleplus")}
                       />
                     </div>
@@ -220,6 +253,8 @@ export default function Booking() {
                         name="gender-mal"
                         id="gender-mal"
                         className="w-6 h-6"
+                        onChange={() => handleGenderFilterChange("Male")}
+                        checked={selectedGenders.includes("Male")}
                       />
                     </div>
 
@@ -230,10 +265,12 @@ export default function Booking() {
                         name="gender-fem"
                         id="gender-fem"
                         className="w-6 h-6"
+                        onChange={() => handleGenderFilterChange("Female")}
+                        checked={selectedGenders.includes("Female")}
                       />
                     </div>
 
-                    
+
                   </div>
 
                   <hr className="my-8" />
@@ -241,12 +278,14 @@ export default function Booking() {
                   <div className="text-bold mt-4"> Select food type</div>
                   <div className="mt-4 grid grid-cols-1 gap-4">
                     <div className="flex flex-row-reverse mr-auto gap-2">
-                      <label htmlFor="food-non">Non Veg</label>
+                      <label htmlFor="food-non">Non-Veg</label>
                       <input
                         type="checkbox"
-                        name="food-non"
+                        name="food-type"
                         id="food-non"
                         className="w-6 h-6"
+                        onChange={() => handleFoodTypeFilterChange("Non-Veg")}
+                        checked={selectedFoodType === "Non-Veg"}
                       />
                     </div>
 
@@ -254,31 +293,13 @@ export default function Booking() {
                       <label htmlFor="food-veg">Veg</label>
                       <input
                         type="checkbox"
-                        name="food-veg"
+                        name="food-type"
                         id="food-veg"
                         className="w-6 h-6"
+                        onChange={() => handleFoodTypeFilterChange("Veg")}
+                        checked={selectedFoodType === "Veg"}
                       />
                     </div>
-
-                    {/* <div className="flex flex-row-reverse mr-auto gap-2">
-                      <label htmlFor="food-both">Both</label>
-                      <input
-                        type="checkbox"
-                        name="food-both"
-                        id="food-both"
-                        className="w-6 h-6"
-                      />
-                    </div>
-
-                    <div className="flex flex-row-reverse mr-auto gap-2">
-                      <label htmlFor="food-jain">Jain</label>
-                      <input
-                        type="checkbox"
-                        name="food-jain"
-                        id="food-jain"
-                        className="w-6 h-6"
-                      />
-                    </div> */}
                   </div>
 
                   <hr className="my-8" />
