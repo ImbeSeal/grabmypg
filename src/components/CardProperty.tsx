@@ -86,9 +86,9 @@ export function PropCard({
         <Image
           src={propImages[0]}
           alt=".."
-          className="rounded-[2rem]"
-          width={10000}
-          height={10000}
+          className="rounded-t-[2rem] bg-[#2e5355]"
+          layout={"fill"}
+          objectFit="cover"
         />
         <div className="absolute ml-2 top-12 left-12">
           {/* Name  */}
@@ -184,7 +184,8 @@ export function PropCard({
           <div className="flex flex-col-reverse">
             <div className=" mt-auto text-end ">
               {/* Input for cost */}
-              Starts from <span className="font-bold">Rs {price}</span> <span className="text-xs font-normal">/month</span>
+              Starts from <span className="font-bold">Rs {price}</span>{" "}
+              <span className="text-xs font-normal">/month</span>
             </div>
           </div>
         </div>

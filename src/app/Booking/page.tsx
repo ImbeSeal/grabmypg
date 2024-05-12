@@ -373,7 +373,7 @@ export default function Booking() {
             </div>
           </div>
         )}
-        <div className="w-full">
+        <div className="w-full mt-[8rem]">
           <Footer />
         </div>
       </div>

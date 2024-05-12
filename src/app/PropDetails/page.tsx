@@ -45,6 +45,13 @@ import {
   rul2,
   rul3,
   rul4,
+  heater,
+  waterpurifier,
+  inverter,
+  iron,
+  gym,
+  library,
+  parking,
 } from "../assets/icons/propertypage/index";
 
 import Carousel from "@/components/Carousel";
@@ -72,8 +79,6 @@ interface UserDetails {
   };
   amenities: any;
   desc: string;
-<<<<<<< HEAD
-=======
   rules: any;
   secdeposit: string[];
   notice: string[];
@@ -90,7 +95,6 @@ interface UserDetails {
   //   common: string[];
   // };
   // Add other fields as needed
->>>>>>> b3ea1b25c6c1f1de8c2b9130fc383ec60f6945c1
 }
 
 function Display() {
@@ -192,37 +196,37 @@ function Display() {
       {
         name: "Gyser",
         offered: details.amenities[0].gyser,
-        icon: wash,
+        icon: heater,
       },
       {
         name: "Water Purifier",
         offered: details.amenities[0].purifier,
-        icon: wash,
+        icon: waterpurifier,
       },
       {
         name: "Inverter",
         offered: details.amenities[0].inverter,
-        icon: wash,
+        icon: inverter,
       },
       {
         name: "Iron",
         offered: details.amenities[0].iron,
-        icon: wash,
+        icon: iron,
       },
       {
         name: "Common Gym",
         offered: details.amenities[0].gym,
-        icon: wash,
+        icon: gym,
       },
       {
         name: "Library",
         offered: details.amenities[0].library,
-        icon: wash,
+        icon: library,
       },
       {
         name: "Parking",
         offered: details.amenities[0].parking,
-        icon: wash,
+        icon: parking,
       },
     ],
     [
@@ -844,7 +848,7 @@ function Display() {
                                     <div className="w-full text-end">
                                       {item.locking === null
                                         ? "Not Found"
-                                        : item.locking+ " days(s)"}
+                                        : item.locking + " days(s)"}
                                     </div>
                                   </div>
                                   <div className="flex flex-row">

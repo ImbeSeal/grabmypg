@@ -5,13 +5,20 @@ import rent from "./renticon.svg";
 import note from "./noticeperiod.svg";
 import elec from "./electricunit.svg";
 import guard from "./guard.png";
+import heater from "./heater.svg";
+import waterpurifier from "./waterpurifier.svg";
+import inverter from "./inverter.png";
+import iron from "./iron.svg";
+import gym from "./gym.png";
+import library from "./library.svg";
+import parking from "./parking.svg";
 
 import wash from "./washroom.svg";
 import table from "./table.svg";
 import ac from "./ac.svg";
 import fan from "./fan.svg";
 import wardrobe from "./illust58-2687.jpg";
-import laundry from "./washing_machine.svg";
+import laundry from "./washing_machine.png";
 import fridge from "./fridge.png";
 import wifi from "./wifi.svg";
 import cctv from "./cctv.png";
@@ -30,6 +37,13 @@ export {
   note,
   elec,
   guard,
+  heater,
+  waterpurifier,
+  inverter,
+  iron,
+  gym,
+  library,
+  parking,
   wash,
   table,
   ac,
