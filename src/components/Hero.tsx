@@ -166,9 +166,12 @@ export default function Hero() {
                 </div>
               </div>
 
-              <button className="rounded-full px-10 py-2 mx-10 bg-black">
-                <Link href={"/Booking"}>Start Booking</Link>
-              </button>
+              <Link
+                href={"/Booking"}
+                className="rounded-full px-10 py-2 mx-10 bg-black"
+              >
+                Start Booking
+              </Link>
             </div>
           </div>
         </div>
@@ -189,9 +192,12 @@ export default function Hero() {
                 Join GrabmyPG!
               </div>
 
-              <button className="w-full rounded-full px-10 py-2 bg-[#568B6C]">
-                <Link href={"/Booking"}>Start Booking</Link>
-              </button>
+              <Link
+                href={"/Booking"}
+                className="px-[7rem] ml-1 rounded-full text-center py-2 bg-[#568B6C] "
+              >
+                Start Booking
+              </Link>
             </div>
           </div>
         </div>
