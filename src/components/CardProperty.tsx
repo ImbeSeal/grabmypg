@@ -141,12 +141,9 @@ export function PropCard({
           <div className="grid grid-cols-2 gap-4 mt-4 mb-2">
             <Dropdown>
               <DropdownTrigger>
-                <Button
-                  variant="bordered"
-                  className="p-1 rounded-[10px] bg-[#a8c1fc] font-semibold"
-                >
+                <button className="p-1 rounded-[10px] bg-[#a8c1fc] font-semibold focus:border-0">
                   Contact Owner
-                </Button>
+                </button>
               </DropdownTrigger>
               <DropdownMenu
                 aria-label="Static Actions"
@@ -167,19 +164,18 @@ export function PropCard({
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <button className="p-1 rounded-[10px] bg-[#96E98B] font-semibold">
-              <Link
-                href={{
-                  pathname: "/PropDetails",
-                  query: {
-                    id: id,
-                  },
-                }}
-                id={id}
-              >
-                More Details
-              </Link>
-            </button>
+            <Link
+              href={{
+                pathname: "/PropDetails",
+                query: {
+                  id: id,
+                },
+              }}
+              id={id}
+              className="p-1 rounded-[10px] bg-[#96E98B] font-semibold text-center"
+            >
+              More Details
+            </Link>
           </div>
           <div className="flex flex-col-reverse">
             <div className=" mt-auto text-end ">
