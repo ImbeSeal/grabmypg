@@ -14,16 +14,17 @@ import Accordion from "@/components/Accordion";
 
 import landlordjp from "../assets/landlord.jpg";
 
-import cardimg1 from "../assets/icons/card-ll-1.png";
-import cardimg2 from "../assets/icons/card-ll-2.png";
-import cardimg3 from "../assets/icons/card-ll-3.png";
-import cardimg4 from "../assets/icons/card-ll-4.png";
-
-import timeimg1 from "../assets/icons/timeline-1.png";
-import timeimg2 from "../assets/icons/timeline-2.png";
-import timeimg3 from "../assets/icons/timeline-3.png";
-import timeimg4 from "../assets/icons/timeline-4.png";
-import timeimg5 from "../assets/icons/timeline-5.png";
+import {
+  cardimg1,
+  cardimg2,
+  cardimg3,
+  cardimg4,
+  timeimg1,
+  timeimg2,
+  timeimg3,
+  timeimg4,
+  timeimg5,
+} from "../assets/icons/index";
 
 export default function Landlord() {
   const initialFormData = {

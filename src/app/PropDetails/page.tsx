@@ -23,30 +23,29 @@ import { useState } from "react";
 import { useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-import bed from "../assets/icons/propertypage/bed.svg";
-import lock from "../assets/icons/propertypage/lockingperiod.svg";
-import safe from "../assets/icons/propertypage/securitydeposit.svg";
-import rent from "../assets/icons/propertypage/renticon.svg";
-import note from "../assets/icons/propertypage/noticeperiod.svg";
-import elec from "../assets/icons/propertypage/electricunit.svg";
-import guard from "../assets/icons/propertypage/guard.png";
-
-import wash from "../assets/icons/propertypage/washroom.svg";
-import table from "../assets/icons/propertypage/table.svg";
-import ac from "../assets/icons/propertypage/ac.svg";
-import fan from "../assets/icons/propertypage/fan.svg";
-import wardrobe from "../assets/icons/propertypage/illust58-2687.jpg";
-import laundry from "../assets/icons/propertypage/washing_machine.svg";
-import fridge from "../assets/icons/propertypage/fridge.png";
-import wifi from "../assets/icons/propertypage/wifi.svg";
-import cctv from "../assets/icons/propertypage/cctv.png";
-import tv from "../assets/icons/propertypage/tv.svg";
-
-import rul1 from "../assets/icons/propertypage/nosmoke.svg";
-import rul2 from "../assets/icons/propertypage/nopets.svg";
-import rul3 from "../assets/icons/propertypage/checkin.svg";
-import rul4 from "../assets/icons/propertypage/nodrink.svg";
+import {
+  bed,
+  lock,
+  safe,
+  rent,
+  note,
+  elec,
+  guard,
+  wash,
+  table,
+  ac,
+  fan,
+  wardrobe,
+  laundry,
+  fridge,
+  wifi,
+  cctv,
+  tv,
+  rul1,
+  rul2,
+  rul3,
+  rul4,
+} from "../assets/icons/propertypage/index";
 
 import Carousel from "@/components/Carousel";
 
@@ -57,9 +56,6 @@ const Loader = dynamic(
     ssr: false,
   }
 );
-
-import hostel2 from "../assets/hostel-bg.jpg";
-import { activate } from "firebase/remote-config";
 
 interface UserDetails {
   images: string[]; // Assuming images is an array of strings
@@ -76,17 +72,6 @@ interface UserDetails {
   };
   amenities: any;
   desc: string;
-  // amenities: {
-
-  //   single: string[];
-  //   double: string[];
-  //   triple: string[];
-  //   four: string[];
-  //   five: string[];
-  //   six: string[];
-  //   common: string[];
-  // };
-  // Add other fields as needed
 }
 
 function Display() {
@@ -141,10 +126,7 @@ function Display() {
   if (!details) {
     return <p>Details not found.</p>;
   }
-  //These are the data going in the tabs for each type of Room; The offered variable an be a number eather 0 or 1 or can be bool: 0 is offered, 1 is not;
 
-  //Need to update details.price to be Array[Number]: 0 1 2 3;
-  //amenities is Array[Array[String]] 0 is general properties, 1, 2, 3, 4 are respective beds
   let amenities_list = [
     [
       //common amenities
@@ -403,7 +385,7 @@ function Display() {
   let tabs = [
     {
       id: "single",
-      offered: details.offered[0],
+      offered: Number(details.offered[0]),
       roommates: "1",
       label: "Single Sharing",
       price: Number(details.price[0]),
@@ -416,7 +398,7 @@ function Display() {
     {
       id: "double",
       roommates: "2",
-      offered: details.offered[1],
+      offered: Number(details.offered[1]),
       label: "Double Sharing",
       price: Number(details.price[1]),
       amenities: amenities_list[2],
@@ -428,7 +410,7 @@ function Display() {
     {
       id: "triple",
       roommates: "3",
-      offered: details.offered[2],
+      offered: Number(details.offered[2]),
       label: "Triple Sharing",
       price: Number(details.price[2]),
       amenities: amenities_list[3],
@@ -477,19 +459,21 @@ function Display() {
 
   if (full === true)
     return (
-      <div className="relative h-screen ">
-        <div className="bg-slate-900 ">
-          <span className="absolute top-0 text-right px-4 w-full z-20">
+      <div className="relative ">
+        <div className="bg-slate-900 h-screen">
+          <br />
+          <span className="absolute top-1 text-right px-4 w-full z-20 my-auto">
             <button
               type="button"
-              className="z-1 rounded-full bg-white text-slate-900 px-4 py-2 my-4 text-sm cursor-pointer hover:bg-blue-600"
+              className="z-1 rounded-full bg-white text-slate-900 w-10 h-10  my-4 text-lg cursor-pointer hover:bg-[#2e5355] duration-400 font-bold"
               onClick={handleFullScreen}
             >
-              Go back
+              X
             </button>
           </span>
-
-          <Carousel images={details.images} type={full} />
+          <span className="my-auto">
+            <Carousel images={details.images} type={full} />
+          </span>
         </div>
       </div>
     );
@@ -510,7 +494,7 @@ function Display() {
                 <span className="absolute bottom-10 text-center w-full z-20">
                   <button
                     type="button"
-                    className="rounded-full bg-slate-900 text-white px-4 py-2 my-4 text-sm cursor-pointer hover:bg-blue-600"
+                    className="rounded-full bg-slate-900 text-white px-4 py-2 my-4 text-sm cursor-pointer hover:bg-[#2e5355] duration-400"
                     onClick={handleFullScreen}
                   >
                     View Full Images
@@ -601,7 +585,7 @@ function Display() {
                               <Image
                                 src={item.icon}
                                 alt=".."
-                                className="ml-2"
+                                className="ml-2 w-10 h-10"
                               />
                             </span>
                           </li>
@@ -688,7 +672,7 @@ function Display() {
                     Rooms offered by this property
                   </div>
                   <div className="flex w-full flex-col ">
-                    <div className="border-1 border-black" />
+                    <hr className="border-black border-1" />
                     <Tabs aria-label="Dynamic tabs" items={tabs}>
                       {(item) => (
                         <Tab
@@ -696,18 +680,22 @@ function Display() {
                           value={item.id}
                           title={item.label}
                           className={
-                            item.offered == 1
-                              ? "text-xs focus:font-bold focus:bg-slate-200"
-                              : "hidden"
+                            item.offered === 1
+                              ? "text-xs focus:font-bold focus:bg-slate-200 "
+                              : "w-0 h-0 hidden"
                           }
                         >
-                          <div className="border-1 border-black" />
+                          <hr className="border-black border-1" />
                           <Card>
                             <CardBody className="p-4 gap-4">
                               {/* {item.content} */}
 
                               <div className="flex flex-row ">
-                                <Image src={bed} alt="..." className="mr-3" />
+                                <Image
+                                  src={bed}
+                                  alt="..."
+                                  className="mr-3 w-8 h-8"
+                                />
                                 <span className="text-xl font-semibold flex-1/2">
                                   {item.label}
                                 </span>

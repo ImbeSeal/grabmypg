@@ -9,11 +9,14 @@ import img1 from "../app/assets/s2-1.jpg";
 import img2 from "../app/assets/s2-2.jpg";
 import img3 from "../app/assets/s2-3.png";
 import img4 from "../app/assets/s2-4.jpg";
-import cardimg1 from "../app/assets/icons/card-1.png";
-import cardimg2 from "../app/assets/icons/card-2.png";
-import cardimg3 from "../app/assets/icons/card-3.png";
-import cardimg4 from "../app/assets/icons/card-4.png";
-import search from "../app/assets/icons/searchbar.png";
+
+import {
+  imgcard1,
+  imgcard2,
+  imgcard3,
+  imgcard4,
+  search,
+} from "../app/assets/icons/index";
 
 import Card from "./Card";
 
@@ -113,14 +116,14 @@ export default function Hero() {
         <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
-              image={cardimg1}
+              image={imgcard1}
               head={`Flexible living`}
               body={`Stay as Long or as little as you need with month-to-month contracts`}
             />
           </div>
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
-              image={cardimg2}
+              image={imgcard2}
               head={`Move-in ready`}
               body={`Ready to move in with everything you need`}
             />
@@ -128,7 +131,7 @@ export default function Hero() {
 
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
-              image={cardimg3}
+              image={imgcard3}
               head={`High-speed Wi-Fi`}
               body={`Best in className internet speeds suitable for working 
             from home`}
@@ -137,7 +140,7 @@ export default function Hero() {
 
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
-              image={cardimg4}
+              image={imgcard4}
               head={`24/7 support`}
               body={`On hand team for any issues you have`}
             />
