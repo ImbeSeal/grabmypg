@@ -98,7 +98,7 @@ interface UserDetails {
 }
 
 function Display() {
-  // extra variables to be added:
+  const [selected, setSelected] = useState("dummy");
 
   const [full, setFull] = useState(false);
   const handleFullScreen = () => {
@@ -437,6 +437,17 @@ function Display() {
   //End of required variables;
   let tabs = [
     {
+      id: "dummy",
+      offered: 1,
+      label: "",
+      price: 0,
+      amenities: [],
+      secdeposit: "",
+      locking: "",
+      notice: "",
+      electric: "",
+    },
+    {
       id: "single",
       offered: Number(details.offered[0]),
       roommates: "1",
@@ -724,169 +735,195 @@ function Display() {
                   <div className="text-2xl font-bold mb-2">
                     Rooms offered by this property
                   </div>
-                  <div className="flex w-full flex-col ">
+                  <div className="flex w-[full] h-[36rem] flex-col ">
                     <hr className="border-black border-1" />
-                    <Tabs aria-label="Dynamic tabs" items={tabs}>
-                      {(item) => (
-                        <Tab
-                          key={item.id}
-                          value={item.id}
-                          title={item.label}
-                          className={
-                            item.offered === 1
-                              ? "text-xs focus:font-bold focus:bg-slate-200 "
-                              : "w-0 h-0 hidden"
-                          }
-                        >
-                          <hr className="border-black border-1" />
-                          <Card>
-                            <CardBody className="p-4 gap-4">
-                              {/* {item.content} */}
+                    <Tabs
+                      disabledKeys={["dummy"]}
+                      aria-label="Options"
+                      selectedKey={selected}
+                      onSelectionChange={(keys) => setSelected(keys as string)}
+                      items={tabs}
+                    >
+                      {(item) =>
+                        item.id === "dummy" ? (
+                          <Tab
+                            key={item.id}
+                            title="Offered:"
+                            className="text-xs cursor-default"
+                          >
+                            <hr className="border-black border-1" />
+                            <div className="py-[12rem] text-center font-bold text-xl">
+                              Select a sharing type offered to see details
+                            </div>
+                          </Tab>
+                        ) : item.offered === 1 ? (
+                          <Tab
+                            key={item.id}
+                            title={item.label}
+                            className={
+                              "text-xs font-semibold focus: focus:bg-slate-200"
+                            }
+                          >
+                            <hr className="border-black border-1" />
+                            <Card>
+                              <CardBody className="p-4 gap-4">
+                                {/* {item.content} */}
 
-                              <div className="flex flex-row ">
-                                <Image
-                                  src={bed}
-                                  alt="..."
-                                  className="mr-3 w-8 h-8"
-                                />
-                                <span className="text-xl font-semibold flex-1/2">
-                                  {item.label}
-                                </span>
-
-                                <span className="flex flex-1 flex-row-reverse ">
-                                  <span className="text-lg text-green-500 ">
-                                    Rs. {item.price} / Bed
+                                <div className="flex flex-row ">
+                                  <Image
+                                    src={bed}
+                                    alt="..."
+                                    className="mr-3 w-8 h-8"
+                                  />
+                                  <span className="text-xl font-semibold flex-1/2">
+                                    {item.label}
                                   </span>
-                                  {/* <span className="p-2">starts from</span> */}
-                                </span>
-                              </div>
 
-                              <hr />
-                              <div className="text-medium space-y-2">
-                                <div className="font-semibold ">
-                                  Room Amenities
-                                </div>
-
-                                <span>
-                                  <ul className="flex flex-row flex-wrap text-xs mt-2 gap-3">
-                                    {item.amenities.length === 0 ? (
-                                      <li className="">Not listed</li>
-                                    ) : (
-                                      item.amenities.map((amenity, index) => {
-                                        index = index + 1;
-                                        return (
-                                          <li
-                                            key={index}
-                                            className={
-                                              amenity.offered
-                                                ? "flex flex-row w-[30%] "
-                                                : "hidden"
-                                            }
-                                          >
-                                            <span>
-                                              <Image
-                                                src={amenity.icon}
-                                                alt="..."
-                                                className="w-5 h-5 mr-2"
-                                              />
-                                            </span>
-                                            <span>{amenity.name}</span>
-                                          </li>
-                                        );
-                                      })
-                                    )}
-                                  </ul>
-                                </span>
-                              </div>
-
-                              <hr />
-
-                              <span className="text-xl text-green-500">
-                                {item.roommates} Tenants staying
-                              </span>
-                              <hr />
-
-                              <div className="rounded-xl my-4 grid-cols-1">
-                                <div className="bg-blue-100 w-full px-2 rounded-t-xl text-lg font-semibold">
-                                  Renting terms
-                                </div>
-                                <div className="space-y-4 p-4">
-                                  <div className="flex flex-row">
-                                    <Image
-                                      src={rent}
-                                      alt=".."
-                                      className="w-[1rem] h-[1rem] mr-2"
-                                    />
-                                    <div className="w-full">Rent</div>
-                                    <div className="w-full text-end">
-                                      Rs {item.price - 1000} to{" "}
-                                      {item.price + 1000}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-row">
-                                    <Image
-                                      src={safe}
-                                      alt=".."
-                                      className="w-[1rem] h-[1rem] mr-2"
-                                    />
-                                    <div className="w-full">
-                                      Security Deposit
-                                    </div>
-                                    <div className="w-full text-end">
-                                      {item.secdeposit === null
-                                        ? "Not Found"
-                                        : "Rs " + item.secdeposit}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-row">
-                                    <Image
-                                      src={lock}
-                                      alt=".."
-                                      className="w-[1rem] h-[1rem] mr-2"
-                                    />
-                                    <div className="w-full">Locking Period</div>
-                                    <div className="w-full text-end">
-                                      {item.locking === null
-                                        ? "Not Found"
-                                        : item.locking + " days(s)"}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-row">
-                                    <Image
-                                      src={note}
-                                      alt=".."
-                                      className="w-[1rem] h-[1rem] mr-2"
-                                    />
-                                    <div className="w-full">Notice Period</div>
-                                    <div className="w-full text-end">
-                                      {item.notice === null
-                                        ? "30 days"
-                                        : item.notice + " day(s)"}
-                                    </div>
-                                  </div>
-                                  <div className="flex flex-row">
-                                    <Image
-                                      src={elec}
-                                      alt=".."
-                                      className="w-[1rem] h-[1rem] mr-2"
-                                    />
-                                    <div className="w-full">
-                                      Electrical Unit
-                                    </div>
-                                    <div className="w-full text-end">
-                                      {item.electric == 1
-                                        ? "Offered"
-                                        : "Not offered"}
-                                    </div>
-                                  </div>
+                                  <span className="flex flex-1 flex-row-reverse ">
+                                    <span className="text-lg text-green-500 ">
+                                      Rs. {item.price} / Bed
+                                    </span>
+                                    {/* <span className="p-2">starts from</span> */}
+                                  </span>
                                 </div>
 
                                 <hr />
-                              </div>
-                            </CardBody>
-                          </Card>
-                        </Tab>
-                      )}
+                                <div className="text-medium space-y-2">
+                                  <div className="font-semibold ">
+                                    Room Amenities
+                                  </div>
+
+                                  <span>
+                                    <ul className="flex flex-row flex-wrap text-xs mt-2 gap-3">
+                                      {item.amenities.length === 0 ? (
+                                        <li className="">Not listed</li>
+                                      ) : (
+                                        item.amenities.map((amenity, index) => {
+                                          index = index + 1;
+                                          return (
+                                            <li
+                                              key={index}
+                                              className={
+                                                amenity.offered
+                                                  ? "flex flex-row w-[30%] "
+                                                  : "hidden"
+                                              }
+                                            >
+                                              <span>
+                                                <Image
+                                                  src={amenity.icon}
+                                                  alt="..."
+                                                  className="w-5 h-5 mr-2"
+                                                />
+                                              </span>
+                                              <span>{amenity.name}</span>
+                                            </li>
+                                          );
+                                        })
+                                      )}
+                                    </ul>
+                                  </span>
+                                </div>
+
+                                <hr />
+
+                                <span className="text-xl text-green-500">
+                                  {item.roommates} Tenants staying
+                                </span>
+                                <hr />
+
+                                <div className="rounded-xl my-4 grid-cols-1">
+                                  <div className="bg-blue-100 w-full px-2 rounded-t-xl text-lg font-semibold">
+                                    Renting terms
+                                  </div>
+                                  <div className="space-y-4 p-4">
+                                    <div className="flex flex-row">
+                                      <Image
+                                        src={rent}
+                                        alt=".."
+                                        className="w-[1rem] h-[1rem] mr-2"
+                                      />
+                                      <div className="w-full">Rent</div>
+                                      <div className="w-full text-end">
+                                        Rs {item.price - 1000} to{" "}
+                                        {item.price + 1000}
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-row">
+                                      <Image
+                                        src={safe}
+                                        alt=".."
+                                        className="w-[1rem] h-[1rem] mr-2"
+                                      />
+                                      <div className="w-full">
+                                        Security Deposit
+                                      </div>
+                                      <div className="w-full text-end">
+                                        {item.secdeposit === null
+                                          ? "Not Found"
+                                          : "Rs " + item.secdeposit}
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-row">
+                                      <Image
+                                        src={lock}
+                                        alt=".."
+                                        className="w-[1rem] h-[1rem] mr-2"
+                                      />
+                                      <div className="w-full">
+                                        Locking Period
+                                      </div>
+                                      <div className="w-full text-end">
+                                        {item.locking === null
+                                          ? "Not Found"
+                                          : item.locking + " days(s)"}
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-row">
+                                      <Image
+                                        src={note}
+                                        alt=".."
+                                        className="w-[1rem] h-[1rem] mr-2"
+                                      />
+                                      <div className="w-full">
+                                        Notice Period
+                                      </div>
+                                      <div className="w-full text-end">
+                                        {item.notice === null
+                                          ? "30 days"
+                                          : item.notice + " day(s)"}
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-row">
+                                      <Image
+                                        src={elec}
+                                        alt=".."
+                                        className="w-[1rem] h-[1rem] mr-2"
+                                      />
+                                      <div className="w-full">
+                                        Electrical Unit
+                                      </div>
+                                      <div className="w-full text-end">
+                                        {item.electric == 1
+                                          ? "Offered"
+                                          : "Not offered"}
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <hr />
+                                </div>
+                              </CardBody>
+                            </Card>
+                          </Tab>
+                        ) : (
+                          <Tab
+                            key={item.id}
+                            title=""
+                            className="hidden w-full"
+                          ></Tab>
+                        )
+                      }
                     </Tabs>
                   </div>
                 </div>
