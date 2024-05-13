@@ -8,6 +8,12 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+@layer base{
+  .font-outline-2{
+    -webkit-text-stroke: 1px black;
+  }
+}
+
 /* html {
   font-size: 0.3rem;
   @screen sm {
