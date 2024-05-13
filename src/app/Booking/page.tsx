@@ -31,22 +31,15 @@ export default function Booking() {
   useEffect(() => {
     const getData = async () => {
       try {
-        const startTime = new Date(); // Record start time
+
 
         const querySnapshot = await getDocs(collection(db, "PG"));
         const pgData = querySnapshot.docs.map((doc) => doc.data());
         setPgs(pgData);
         // so that loader is displayed for atleast 1 secs
-        const endTime = new Date(); // Record end time
-        const elapsedTime = endTime.getTime() - startTime.getTime(); // Calculate elapsed time
+        // Record end time
 
-        if (elapsedTime < 1000) {
-          setTimeout(() => {
-            setLoading(false);
-          }, 1000 - elapsedTime);
-        } else {
-          setLoading(false);
-        }
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
