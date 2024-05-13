@@ -23,7 +23,6 @@ const Loader = dynamic(
 export default function Booking() {
   //This page will only be used to fill data and using filters
 
-  let amount = 0;
   const [loading, setLoading] = useState(true);
   const [pgs, setPgs] = useState<DocumentData[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -115,18 +114,16 @@ export default function Booking() {
       const matchesFoodType =
         selectedFoodType === "" || pg.food === selectedFoodType;
 
-      const matchesGender = () => {
-        if (selectedGenders.length === 0) return true;
-        
-        if (selectedGenders.includes("Male")) {
-          if (pg.genders === "Male" || pg.genders === "Male/Female") return true;
+      const matchesGender = (() => {
+        if(selectedGenders.length === 0) return true;
+        if(selectedGenders.length === 1) {
+            return pg.genders === selectedGenders[0] || pg.genders === "Male/Female";
         }
-
-        if (selectedGenders.includes("Female")) {
-          if (pg.genders === "Female" || pg.genders === "Male/Female") return true;
+        if(selectedGenders.length === 2) {
+            return true;
         }
         return false;
-      }
+    })();
 
       return matchesSearchQuery && matchesRoomSharing && matchesFoodType && matchesGender;
     })
