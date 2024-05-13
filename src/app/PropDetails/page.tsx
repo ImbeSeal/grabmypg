@@ -567,7 +567,7 @@ function Display() {
               </div>
             </span>
 
-            <span className="p-16 col-span-6 ">
+            <span className="p-16 sm:col-span-6 col-span-12">
               <div className="text-4xl font-bold">{details.title}</div>
               <div className="">{details.addrFull}</div>
               <div className="py-4">
@@ -661,8 +661,8 @@ function Display() {
               </span>
             </span>
 
-            <span className="col-span-6">
-              <div className="p-16">
+            <span className="sm:col-span-6 col-span-12">
+              <div className="p-16 max-w-[70vw] mx-auto">
                 <div className="rounded-2xl bg-white shadow-2xl py-8">
                   <div className="text-4xl text-center font-bold">
                     <span className="text-xl font-normal mr-2">from</span> Rs.{" "}
@@ -681,7 +681,7 @@ function Display() {
                     </div>
                     <div className="">All utilities are included</div>
                   </div>
-                  <div className="grid grid-cols-2">
+                  <div className="flex flex-row">
                     <span className="text-center mx-auto text-xs">
                       <Button className="bg-black text-white rounded-full py-2 px-8 w-52 hover:bg-[#2e5355]  duration-400">
                         Schedule meeting
@@ -730,7 +730,7 @@ function Display() {
                 </div>
               </div>
 
-              <div className="p-16">
+              <div className="p-16 max-w-[70vw] mx-auto">
                 <div className="rounded-2xl bg-white shadow-2xl p-4 border-2 border-black ">
                   <div className="text-2xl font-bold mb-2">
                     Rooms offered by this property

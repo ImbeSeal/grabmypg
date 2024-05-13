@@ -57,8 +57,8 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className="absolute w-[40%] left-[-10.25rem] top-[13rem] bottom-[7rem]">
-              <div className="w-full  flex justify-end m-auto px-5 my-10 rounded-3xl bg-white ">
+            <div className="absolute w-[40vw] left-[-11vw] top-[13rem] bottom-[7rem]">
+              <div className="w-full flex justify-end m-auto px-5 my-10 rounded-3xl bg-white ">
                 <div className="w-3/5 mx-10 my-10 space-y-6">
                   <div className="text-4xl font-bold">
                     Get the Right PG For You
@@ -194,7 +194,7 @@ export default function Hero() {
 
               <Link
                 href={"/Booking"}
-                className="px-[7rem] ml-1 rounded-full text-center py-2 bg-[#568B6C] "
+                className="px-[4vw] ml-2  rounded-full text-center py-2 bg-[#568B6C] "
               >
                 Start Booking
               </Link>

@@ -56,22 +56,22 @@ export default function Contact() {
   };
 
   return (
-    <main className="bg-white bg-opacity-55 text-black flex justify-center">
+    <main className=" text-black flex justify-center">
       <Toaster position="bottom-right" toast-options={{ duration: 3000 }} />
-      <div className="max-w-[1440px] ">
-        <div className="bg-white">
+      <div className="max-w-[1440px] bg-[#F0F0F0] min-h-[100vh] grid gris-cols-1 content-between">
+        <div className="">
           <Navbar />
         </div>
-        <div className="pt-12 bg-[#F0F0F0]">
+        <div className="pt-12">
           <div className="px-32 pt-12 text-5xl font-bold">Contact us</div>
-          <div className="grid grid-cols-2 p-12">
-            <div className="px-16 border-r-[0.25rem] border-white">
+          <div className="grid grid-cols-2  p-12">
+            <div className="px-16 border-r-[0.25rem] border-white max-w-[60vw] ">
               <form className="" onSubmit={handleSubmit}>
-                <legend className="text-xl font-semibold leading-6 text-gray-900 ">
+                <legend className="text-xl font-semibold leading-6 text-gray-900">
                   What would you like to contact us about?
                 </legend>
                 <fieldset>
-                  <div className="mt-4 space-y-2">
+                  <div className="flex flex-col mt-4 space-y-2">
                     <div className="flex items-center gap-x-3">
                       <input
                         id="customer"
@@ -86,7 +86,7 @@ export default function Contact() {
                       />
                       <label
                         htmlFor="customer"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="black w-[24rem] text-sm font-medium leading-6 text-gray-900"
                       >
                         I'm a Customer
                       </label>
@@ -105,18 +105,18 @@ export default function Contact() {
                       />
                       <label
                         htmlFor="landlord"
-                        className="block text-sm font-medium leading-6 text-gray-900"
+                        className="black w-[24rem] text-sm font-medium leading-6 text-gray-900"
                       >
                         I'm a Landlord
                       </label>
                     </div>
                   </div>
 
-                  <div className="mt-6 space-y-4">
+                  <div className="mt-6 space-y-4 flex flex-col">
                     <input
                       type="text"
                       name="name"
-                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="black w-[24rem]  rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Name"
                       value={formData.name}
                       onChange={handleChange}
@@ -124,7 +124,7 @@ export default function Contact() {
                     <input
                       type="email"
                       name="email"
-                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="black w-[24rem] rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Email"
                       value={formData.email}
                       onChange={handleChange}
@@ -132,7 +132,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="phone"
-                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="black w-[24rem] rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Phone number"
                       value={formData.phone}
                       onChange={handleChange}
@@ -140,7 +140,7 @@ export default function Contact() {
                     <input
                       type="text"
                       name="message"
-                      className="block w-2/3 rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
+                      className="black w-[24rem] rounded-md px-6 py-1.5 bg-white text-gray-900 placeholder:text-gray-400"
                       placeholder="Message"
                       value={formData.message}
                       onChange={handleChange}
@@ -164,15 +164,15 @@ export default function Contact() {
                 </button>
               </form>
             </div>
-            <div className="px-16 py-8">
-              <div className="grid grid-cols-2 gap-4 place-content-evenly">
+            <div className="px-16 py-8 w-full ">
+              <div className="grid grid-cols-2 gap-4 place-content-evenly max-w-[50vw] mx-auto">
                 <div className="text-2xl font-bold">For Landlords:</div>
-                <div className="">
+                <div className="text-end">
                   <div className="">supply@Grabmypg.com</div>
                   <div className="">0203 307 4477</div>
                 </div>
                 <div className="text-2xl font-bold">For Maintenance:</div>
-                <div className="">
+                <div className="text-end">
                   <div className="">maintenance@Grabmypg.com</div>
                   <div className="">0203 307 4477</div>
                 </div>
@@ -180,7 +180,9 @@ export default function Contact() {
             </div>
           </div>
         </div>
-        <div className="w-full">
+        <div>{""}</div>
+        <div>{""}</div>
+        <div className="w-full row-start-15">
           <Footer />
         </div>
       </div>
