@@ -43,7 +43,11 @@ export default function Carousel({ images, type }: CarouselProps) {
 
   return (
     <div
-      className={type ? "relative w-full overflow-hidden my-auto" : "relative"}
+      className={
+        type
+          ? "relative w-full overflow-hidden my-auto bg-slate-900"
+          : "relative"
+      }
     >
       <AiOutlineLeft
         onClick={handlePrevSlide}
@@ -61,7 +65,7 @@ export default function Carousel({ images, type }: CarouselProps) {
           onSwipeRight={handlePrevSlide}
           className={
             type
-              ? "relative z-1 w-full h-[52rem]"
+              ? "relative z-1 w-full h-[50rem]"
               : "relative z-1 w-full h-[48rem] border-2 rounded-[1rem]"
           }
         >
