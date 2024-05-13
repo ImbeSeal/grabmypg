@@ -56,13 +56,13 @@ export function PropCard({
         <Image
           src={propImages[0]}
           alt=".."
-          className="rounded-t-[2rem] bg-[#2e5355]"
+          className="rounded-t-[2rem] bg-[#2e5355] brightness-[70%] hover:brightness-100 duration-300"
           layout={"fill"}
           objectFit="cover"
         />
         <div className="absolute ml-2 top-12 left-12">
           {/* Name  */}
-          <div className="text-4xl font-bold text-white">{propName}</div>
+          <div className="text-4xl font-bold text-white ">{propName}</div>
         </div>
         <div className="absolute ml-2 bottom-4 left-12">
           <div className="font-semibold text-white text-sm">

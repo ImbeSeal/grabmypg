@@ -3,7 +3,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import dynamic from "next/dynamic";
 
-import Link from "next/link";
 import Image from "next/image";
 import { doc, getDocs, collection, query } from "firebase/firestore";
 import { db, storage } from "@/firebase";
@@ -60,44 +59,46 @@ export default function Booking() {
     setSearchQuery(e.target.value);
   };
   const handleRoomSharingFilterChange = (filter: string) => {
-    const updatedFilters = roomSharingFilters.includes(filter) ? roomSharingFilters.filter((f) => f !== filter) : [...roomSharingFilters, filter];
+    const updatedFilters = roomSharingFilters.includes(filter)
+      ? roomSharingFilters.filter((f) => f !== filter)
+      : [...roomSharingFilters, filter];
     setRoomSharingFilters(updatedFilters);
-  }
+  };
   const handleFoodTypeFilterChange = (foodType: string) => {
-    setSelectedFoodType(prev => prev === foodType ? "" : foodType);
+    setSelectedFoodType((prev) => (prev === foodType ? "" : foodType));
   };
 
   const handleGenderFilterChange = (gender: string) => {
     let updatedGenders;
     if (selectedGenders.includes(gender)) {
       updatedGenders = selectedGenders.filter((g) => g !== gender);
-    }
-    else {
+    } else {
       updatedGenders = [...selectedGenders, gender];
     }
     setSelectedGenders(updatedGenders);
-  }
+  };
 
+  const filteredPgs = pgs.filter((pg) => {
+    const matchesSearchQuery =
+      pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase());
 
-  const filteredPgs = pgs.filter(
-    (pg) => {
-      const matchesSearchQuery = pg.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        pg.addrShort.toLowerCase().includes(searchQuery.toLowerCase())
-
-      const matchesRoomSharing = roomSharingFilters.length === 0 || roomSharingFilters.every(filter => {
+    const matchesRoomSharing =
+      roomSharingFilters.length === 0 ||
+      roomSharingFilters.every((filter) => {
         let filterIndex;
 
         switch (filter) {
-          case 'single':
+          case "single":
             filterIndex = 0;
             break;
-          case 'double':
+          case "double":
             filterIndex = 1;
             break;
-          case 'triple':
+          case "triple":
             filterIndex = 2;
             break;
-          case 'tripleplus':
+          case "tripleplus":
             filterIndex = [3, 4, 5];
             break;
           default:
@@ -105,28 +106,34 @@ export default function Booking() {
         }
 
         if (Array.isArray(filterIndex)) {
-          return filterIndex.some(index => pg.offered[index]);
-        }
-        else {
+          return filterIndex.some((index) => pg.offered[index]);
+        } else {
           return pg.offered[filterIndex];
         }
-      })
-      const matchesFoodType =
-        selectedFoodType === "" || pg.food === selectedFoodType;
+      });
+    const matchesFoodType =
+      selectedFoodType === "" || pg.food === selectedFoodType;
 
-      const matchesGender = (() => {
-        if(selectedGenders.length === 0) return true;
-        if(selectedGenders.length === 1) {
-            return pg.genders === selectedGenders[0] || pg.genders === "Male/Female";
-        }
-        if(selectedGenders.length === 2) {
-            return true;
-        }
-        return false;
+    const matchesGender = (() => {
+      if (selectedGenders.length === 0) return true;
+      if (selectedGenders.length === 1) {
+        return (
+          pg.genders === selectedGenders[0] || pg.genders === "Male/Female"
+        );
+      }
+      if (selectedGenders.length === 2) {
+        return true;
+      }
+      return false;
     })();
 
-      return matchesSearchQuery && matchesRoomSharing && matchesFoodType && matchesGender;
-    })
+    return (
+      matchesSearchQuery &&
+      matchesRoomSharing &&
+      matchesFoodType &&
+      matchesGender
+    );
+  });
 
   return (
     <main className="bg-white bg-opacity-55 text-black flex justify-center">
@@ -233,7 +240,9 @@ export default function Booking() {
                         name="room-sharing-more"
                         id="room-sharing-more"
                         className="w-6 h-6"
-                        onChange={() => handleRoomSharingFilterChange("tripleplus")}
+                        onChange={() =>
+                          handleRoomSharingFilterChange("tripleplus")
+                        }
                         checked={roomSharingFilters.includes("tripleplus")}
                       />
                     </div>
@@ -266,8 +275,6 @@ export default function Booking() {
                         checked={selectedGenders.includes("Female")}
                       />
                     </div>
-
-
                   </div>
 
                   <hr className="my-8" />
