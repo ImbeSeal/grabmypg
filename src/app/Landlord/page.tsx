@@ -63,13 +63,21 @@ export default function Landlord() {
 
     const response = await fetch("/api/sendland", {
       method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({ formData }),
     });
+    await response.json();
+
     if (response.status === 200) {
       setFormData(initialFormData);
       toast.success(
         `Hey ${formData.name}, your details was sent successfully! The admin will contact you soon`
       );
+      setLoading(false);
+    } else if (response.status === 500) {
+      toast.error(`Oops! Something went wrong!`);
       setLoading(false);
     }
 

@@ -41,14 +41,22 @@ export default function Contact() {
 
     const response = await fetch("/api/send", {
       method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({ type, formData }),
     });
+    await response.json();
+
     if (response.status === 200) {
       setFormData(initialFormData);
       setType("");
       toast.success(
         `Hey ${formData.name}, your message was sent successfully!`
       );
+      setLoading(false);
+    } else if (response.status === 500) {
+      toast.error(`Oops! Something went wrong!`);
       setLoading(false);
     }
 
