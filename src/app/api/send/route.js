@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-// import { EmailTemplate } from "../../../components/email/Contact-form";
 import nodemailer from "nodemailer";
 
 // eslint-disable-next-line import/no-anonymous-default-export
