@@ -95,20 +95,14 @@ export default function Landlord() {
         <div className="relative w-full aspect-[1440/820]">
           <div className="content-center">
             <div className="-z-30 overflow-hidden">
-              <Image
-                src={landlordjp}
-                alt="Hostel Room"
-                className="aspect-[1440/820] "
-              />
+              <Image src={landlordjp} alt="Hostel Room" className="" />
             </div>
           </div>
           <div className="flex justify-end">
             <div className="absolute h-full mr-[2rem] px-[2rem] top-[1rem]">
               <div className="place-content-center p-[1rem] rounded-3xl bg-white bg-opacity-100 opacity-80">
-                <div className="mx-10 mt-10 space-y-[1.5rem]">
-                  <div className="text-4xl font-bold">
-                    Earn more from your property, do less
-                  </div>
+                <div className="mx-10 mt-10 text-4xl font-bold space-y-[1.5rem]">
+                  Earn more from your property, do less
                 </div>
                 <form onSubmit={handleSubmit}>
                   <legend className="text-base mx-10 mt-4">
@@ -119,65 +113,61 @@ export default function Landlord() {
                       <div className="mx-10 text-xl py-[1.5rem] text-center">
                         Your details
                       </div>
-                      <div className="w-full">
-                        <div className="w-1/2 space-y-4 mx-auto">
-                          <input
-                            type="text"
-                            name="name"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Name*"
-                            value={formData.name}
-                            onChange={handleChange}
-                          />
-                          <input
-                            type="email"
-                            name="email"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Email*"
-                            value={formData.email}
-                            onChange={handleChange}
-                          />
-                          <input
-                            type="text"
-                            name="phone"
-                            className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Phone number*"
-                            value={formData.phone}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="w-3/5 space-y-4 mx-auto">
+                        <input
+                          type="text"
+                          name="name"
+                          className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="Name*"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                        <input
+                          type="email"
+                          name="email"
+                          className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="Email*"
+                          value={formData.email}
+                          onChange={handleChange}
+                        />
+                        <input
+                          type="text"
+                          name="phone"
+                          className="w-full block rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="Phone number*"
+                          value={formData.phone}
+                          onChange={handleChange}
+                        />
                       </div>
 
                       <div className="mx-10 text-xl py-[1.5rem] text-center">
                         Property details
                       </div>
-                      <div className="w-full">
-                        <div className="mx-auto space-y-4 w-1/2">
-                          <input
-                            type="text"
-                            name="propname"
-                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Property Name*"
-                            value={formData.propname}
-                            onChange={handleChange}
-                          />
-                          <input
-                            type="text"
-                            name="city"
-                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="City*"
-                            value={formData.city}
-                            onChange={handleChange}
-                          />
-                          <input
-                            type="text"
-                            name="addr"
-                            className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
-                            placeholder="Address*"
-                            value={formData.addr}
-                            onChange={handleChange}
-                          />
-                        </div>
+                      <div className="mx-auto space-y-4 w-3/5">
+                        <input
+                          type="text"
+                          name="propname"
+                          className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="Property Name*"
+                          value={formData.propname}
+                          onChange={handleChange}
+                        />
+                        <input
+                          type="text"
+                          name="city"
+                          className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="City*"
+                          value={formData.city}
+                          onChange={handleChange}
+                        />
+                        <input
+                          type="text"
+                          name="addr"
+                          className="w-full rounded-md px-6 py-1.5 bg-[#f2f0f2] text-gray-900 placeholder:italic placeholder:text-[#49735A]"
+                          placeholder="Address*"
+                          value={formData.addr}
+                          onChange={handleChange}
+                        />
                       </div>
                     </div>
                   </fieldset>
@@ -215,7 +205,7 @@ export default function Landlord() {
             </div>
           </div>
 
-          <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
+          <div className="mt-12 px-24 py-12 grid md:grid-cols-4 grid-cols-2 gap-8 text-left">
             <div className="bg-white bg-opacity-55 rounded-3xl shadow-lg">
               <Card
                 image={cardimg1}

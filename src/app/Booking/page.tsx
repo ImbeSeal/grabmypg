@@ -31,8 +31,6 @@ export default function Booking() {
   useEffect(() => {
     const getData = async () => {
       try {
-
-
         const querySnapshot = await getDocs(collection(db, "PG"));
         const pgData = querySnapshot.docs.map((doc) => doc.data());
         setPgs(pgData);
@@ -138,38 +136,34 @@ export default function Booking() {
         <hr className="w-screen border-0" />
         {/* Search bar */}
         <div className="min-w-full">
-          <form className="w-4/5 mx-auto py-12">
+          <form className="w-4/5 mx-auto my-12 border-black border-[0.25rem] rounded-full bg-white flex justify-evenly items-center p-1">
+            <span className="ml-2">
+              <Image src={search} alt="..." className="w-8 h-8" />
+            </span>
             <label
               htmlFor="search"
               className="mb-2 text-sm font-medium text-gray-900 sr-only"
             >
               Search
             </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-8 pointer-events-none">
-                <Image
-                  src={search}
-                  alt="..."
-                  className="mx-auto my-auto w-4 h-4"
-                />
-              </div>
-              <input
-                type="search"
-                id="search"
-                onChange={handleSearchChange}
-                name="searchbar"
-                value={searchQuery}
-                className="block w-full p-4 ps-16 placeholder:text-gray-800 border-black border-[0.25rem] rounded-full"
-                placeholder="Search for PGs"
-                required
-              />
+            <input
+              type="search"
+              id="search"
+              onChange={handleSearchChange}
+              name="searchbar"
+              value={searchQuery}
+              className="block w-full p-4 ps-16 placeholder:text-gray-800 bg-transparent focus:border-none"
+              placeholder="Search for PGs"
+              required
+            />
+            <span>
               <button
                 type="submit"
-                className="text-white absolute rounded-full end-2 bottom-1.5 bg-[#064749] hover:bg-[#274b4d] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm py-4 px-12 "
+                className="text-white rounded-full bg-[#064749] hover:bg-[#274b4d] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm py-4 px-12 "
               >
                 Search
               </button>
-            </div>
+            </span>
           </form>
         </div>
 

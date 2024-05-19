@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React from "react";
 
@@ -52,7 +53,12 @@ export function PropCard({
 }: PropCardProps) {
   return (
     <div className="bg-white bg-opacity-55 rounded-[2rem] shadow-lg">
-      <div className="relative aspect-[4/1] overflow-hidden">
+      <div className="relative aspect-[4/1] overflow-hidden rounded-t-[2rem]">
+        {/* <img
+          src={propImages[0]}
+          alt=".."
+          className="absolute bg-[#2e5355] brightness-[70%] hover:brightness-100 duration-300 w-full -bottom-[50%]"
+        /> */}
         <Image
           src={propImages[0]}
           alt=".."

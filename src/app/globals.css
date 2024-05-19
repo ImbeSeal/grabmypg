@@ -15,7 +15,7 @@
 }
 
 html {
-  font-size: 0.3rem;
+  font-size: 0.4rem;
   @screen sm {
     font-size: 0.5rem;
   }

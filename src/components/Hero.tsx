@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import Link from "next/link";
@@ -34,22 +35,25 @@ export default function Hero() {
           <div className="content-center">
             {/* Search bar */}
             <div className="absolute top-12 w-full">
-              <div className="w-1/2 mx-auto p-1 border-[0.25rem] border-black rounded-full bg-white flex flex-row">
-                <div className="my-auto text-lg w-1/2 ml-[2rem] text-slate-800 cursor-default">
+              <div className="w-3/5 mx-auto border-[0.25rem] border-black rounded-full bg-white flex flex-row justify-between items-center">
+                <div className="text-lg text-slate-800 cursor-default ml-6">
                   Want to select a pg fit for you?
                 </div>
-                <span className="w-1/2 flex flex-row-reverse">
-                  <Link
-                    href="./Booking"
-                    className="text-white rounded-full bg-[#064749] hover:bg-[#274b4d] font-medium text-sm py-4 px-12 "
-                  >
-                    Start Booking
-                  </Link>
-                </span>
+                <Link
+                  href="./Booking"
+                  className="text-white rounded-full bg-[#064749] hover:bg-[#274b4d] font-medium text-sm py-4 px-12 m-1 "
+                >
+                  Start Booking
+                </Link>
               </div>
             </div>
             <div className="-z-30">
               <div className="overflow-hidden w-full">
+                {/* <img
+                  src={hostelpg}
+                  alt="Hostel Room"
+                  className="aspect-[1.88] "
+                /> */}
                 <Image
                   src={hostelpg}
                   alt="Hostel Room"
@@ -57,18 +61,15 @@ export default function Hero() {
                 />
               </div>
             </div>
-            <div className="absolute w-[40vw] left-[-11vw] top-[13rem] bottom-[7rem]">
-              <div className="w-full flex justify-end m-auto px-5 my-10 rounded-3xl bg-white ">
-                <div className="w-3/5 mx-10 my-10 space-y-6">
-                  <div className="text-4xl font-bold">
-                    Get the Right PG For You
-                  </div>
-                  <div className="text-base">
-                    Looking for the perfect Paying Guest accommodation? Your
-                    search ends here! GrabmyPG is your go-to platform for
-                    seamless room bookings in prime locations.
-                  </div>
-                </div>
+            <div className="absolute w-[28rem] left-[-2rem] bottom-[4rem]">
+              <div className="flex m-auto px-16 py-8 rounded-3xl bg-white flex-col ">
+                <span className="text-4xl font-bold">Get the</span>
+                <span className="text-4xl font-bold">Right PG For You</span>
+                <span className="mt-4">
+                  Looking for the perfect Paying Guest accommodation? Your
+                  search ends here! GrabmyPG is your go-to platform for seamless
+                  room bookings in prime locations.
+                </span>
               </div>
             </div>
           </div>
@@ -77,15 +78,15 @@ export default function Hero() {
 
       {/* Slide 2 */}
       <div className="mt-[12rem] mx-[6rem]">
-        <div className="rounded-[3rem] w-full overflow-hidden flex flex-auto">
-          <div className="grid grid-cols-2 w-1/2">
-            <Image src={img1} alt="...." className="h-full" />
-            <Image src={img2} alt="...." className=" h-full" />
-            <Image src={img3} alt="...." className=" h-full" />
-            <Image src={img4} alt="...." className=" h-full" />
+        <div className="rounded-[3rem] w-full overflow-hidden grid grid-cols-2">
+          <div className="grid grid-cols-2">
+            <Image src={img1} alt="...." className="h-[13rem]" />
+            <Image src={img2} alt="...." className="h-[13rem]" />
+            <Image src={img3} alt="...." className="h-[13rem]" />
+            <Image src={img4} alt="...." className="h-[13rem]" />
           </div>
 
-          <div className="bg-black text-center place-content-center w-1/2 px-20 py-24">
+          <div className="bg-black text-center place-content-center px-20 py-24">
             <div className="lg:text-4xl text-2xl text-white font-bold">
               The <span className="text-red-700 ">future</span> is flexible
             </div>
@@ -113,7 +114,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="mt-12 px-24 py-12 grid grid-cols-4 gap-8 text-left">
+        <div className="mt-12 px-24 py-12 grid md:grid-cols-4 grid-cols-2 gap-8 text-left">
           <div className="bg-white rounded-3xl shadow-lg">
             <Card
               image={imgcard1}
@@ -156,14 +157,14 @@ export default function Hero() {
             <Image src={hostelpg4} alt="..." className="brightness-50 " />
           </div>
 
-          <div className="absolute w-2/5  bottom-0 flex">
+          <div className="absolute bottom-0 flex">
             <div className="my-10 mx-14 text-white">
-              <div className="p-10 space-y-2">
-                <div className="text-4xl font-bold">Great PGs under a roof</div>
-                <div className="text-base">
-                  Expertly designed to create extraordinary spaces with the
-                  flexible renter in mind
-                </div>
+              <div className="p-10 flex flex-col">
+                <span className="text-4xl font-bold">Great PGs </span>
+                <span className="text-4xl font-bold mb-2">under a roof</span>
+
+                <span>Expertly designed to create extraordinary</span>
+                <span>spaces with the flexible renter in mind</span>
               </div>
 
               <Link
@@ -187,17 +188,20 @@ export default function Hero() {
           </div>
 
           <div className="absolute w-full bottom-0 flex place-content-center ">
-            <div className="my-10 p-16 bg-white rounded-bl-[0.5rem] rounded-[2.25rem] w-1/3">
-              <div className="p-4 space-y-2 text-5xl font-bold">
-                Join GrabmyPG!
+            <div className="my-10 p-8 bg-white rounded-bl-[0.5rem] rounded-[2.25rem]">
+              <div className="flex flex-col text-4xl font-bold ">
+                <span>Join</span>
+                <span>GrabmyPG!</span>
               </div>
 
-              <Link
-                href={"/Booking"}
-                className="px-[4vw] ml-2  rounded-full text-center py-2 bg-[#568B6C] "
-              >
-                Start Booking
-              </Link>
+              <span className="mt-4 flex">
+                <Link
+                  href={"/Booking"}
+                  className="px-[4vw]  rounded-full text-center py-2 bg-[#568B6C] "
+                >
+                  Start Booking
+                </Link>
+              </span>
             </div>
           </div>
         </div>
